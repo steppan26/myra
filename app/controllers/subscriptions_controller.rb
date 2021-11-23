@@ -13,6 +13,8 @@ class SubscriptionsController < ApplicationController
 
   def new
     @subscription = Subscription.new
+    @services = Service.all.map { |service| service.name }
+    @category = Category.all.map { |category| category.name }
     authorize @subscription
   end
 
