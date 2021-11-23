@@ -10,23 +10,25 @@ class SubscriptionsController < ApplicationController
 
   def new
     @subscription = Subscription.new
+    authorize @subscription
   end
 
   def create
-    @subscription = Subscription.new(subscription_params)
-    @subscription.user = current_user
-    @subscription.offer =
-    @subscription.save!
+    raise
+    authorize @subscription
   end
 
   def edit
+    authorize @subscription
   end
 
   def update
     @subscription.update(subscription_params)
+    authorize @subscription
   end
 
   def destroy
+    authorize @subscription
     @subscription.destroy
     redirect_to "/subscriptions"
   end
@@ -34,7 +36,7 @@ class SubscriptionsController < ApplicationController
   private
 
   def subscription_params
-    params.require(:subscription).permit(:additional_info, :url, :price_per_day_cents, :renewal_date, :reminder_delay_days)
+    params.require(:subscription).permit(:additional_info, :url, :renewal_date, :reminder_delay_days, :image_url)
   end
 
   def set_subscriptions
