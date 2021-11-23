@@ -1,4 +1,4 @@
-class OfferPolicy < ApplicationPolicy
+class SubscriptionPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
