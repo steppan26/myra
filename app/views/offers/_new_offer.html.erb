@@ -1,0 +1,6 @@
+  <%= simple_form_for [offer] do |f| %>
+     <%= f.input :name, label: "What service did you subscribe to?" %>
+    <%= f.input :price_cents, label: 'How much is your subscription' %>
+    <%= f.input :frequency, label: "For how long did you subscribe?" %>
+    <%= f.submit "Offer, Away!" %>
+  <% end %>

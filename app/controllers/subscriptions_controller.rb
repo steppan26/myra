@@ -10,13 +10,19 @@ class SubscriptionsController < ApplicationController
 
   def new
     @subscription = Subscription.new
+    @offer = Offer.new
   end
 
   def create
     @subscription = Subscription.new(subscription_params)
     @subscription.user = current_user
-    @subscription.offer =
-    @subscription.save!
+    @offer = Offer.new(offer_params)
+    @subscription.offer = @offer
+    if @subscription.save!
+      redirect_to "/subscriptions/#{@subscription.id}"
+    else
+      render new
+    end
   end
 
   def edit
@@ -34,10 +40,14 @@ class SubscriptionsController < ApplicationController
   private
 
   def subscription_params
-    params.require(:subscription).permit(:additional_info, :url, :price_per_day_cents, :renewal_date, :reminder_delay_days)
+    params.require(:subscription).permit(:additional_info, :url, :renewal_date, :reminder_delay_days, :image_url)
   end
 
   def set_subscriptions
     @subscription = Subscription.find(params[:id])
+  end
+
+  def offer_params
+    params.require(:offer).permit(:name, :price_cents, :frequency, :category)
   end
 end
