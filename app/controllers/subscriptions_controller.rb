@@ -28,7 +28,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def destroy
-     authorize @subscription
+    authorize @subscription
     @subscription.destroy
     redirect_to "/subscriptions"
   end
