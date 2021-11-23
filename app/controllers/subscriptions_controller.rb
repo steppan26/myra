@@ -1,5 +1,6 @@
 class SubscriptionsController < ApplicationController
   before_action :set_subscriptions, only: [:show, :edit, :update, :destroy]
+  before_action :authorize, only: [:create, :update, :destroy]
 
   def index
     @subscriptions = Subscription.all
@@ -14,15 +15,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    @subscription = Subscription.new(subscription_params)
-    @subscription.user = current_user
-    @offer = Offer.new(offer_params)
-    @subscription.offer = @offer
-    if @subscription.save!
-      redirect_to "/subscriptions/#{@subscription.id}"
-    else
-      render new
-    end
+    raise
   end
 
   def edit
@@ -47,7 +40,7 @@ class SubscriptionsController < ApplicationController
     @subscription = Subscription.find(params[:id])
   end
 
-  def offer_params
-    params.require(:offer).permit(:name, :price_cents, :frequency, :category)
+  def authorize
+    authorize @subscription
   end
 end

@@ -1,3 +1,5 @@
 <h1>Here there will be all our subscriptions</h1>
 
-<%= link_to "Create", new_subscription_path %>
+<% if policy(Subscription).create? %>
+  <%= link_to "New subscription", new_subscription_path %>
+<% end %>

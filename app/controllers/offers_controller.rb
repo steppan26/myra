@@ -1,5 +1,6 @@
 class OffersController < ApplicationController
   before_action :set_offers, only: [:edit, :update]
+  before_action :authorize, only: [:create, :update, :destroy]
 
   def new
     @offer = Offer.new
@@ -31,5 +32,9 @@ class OffersController < ApplicationController
 
   def offer_params
     params.require(:offer).permit(:name, :price_cents, :frequency, :category)
+  end
+
+  def authorize
+    authorize @offer
   end
 end
