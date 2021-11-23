@@ -1,20 +1,18 @@
 <h3><%= current_user.email%> Subscriptions.</h3>
-<h5>Budget: <%= current_user.global_budget_cents / 100 %>€ / month (current: <%= @user_subscriptions %>€)</h5>
+<h5>Budget: <%= current_user.global_budget_cents / 100 %>€ / month (current: <%= @user_monthly_spend %>€)</h5>
 
 <ul class="d-flex">
   <% @subscriptions.each do |subscription| %>
     <li class="list-group-item list-group-item-action" style="width: 350px;">
-      <div class="card">
-      <div class="card-img" style="background-image: url('<%= subscription.image_url %>')"></div>
-        <div class="card-body">
-          <h4 class="card-title"><%= subscription.offer.service.name %> - <span class="card-subtitle text-muted"><%= subscription.offer.name %></span></h4>
-          <h6 class="card-subtitle"><%= subscription.offer.price_cents %>€ <%= subscription.offer.frequency %></h6>
-          <p>Next renewal: <%= subscription.renewal_date %></p>
-          <hr>
-          <p class="text-muted"><%= subscription.additional_info %></p>
-          <%= link_to "visit website", subscription.url, class: "btn btn-outline-primary" %>
+      <%= link_to subscription_path(subscription) do %>
+        <div class="card-product">
+          <img src="<%= subscription.image_url %>" />
+          <div class="card-product-infos">
+            <h2><%= subscription.offer.service.name %></h2>
+            <p><%= subscription.offer.price_cents / 100 %>€ <%= subscription.offer.frequency %></p>
+          </div>
         </div>
-      </div>
+      <% end %>
     </li>
   <% end %>
 </ul>

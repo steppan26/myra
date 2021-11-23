@@ -30,6 +30,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 
 gem 'devise'
 gem 'faker'
+gem 'money-rails', '~>1.12'
 
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
