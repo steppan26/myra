@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="card">
+    <div class="card-img" style="background-image: url('<%= @subscription.image_url %>'); height: 300px"></div>
+    <div class="card-body">
+      <h4 class="card-title"><%= @subscription.offer.service.name %> - <span class="card-subtitle text-muted"><%= @subscription.offer.name %></span></h4>
+      <h6 class="card-subtitle"><%= @subscription.offer.price_cents / 100 %>€ <%= @subscription.offer.frequency %></h6>
+      <p>Next renewal: <%= @subscription.renewal_date %></p>
+      <hr>
+      <p class="text-muted"><%= @subscription.additional_info %></p>
+      <%= link_to "visit website", @subscription.url, class: "btn btn-outline-primary" %>
+    </div>
+  </div>
+  <%= link_to "back to list", subscriptions_path, class: "btn btn-primary" %>
+</div>
