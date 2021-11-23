@@ -1,6 +1,6 @@
 class SubscriptionsController < ApplicationController
   before_action :set_subscriptions, only: [:show, :edit, :update, :destroy]
-  after_action :authorize_subscription, only: [:new, :create, :edit, :update, :destroy]
+  after_action :authorize_subscription, only: [:show, :new, :create, :edit, :update, :destroy]
   def index
     @subscriptions = Subscription.all
   end
