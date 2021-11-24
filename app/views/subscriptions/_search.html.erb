@@ -1,16 +1,17 @@
-<% if services.empty? %>
-  <ul class="list-group hidden"></ul>
-<% else %>
-  <ul class="list-group">
-<% end %>
-  <li class="list-group-item">other...</li>
-<% services.each do |service| %>
-  <li class="list-group-item" data-action='click->newForm#selectService'>
-    <div class="service-card"
-         style='background: linear-gradient(to top, rgba(10,10,10,0.3), rgba(10,10,10,0.1)), url("<%= service.image_url %>")'
-    >
-      <%= service.name %>
+<ul class="list-group">
+  <li class="list-group-item service" data-action='click->newForm#selectService' data-newForm-target="serviceCustom service">
+    <div class="service-card" style='background: linear-gradient(to top, rgba(10,10,10,0.3), rgba(10,10,10,0.1));' >
+      Other...
     </div>
+
   </li>
-<% end %>
+  <% services.each do |service| %>
+    <li class="list-group-item service" data-action='click->newForm#selectService' data-newForm-target="servicePreset service">
+      <div class="service-card"
+          style='background: linear-gradient(to top, rgba(10,10,10,0.3), rgba(10,10,10,0.1)), url("<%= service.image_url %>")'
+      >
+        <%= service.name %>
+      </div>
+    </li>
+  <% end %>
 </ul>

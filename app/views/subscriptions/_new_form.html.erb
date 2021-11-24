@@ -6,16 +6,19 @@
                   label: "Subscription category",
                   input_html: {
                     data: {
-                      newForm_target: "category"
+                      action: "click->newForm#showServices",
+                      newForm_target: "categoryInput"
                     }
                   }
       %>
       <%= o.input :name,
-                  label: "Service Provider",
+                  label: "Service Name",
+                  wrapper_html: {
+                    class: 'hidden'
+                  },
                   input_html: {
                     data: {
-                      action: "focus->newForm#showServices blur->newForm#hideServices",
-                      newForm_target: "service"
+                      newForm_target: "serviceInput"
                     }
                   }
       %>
