@@ -45,8 +45,10 @@ class SubscriptionsController < ApplicationController
   end
 
   def search
-    @services = Service.search_for_services(params[:query])
-
+    @category = Category.where(name: params[:query]).first
+    @services = @category.services.uniq
+    p @services
+    # search_for_services(params[:query])
     authorize :subscription
     render partial: 'search', locals: { services: @services }
 
