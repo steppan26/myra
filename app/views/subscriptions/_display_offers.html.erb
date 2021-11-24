@@ -1,18 +1,25 @@
-<ul class="list-group">
-  <li class="list-group-item offer">
-    <div class="offer-card" style='background: linear-gradient(to top, rgba(10,10,10,0.3), rgba(10,10,10,0.1));' >
-      Custom deal...
-    </div>
-
-  </li>
-  <% offers.each do |offer| %>
-    <li class="list-group-item offer">
-      <div class="offer-card"
-          style='background: linear-gradient(to top, rgba(10,10,10,0.3), rgba(10,10,10,0.1));'
-      >
-        <h3><%= offer.name %></h3>
-        <h5><%= offer.price_cents / 100 %> <%= offer.frequency %></h5>
+<div class="offer-wrapper">
+  <h3>Choose a deal...</h3>
+  <ul class="list-group">
+    <li class="list-group-item offer" data-action='click->newForm#selectOffer' data-newForm-target="offerCustom offer">
+      <div class="offer-card" style='background: linear-gradient(to top, rgba(10,10,10,0.3), rgba(10,10,10,0.1));' >
+        Custom deal...
       </div>
+
     </li>
-  <% end %>
-</ul>
+    <% offers.each do |offer| %>
+      <li class="list-group-item offer"
+          data-offer-price="<%= offer.price_cents %>"
+          data-offer-frequency="<%= offer.frequency %>"
+          data-action='click->newForm#selectOffer'
+          data-newForm-target="offerPreset offer">
+        <div class="offer-card"
+            style='background: linear-gradient(to top, rgba(10,10,10,0.3), rgba(10,10,10,0.1));'
+        >
+          <h3><%= offer.name %></h3>
+          <h5><%= offer.price_cents / 100 %> <%= offer.frequency %></h5>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
