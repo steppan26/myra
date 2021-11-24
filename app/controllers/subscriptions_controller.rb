@@ -1,6 +1,7 @@
 class SubscriptionsController < ApplicationController
-  before_action :set_subscriptions, only: [:show, :edit, :update, :destroy]
+  before_action :set_subscriptions, only: %i[show edit update destroy]
   after_action :authorize_subscription, only: [:show, :new, :create, :edit, :update, :destroy]
+
   def index
     @subscriptions = Subscription.all
     user_subscriptions = Subscription.where(user_id: current_user)
@@ -13,6 +14,14 @@ class SubscriptionsController < ApplicationController
 
   def new
     @subscription = Subscription.new
+    @category = Category.all.map { |category| category.name }
+
+    if params[:query].present?
+      @services = Service.where("name ILIKE ?" "%#{params[:query]}%")
+    else
+      @services = Service.all
+    end
+    authorize @subscription
   end
 
   def create
@@ -29,6 +38,16 @@ class SubscriptionsController < ApplicationController
   def destroy
     @subscription.destroy
     redirect_to "/subscriptions"
+  end
+
+  def search
+    @category = Category.where(name: params[:query]).first
+    @services = @category.services.uniq
+    p @services
+    # search_for_services(params[:query])
+    authorize :subscription
+    render partial: 'search', locals: { services: @services }
+
   end
 
   private

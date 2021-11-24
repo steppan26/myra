@@ -20,4 +20,8 @@ class SubscriptionPolicy < ApplicationPolicy
   def destroy?
     !user.nil? && (record.user == user || user.admin)
   end
+
+  def search?
+    return true
+  end
 end

@@ -32,10 +32,12 @@ gem 'devise'
 gem 'pundit'
 gem 'faker'
 gem 'money-rails', '~>1.12'
+gem 'pg_search', '~> 2.3.0'
 
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'

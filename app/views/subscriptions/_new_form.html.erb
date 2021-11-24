@@ -1,0 +1,35 @@
+<div class="form-wrapper" data-controller="newForm">
+  <%= simple_form_for(subscription) do |f| %>
+    <%= f.simple_fields_for :offers, subscription.offer do |o| %>
+      <%= o.input :category,
+                  collection: @category,
+                  label: "Subscription category",
+                  input_html: {
+                    data: {
+                      action: "click->newForm#showServices",
+                      newForm_target: "categoryInput"
+                    }
+                  }
+      %>
+      <%= o.input :name,
+                  label: "Service Name",
+                  wrapper_html: {
+                    class: 'hidden'
+                  },
+                  input_html: {
+                    data: {
+                      newForm_target: "serviceInput"
+                    }
+                  }
+      %>
+      <%= o.input :price_cents, label: "How much does it cost?" %>
+      <%= o.input :frequency,
+                  collection: Offer::PERIODS,
+                  label: "How often is the payment?"
+      %>
+    <% end %>
+      <%= f.text_field :additional_info, label: "Additional Info", placeholder: "Additional Info" %>
+      <%= f.date_field :renewal_date, label: "Renewal Date" %>
+      <%= f.submit "submit" %>
+  <% end %>
+</div>
