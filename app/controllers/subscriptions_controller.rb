@@ -14,6 +14,7 @@ class SubscriptionsController < ApplicationController
 
   def new
     @subscription = Subscription.new
+    @categories = Category.all
     @category = Category.all.map { |category| category.name }
 
     if params[:query].present?
@@ -41,17 +42,17 @@ class SubscriptionsController < ApplicationController
   end
 
   def display_services
-    @services = Category.where(name: params[:query]).first.services.uniq
+    query = params[:query]
+    @services = query.downcase == 'none' ? Service.all : Category.where(name: query).first.services.uniq
     authorize :subscription
-    render partial: 'display_services', locals: { services: @services }
+    render partial: 'services/services_list', locals: { services: @services }
   end
 
   def display_offers
-    p params[:query]
     @service = Service.where(name: params[:query]).first
     @offers = @service.offers
     authorize :subscription
-    render partial: 'display_offers', locals: { offers: @offers }
+    render partial: 'offers/offers_list', locals: { offers: @offers }
   end
 
   private

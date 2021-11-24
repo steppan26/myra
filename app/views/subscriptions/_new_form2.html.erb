@@ -1,4 +1,4 @@
-<div class="form-wrapper" data-controller="newForm">
+<div class="form-wrapper hidden">
   <%= simple_form_for(subscription) do |f| %>
     <%= f.simple_fields_for :offers, subscription.offer do |o| %>
       <%= o.input :category,
@@ -64,4 +64,12 @@
       %>
       <%= f.submit "submit" %>
   <% end %>
+</div>
+
+<div id="select-category">
+    <%= render 'offers/categories_list', categories: @categories %>
+</div>
+<div id="select-service" data-newForm2-target="selectService">
+</div>
+<div id="select-offer" data-newForm2-target="selectOffer">
 </div>

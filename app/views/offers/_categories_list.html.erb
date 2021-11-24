@@ -1,0 +1,19 @@
+<h2 class="text-center my-3">What category of service are you subscribed to?</h2>
+<ul class="categories-list">
+  <% categories.each do |cat| %>
+    <li
+      class="categories-item"
+      data-action="click->newForm2#showServices"
+      style="background-image: linear-gradient(to top, rgba(10,10,10,0.4), rgba(10,10,10,0.2)), url('https://loremflickr.com/640/360')"
+    >
+      <h4 class="categories-title"><%= cat.name %></h4>
+    </li>
+  <% end %>
+  <li
+      class="categories-item"
+      data-action="click->newForm2#showServices"
+      style="background-image: linear-gradient(to top, rgba(10,10,10,0.4), rgba(10,10,10,0.2)), url('https://loremflickr.com/640/360')"
+    >
+      <h4 class="categories-title">None</h4>
+    </li>
+</ul>
