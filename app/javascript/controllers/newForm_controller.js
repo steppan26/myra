@@ -15,7 +15,7 @@ export default class extends Controller {
     const category = this.categoryInputTarget.value;
     if (category) {
       const query = encodeURIComponent(category);
-      const url = `http://localhost:3000/searchService/${query}`;
+      const url = `/searchService/${query}`;
       fetch(url)
         .then(res => res.text())
         .then(data => {
@@ -31,7 +31,7 @@ export default class extends Controller {
   showOffers(){
     this.autocompleteOffersTarget.classList.remove('hidden');
     const query = encodeURIComponent(this.serviceInputTarget.value);
-    const url = `http://localhost:3000/searchOffer/${query}`;
+    const url = `/searchOffer/${query}`;
     fetch(url)
       .then(res => res.text())
       .then(data => {
