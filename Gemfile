@@ -28,6 +28,12 @@ gem 'redis', '~> 4.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+#Gems for connecting through other providers
+gem 'omniauth-facebook'
+gem 'omniauth-google'
+gem 'omniauth-apple'
+gem 'omniauth-rails_csrf_protection'
+
 gem 'devise'
 gem 'pundit'
 gem 'faker'
