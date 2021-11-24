@@ -6,7 +6,6 @@
                   label: "Subscription category",
                   input_html: {
                     data: {
-                      action: "click->newForm#selectCategory",
                       newForm_target: "category"
                     }
                   }
@@ -15,8 +14,8 @@
                   label: "Service Provider",
                   input_html: {
                     data: {
-                    action: 'keyup->newForm#search',
-                    newForm_target: "service"
+                      action: "focus->newForm#showServices blur->newForm#hideServices",
+                      newForm_target: "service"
                     }
                   }
       %>
