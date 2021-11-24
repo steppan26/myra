@@ -17,7 +17,7 @@ class SubscriptionPolicy < ApplicationPolicy
     !user.nil? && (record.user == user || user.admin)
   end
 
-  def test?
+  def search?
     return true
   end
 end

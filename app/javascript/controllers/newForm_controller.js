@@ -8,12 +8,13 @@ export default class extends Controller {
 
   selectCategory(e) {
     console.log(this.autocompleteTarget)
-    const query = this.categoryTarget.value
-    const url = `http://localhost:3000/test/${query}`
+    let query = this.categoryTarget.value
+    query = 'hahn'
+    const url = `http://localhost:3000/search/${query}`;
     fetch(url)
       .then(res => res.text())
       .then(data => {
-
+        this.autocompleteTarget.innerHTML = data;
       })
   }
 

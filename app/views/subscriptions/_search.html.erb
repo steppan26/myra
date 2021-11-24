@@ -1,0 +1,9 @@
+<% if services.empty? %>
+  <ul class="list-group hidden"></ul>
+<% else %>
+  <ul class="list-group" id="autocomplete-services">
+<% end %>
+<% services.each do |service| %>
+  <li class="list-group-item"><%= service.name %></li>
+<% end %>
+</ul>
