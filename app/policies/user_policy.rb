@@ -6,6 +6,6 @@ class UserPolicy < ApplicationPolicy
   end
 
   def update?
-    !user.nil? && (record.user == user || user.admin)
+    true
   end
 end
