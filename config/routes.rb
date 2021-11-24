@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   resources :services, only: %i[index show]
   resources :offers, only: :destroy
 
-  get "/search/:query", to: 'subscriptions#search'
+  get "/searchService/:query", to: 'subscriptions#display_services'
+  get "/searchOffer/:query", to: 'subscriptions#display_offers'
 end

@@ -9,4 +9,5 @@ class Offer < ApplicationRecord
   validates :name, presence: true
   validates :price_cents, numericality: true, presence: true
   validates :frequency, presence: true, inclusion: PERIODS
+
 end
