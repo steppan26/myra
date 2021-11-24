@@ -1,5 +1,6 @@
 class SubscriptionsController < ApplicationController
   before_action :set_subscriptions, only: %i[show edit update destroy]
+  after_action :authorize_subscription, only: [:show, :new, :create, :edit, :update, :destroy]
 
   def index
     @subscriptions = Subscription.all
@@ -20,26 +21,21 @@ class SubscriptionsController < ApplicationController
     else
       @services = Service.all
     end
-    # @services = Service.all.map { |service| service.name }
     authorize @subscription
   end
 
   def create
     raise
-    authorize @subscription
   end
 
   def edit
-    authorize @subscription
   end
 
   def update
     @subscription.update(subscription_params)
-    authorize @subscription
   end
 
   def destroy
-    authorize @subscription
     @subscription.destroy
     redirect_to "/subscriptions"
   end
@@ -66,5 +62,9 @@ class SubscriptionsController < ApplicationController
 
   def set_subscriptions
     @subscription = Subscription.find(params[:id])
+  end
+
+  def authorize_subscription
+    authorize @subscription
   end
 end
