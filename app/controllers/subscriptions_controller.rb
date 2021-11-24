@@ -1,5 +1,5 @@
 class SubscriptionsController < ApplicationController
-  before_action :set_subscriptions, only: [:show, :edit, :update, :destroy]
+  before_action :set_subscriptions, only: %i[show edit update destroy]
 
   def index
     @subscriptions = Subscription.all
@@ -13,8 +13,14 @@ class SubscriptionsController < ApplicationController
 
   def new
     @subscription = Subscription.new
-    @services = Service.all.map { |service| service.name }
     @category = Category.all.map { |category| category.name }
+
+    if params[:query].present?
+      @services = Service.where("name ILIKE ?" "%#{params[:query]}%")
+    else
+      @services = Service.all
+    end
+    # @services = Service.all.map { |service| service.name }
     authorize @subscription
   end
 
