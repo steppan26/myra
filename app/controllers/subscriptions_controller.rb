@@ -44,6 +44,14 @@ class SubscriptionsController < ApplicationController
     redirect_to "/subscriptions"
   end
 
+  def test
+    @services = Service.search_for_services(params[:query])
+
+    authorize :subscription
+    render partial: 'test', locals: { services: @services }
+
+  end
+
   private
 
   def subscription_params

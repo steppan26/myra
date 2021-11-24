@@ -6,13 +6,19 @@
                   label: "Subscription category",
                   input_html: {
                     data: {
-                      action: "click->newForm#selectCategory"
+                      action: "click->newForm#selectCategory",
+                      newForm_target: "category"
                     }
                   }
       %>
       <%= o.input :name,
-                  label: "Service Provider"
-                  # params[:query]
+                  label: "Service Provider",
+                  input_html: {
+                    data: {
+                    action: 'keyup->newForm#search',
+                    newForm_target: "service"
+                    }
+                  }
       %>
       <%= o.input :price_cents, label: "How much does it cost?" %>
       <%= o.input :frequency,
