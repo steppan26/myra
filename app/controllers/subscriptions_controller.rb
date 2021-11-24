@@ -1,6 +1,6 @@
 class SubscriptionsController < ApplicationController
   before_action :set_subscriptions, only: %i[show edit update destroy]
-  after_action :authorize_subscription, only: [:show, :new, :create, :edit, :update, :destroy]
+  after_action :authorize_subscription, only: %i[show new create edit update destroy active? active! desactive!]
 
   def index
     @subscriptions = Subscription.all
@@ -47,7 +47,18 @@ class SubscriptionsController < ApplicationController
     # search_for_services(params[:query])
     authorize :subscription
     render partial: 'search', locals: { services: @services }
+  end
 
+  def active?
+    @is_active
+  end
+
+  def activate!
+    @is_active = true
+  end
+
+  def desactivate!
+    @is_active = false
   end
 
   private
