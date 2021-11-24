@@ -5,6 +5,10 @@ class SubscriptionPolicy < ApplicationPolicy
     end
   end
 
+  def show?
+    return true
+  end
+
   def create?
     return true
   end
@@ -15,5 +19,9 @@ class SubscriptionPolicy < ApplicationPolicy
 
   def destroy?
     !user.nil? && (record.user == user || user.admin)
+  end
+
+  def search?
+    return true
   end
 end

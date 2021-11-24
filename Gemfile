@@ -28,13 +28,22 @@ gem 'redis', '~> 4.0'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+#Gems for connecting through other providers
+gem 'omniauth-facebook'
+gem 'omniauth-google'
+gem 'omniauth-apple'
+gem 'omniauth-rails_csrf_protection'
+
 gem 'devise'
 gem 'pundit'
 gem 'faker'
+gem 'money-rails', '~>1.12'
+gem 'pg_search', '~> 2.3.0'
 
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
