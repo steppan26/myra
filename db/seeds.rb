@@ -54,18 +54,33 @@ Category.create!(name: "Transport")
 Category.create!(name: "Pet care")
 Category.create!(name: "Gaming")
 Category.create!(name: "eCommerce")
-Category.create!(name: "Books/Magazines/Newspaper")
+Category.create!(name: "Books/News")
 Category.create!(name: "Academy")
 
 
 CSV.foreach(filepath, csv_options) do |row|
-p row
   Offer.create!(
     service: Service.find_by(name: row[0]),
     name: row[2],
     price_cents: row[3].to_f * 100,
     frequency: row[5],
     category: Category.find_by(name: row[6])
+  )
+end
+
+3.times do
+  offer = Offer.all.sample
+  user = User.first
+  Subscription.create!(
+    offer: offer,
+    user_id: user.id,
+    additional_info: Faker::Lorem.sentence(word_count: rand(12..28)),
+    price_per_day_cents: calculatePrice(offer.frequency ,offer.price_cents, false),
+    renewal_date: Faker::Date.between(from: '2021-11-28', to: '2022-04-25'),
+    reminder_delay_days: rand(3..7),
+    is_active: true,
+    url: offer.service.url,
+    image_url: offer.service.image_url
   )
 end
 puts "seeding done!"
