@@ -1,3 +1,5 @@
-.dashboard-btn :hover {
-  width: 200px;
+.add-btn {
+  left: calc(50% - 75px/2 + 0.5px);
+  bottom: 20px;
+  z-index: 5;
 }

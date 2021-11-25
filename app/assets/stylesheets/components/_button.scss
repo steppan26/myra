@@ -1,0 +1,36 @@
+.btn-dropshadow {
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.text-btn {
+  color: white;
+  font-size: 15px;
+  line-height: 18px;
+  letter-spacing: 0.0703846px;
+  text-align: center;
+  line-height: 54px;
+  letter-spacing: 0.0703846px;
+}
+
+
+.btn-green {
+  position: absolute;
+  background: #71CC9D;
+  width: 114px;
+  height: 57px;
+  left: calc(50% - 114px/2 - 67px);
+  bottom: 66px;
+  border-radius: 50px;
+  z-index: 4;
+}
+
+.btn-yellow {
+  position: absolute;
+  background: #E7CA74;
+  width: 114px;
+  height: 57px;
+  left: calc(50% - 114px/2 + 68px);
+  bottom: 66px;
+  border-radius: 50px;
+  z-index: 4;
+}
