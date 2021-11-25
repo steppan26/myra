@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["selectService", "selectOffer", "categoryInput", "serviceInput", "displayNewOffer",
                     "category", "service", "offerServiceNameInput", "offerPriceInput", "offerFrequencyInput",
-                    "customOfferInput"]
+                    "customOfferInput", "customService"]
 
   connect() {
   };
@@ -31,6 +31,7 @@ export default class extends Controller {
       .then(res => res.text())
       .then(data => {
         // display the offers OR inputs
+        this.displayNewOfferTarget.innerHTML = "";
         this.selectOfferTarget.innerHTML = data;
         // scroll window up
         const target = this.selectServiceTarget;
@@ -39,15 +40,22 @@ export default class extends Controller {
   };
 
   createNewOffer(event) {
+    const target = event.currentTarget;
     this._activate_card(event.currentTarget, this.serviceTargets)
     const url = "/newOffer";
     fetch(url)
     .then(res => res.text())
     .then(data => {
+      if (target === this.customServiceTarget) {
+        this.selectOfferTarget.innerHTML = "";
         this.displayNewOfferTarget.innerHTML = data;
         const nameInput = this.offerServiceNameInputTarget;
+        nameInput.value = "";
+      } else {
         nameInput.value = this.serviceInputTarget.value;
-
+        this.displayNewOfferTarget.innerHTML = "";
+        this.selectOfferTarget.innerHTML = data;
+        }
         this._scroll_to(this.selectOfferTarget)
       })
 
@@ -59,12 +67,17 @@ export default class extends Controller {
     const frequencyInput = this.offerFrequencyInputTarget;
     const customOfferInputs = this.customOfferInputTargets;
 
-    console.log(customOfferInputs)
+    if (nameInput.value === "") {
+      //console.log(nameInput);
+    } else if (priceInput.value === "") {
+
+    } else {
+
+    }
   }
 
   _scroll_to(target) {
     const top = target.offsetHeight + 80
-    console.log(target);
     window.scrollTo({
       top: top,
       left: 0,
