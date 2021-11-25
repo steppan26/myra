@@ -2,13 +2,13 @@
 <br>
 <h2><%= @date.strftime("%b #{@date.day.ordinalize}") %></h2>
 <br>
-<h3>Total Spent: <%= @user_monthly_spend %>€/month</h3>
+<h3>Total Spent: <%= humanized_money_with_symbol @user_monthly_spend %>/month</h3>
 <br>
 <h4>Monthly spend by category</h4>
  <ul>
   <% @category_sums.each do |category| %>
     <% if category[1] > 0 %>
-      <li><%= category[0] %>: <%= category[1] %>€/month</li>
+      <li><%= category[0] %>: <%= humanized_money_with_symbol category[1] %>/month</li>
     <% end %>
   <% end %>
 </ul>
