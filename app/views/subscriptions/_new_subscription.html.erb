@@ -9,14 +9,14 @@
     <h5>Renewal Date</h5>
     <div class="input-wrapper">
       <i class="far fa-calendar-alt"></i>
-      <input type="date" name="" id="">
+      <input type="date" name="" data-newForm2-target="renewalInput">
     </div>
   </div>
   <div class="user-submition-wrapper">
     <h5>When would you like to be reminded?</h5>
     <div class="input-wrapper">
       <i class="far fa-bell"></i>
-      <input type="tel" name="reminder-delay" id="reminder-delay">
+      <input type="tel" name="reminder-delay" id="reminder-delay" data-newForm2-target="delayInput">
       <select name="frequency-select" id="frequency-select">
         <option value="Month(s)">Month(s)</option>
         <option value="Week(s)">Week(s)</option>
@@ -27,7 +27,9 @@
   </div>
   <div class="user-submition-wrapper">
     <h5>Additional Info</h5>
-    <input type="text" name="" id="submit-sub">
+    <input type="text" name="" id="submit-sub" data-newForm2-target="infoInput">
   </div>
-  <input type="submit" class="btn btn-primary my-3" value="Create Subscription">
+  <div class="btn btn-primary my-3" data-action='click->newForm2#createSubscription'>
+  "Create Subscription"
+  </div>
 </div>

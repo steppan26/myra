@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["selectService", "selectOffer", "categoryInput", "serviceInput", "priceInput", "frequencyInput", "displayNewOffer",
                     "category", "service", "offerServiceNameInput", "offerPriceInput", "offerFrequencyInput",
-    "customOfferInput", "customService", "customOffer", "formPartOne", "formPartTwo"]
+    "customOfferInput", "customService", "customOffer", "formPartOne", "formPartTwo", "renewalInput", "delayInput", "infoInput"]
 
   connect() {
   };
@@ -121,29 +121,25 @@ export default class extends Controller {
     const price = this.priceInputTarget.value;
     const frequency = this.frequencyInputTarget.value;
     const category = this.categoryInputTarget.value;
-    console.log('price', price)
-    console.log('name', name)
-    console.log('frequency', frequency)
-    console.log('category', category)
 
     const formData = {category, name, price, frequency }
     fetch(`/subOverview/?name=${name}&category=${category}&price=${price}&frequency=${frequency}`
-    // {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(formData)
-    // }
-    )
-      .then(res => res.text())
-      .then(data => {
+    ).then(res => res.text())
+     .then(data => {
         this.formPartOneTarget.classList.add('hidden-one');
         this.formPartTwoTarget.innerHTML = data;
         this.formPartTwoTarget.classList.remove('hidden-two');
         this._scroll_to(this.formPartTwoTarget)
-      })
+     })
   }
+
+  createSubscription() {
+    const form = document.getElementById('real-form');
+    const infoValue = this.infoInputTarget.value
+    const renewalValue = this.renewalInputTarget.value
+    const delayValue = this.delayInputTarget.value
+
+  };
 
   _activate_card(target, items_array) {
     items_array.forEach(item => {

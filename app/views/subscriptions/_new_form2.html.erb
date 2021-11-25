@@ -1,4 +1,4 @@
-<div class="hidden">
+<div class="hidden" id="real-form">
   <%= simple_form_for(subscription) do |f| %>
     <%= f.simple_fields_for :offers, subscription.offer do |o| %>
       <%= o.input :category,
