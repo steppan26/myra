@@ -16,5 +16,6 @@ Rails.application.routes.draw do
   get "/searchService/:query", to: 'subscriptions#display_services'
   get "/searchOffer/:query", to: 'subscriptions#display_offers'
   get "/newOffer", to: 'subscriptions#display_offer_form'
+  get "/subOverview", to: 'subscriptions#subscription_overview'
 
 end
