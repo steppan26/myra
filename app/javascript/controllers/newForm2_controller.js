@@ -117,8 +117,25 @@ export default class extends Controller {
   }
 
   display_sub_overview(){
-    console.log('fetching subscription overview');
-    fetch("/subOverview")
+    const name = this.serviceInputTarget.value;
+    const price = this.priceInputTarget.value;
+    const frequency = this.frequencyInputTarget.value;
+    const category = this.categoryInputTarget.value;
+    console.log('price', price)
+    console.log('name', name)
+    console.log('frequency', frequency)
+    console.log('category', category)
+
+    const formData = {category, name, price, frequency }
+    fetch(`/subOverview/?name=${name}&category=${category}&price=${price}&frequency=${frequency}`
+    // {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(formData)
+    // }
+    )
       .then(res => res.text())
       .then(data => {
         this.formPartOneTarget.classList.add('hidden-one');

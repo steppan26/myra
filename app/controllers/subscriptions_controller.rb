@@ -76,7 +76,17 @@ class SubscriptionsController < ApplicationController
 
   def subscription_overview
     authorize :subscription
-    @offer = Offer.all.first
+    name = params[:name]
+    frequency = params[:frequency]
+    price = (params[:price].to_f * 100).to_i
+    service = Service.where("name = '#{params[:name]}'").first
+    category = Category.where("name = '#{params[:category]}'").first
+    @offer = Offer.new(service: service, name: name, category: category, price_cents: price, frequency: frequency)
+    if current_user
+      @offer.user = current_user
+    end
+    p @offer
+    p @offer.valid?
     render partial: 'subscriptions/new_subscription', locals: { offer: @offer }
   end
 
