@@ -5,17 +5,23 @@
 }
 
 .button-cancel {
+  position: absolute;
+  top: -15px;
+  left: -12px;
   font-size: 2rem;
   border-radius: 50%;
-  padding: 0.5rem 1.25rem;
+  padding: 0.7rem 1rem 0.2rem 1.5rem;
   text-align: center;
   background-color: rgba(255, 50, 30, 0.5);
 }
 
 .button-accept {
-    font-size: 2rem;
+  position: absolute;
+  top: -15px;
+  right: -12px;
+  font-size: 2rem;
   border-radius: 50%;
-  padding: 0.5rem 1rem;
+  padding: 0.7rem 1rem 0.2rem 0.9rem;
   text-align: center;
   background-color: rgba(90, 210, 110, 0.7);
 }

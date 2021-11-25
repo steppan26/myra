@@ -28,12 +28,10 @@
   <div class="user-submition-wrapper">
     <textarea row='2' placeholder="Additional Info" name="" id="submit-sub" data-newForm2-target="infoInput"></textarea>
   </div>
-  <div class="buttons-wrapper my-3">
-    <%= link_to dashboard_path, class: "button-cancel" do %>
-      <i class="fas fa-times"></i>
-    <% end %>
-    <div class="button-accept" data-action='click->newForm2#createSubscription'>
-      <i class="fas fa-check"></i>
-    </div>
+  <%= link_to dashboard_path, class: "button-cancel" do %>
+    <i class="fas fa-times"></i>
+  <% end %>
+  <div class="button-accept" data-action='click->newForm2#createSubscription'>
+    <i class="fas fa-check"></i>
   </div>
 </div>
