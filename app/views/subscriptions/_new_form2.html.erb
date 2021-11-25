@@ -2,7 +2,6 @@
   <%= simple_form_for(subscription) do |f| %>
     <%= f.simple_fields_for :offers, subscription.offer do |o| %>
       <%= o.input :category,
-                  collection: @category,
                   label: "Subscription category",
                   wrapper_html: {
                     class: 'hidden'
@@ -10,7 +9,7 @@
                   input_html: {
                     data: {
                       action: "click->newForm#showServices",
-                      newForm_target: "categoryInput"
+                      newForm2_target: "categoryInput"
                     }
                   }
       %>
@@ -21,7 +20,7 @@
                   },
                   input_html: {
                     data: {
-                      newForm_target: "serviceInput"
+                      newForm2_target: "serviceInput"
                     }
                   }
       %>
@@ -32,7 +31,7 @@
                   label: "How much does it cost?",
                   input_html: {
                     data: {
-                      newForm_target: "priceInput"
+                      newForm2_target: "priceInput"
                     }
                   }
       %>
@@ -44,7 +43,7 @@
                   label: "How often is the payment?",
                   input_html: {
                     data: {
-                      newForm_target: "frequencyInput"
+                      newForm2_target: "frequencyInput"
                     }
                   }
       %>
@@ -72,4 +71,6 @@
 <div id="select-service" data-newForm2-target="selectService">
 </div>
 <div id="select-offer" data-newForm2-target="selectOffer">
+</div>
+<div id="custom-offer" data-newForm2-target="displayNewOffer">
 </div>

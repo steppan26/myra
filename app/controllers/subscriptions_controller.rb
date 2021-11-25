@@ -55,6 +55,12 @@ class SubscriptionsController < ApplicationController
     render partial: 'offers/offers_list', locals: { offers: @offers }
   end
 
+  def display_offer_form
+    authorize :subscription
+    @offer = Offer.new
+    render partial: 'offers/custom_offer', locals: { offer: @offer }
+  end
+
   private
 
   def subscription_params
