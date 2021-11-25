@@ -12,16 +12,16 @@
   letter-spacing: 0.0703846px;
 }
 
-
 .btn-green {
   position: absolute;
   background: #71CC9D;
   width: 114px;
   height: 57px;
   left: calc(50% - 114px/2 - 67px);
-  bottom: 66px;
+  bottom: 45px;
   border-radius: 50px;
   z-index: 4;
+  transition-timing-function: ease;
 }
 
 .btn-yellow {
@@ -30,7 +30,8 @@
   width: 114px;
   height: 57px;
   left: calc(50% - 114px/2 + 68px);
-  bottom: 66px;
+  bottom: 45px;
   border-radius: 50px;
   z-index: 4;
+  transition-timing-function: ease;
 }
