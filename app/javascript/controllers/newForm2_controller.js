@@ -1,9 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["selectService", "selectOffer", "categoryInput", "serviceInput", "displayNewOffer",
+  static targets = ["selectService", "selectOffer", "categoryInput", "serviceInput", "priceInput", "frequencyInput", "displayNewOffer",
                     "category", "service", "offerServiceNameInput", "offerPriceInput", "offerFrequencyInput",
-                    "customOfferInput", "customService"]
+                    "customOfferInput", "customService", "customOffer"]
 
   connect() {
   };
@@ -41,18 +41,27 @@ export default class extends Controller {
 
   createNewOffer(event) {
     const target = event.currentTarget;
-    this._activate_card(event.currentTarget, this.serviceTargets)
+    this._activate_card(target, this.serviceTargets)
     const url = "/newOffer";
     fetch(url)
     .then(res => res.text())
     .then(data => {
       if (target === this.customServiceTarget) {
+        console.log('custom service');
         this.selectOfferTarget.innerHTML = "";
         this.displayNewOfferTarget.innerHTML = data;
         const nameInput = this.offerServiceNameInputTarget;
         nameInput.value = "";
+        nameInput.removeAttribute("disabled");
+      } else if (target === this.customOfferTarget) {
+        console.log('custom offer');
+        this.displayNewOfferTarget.innerHTML = data;
+        const nameInput = this.offerServiceNameInputTarget;
+        nameInput.value = this.serviceInputTarget.value;
+        nameInput.disabled = true;
       } else {
         nameInput.value = this.serviceInputTarget.value;
+        nameInput.removeAttribute("disabled");
         this.displayNewOfferTarget.innerHTML = "";
         this.selectOfferTarget.innerHTML = data;
         }
@@ -61,19 +70,33 @@ export default class extends Controller {
 
   };
 
+  offerSelected(event) {
+    console.log('offer selected', event.currentTarget.innerText)
+  };
+
   saveOffer(){
     const nameInput = this.offerServiceNameInputTarget;
     const priceInput = this.offerPriceInputTarget;
     const frequencyInput = this.offerFrequencyInputTarget;
-    const customOfferInputs = this.customOfferInputTargets;
 
-    if (nameInput.value === "") {
-      //console.log(nameInput);
+    const nameError = document.getElementById('name-error');
+    const priceError = document.getElementById('price-error');
+    nameError.classList.add('hidden');
+    priceError.classList.add('hidden');
+
+    if (nameInput.value === "" && priceInput.value === "") {
+      nameError.classList.remove('hidden');
+      priceError.classList.remove('hidden');
+    } else if (nameInput.value === "") {
+      nameError.classList.remove('hidden');
     } else if (priceInput.value === "") {
-
+      priceError.classList.remove('hidden');
     } else {
-
+      this.serviceInputTarget.value = nameInput.value;
+      this.priceInputTarget.value = priceInput.value;
+      this.frequencyInputTarget.value = frequencyInput.value;
     }
+    // redirect form to the next page
   }
 
   _scroll_to(target) {
