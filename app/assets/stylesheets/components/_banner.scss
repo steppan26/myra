@@ -1,0 +1,39 @@
+.banner-img {
+  width: 54vh;
+  height: 92vh;
+}
+
+.landing-wrap {
+
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vh;
+  height: 100vh ;
+}
+
+.landing-content {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.landing-titles {
+  color: black;
+  font-style: normal;
+  font-weight: bold;
+}
+
+.landing-titles > h1,
+.landing-titles > h5 {
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.h1 {
+  font-weight: bold;
+}

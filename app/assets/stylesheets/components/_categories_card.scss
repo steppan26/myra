@@ -1,14 +1,14 @@
 .categories-list {
   list-style: none;
   display: grid;
-  //grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  grid-gap: 1.5em;
+  grid-gap: 4%;
   grid-auto-flow: column;
-  grid-auto-columns: 46%;
+  grid-auto-columns: 44%;
   scrollbar-width: none;
   scroll-snap-type: x mandatory;
   overflow-x: scroll;
+  margin: 0.5rem;
   padding: 0;
 }
 
