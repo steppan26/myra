@@ -16,15 +16,15 @@
 <ul>
   <% @my_next_in_payment_subscriptions.each do |subscription| %>
     <%= link_to subscription_path(subscription) do %>
-      <div class="card-product my-3", style="width: 500px">
+      <div class="card-product my-3", style="width: 100%">
         <img src="<%= subscription.image_url %>"  />
         <div class="card-product-infos d-flex justify-content-between w-100">
-          <h2><%= subscription.offer.service.name %></h2>
+          <p><%= subscription.offer.service.name %></p>
           <% renewal_date = (subscription.renewal_date - Date.today).to_i %>
           <% if renewal_date > 30 %>
-            <h2> <%= time_ago_in_words(subscription.renewal_date) %> </h2>
+            <p> <%= time_ago_in_words(subscription.renewal_date) %> </p>
           <% else %>
-            <h2><%= renewal_date %> <%= "day".pluralize(2) %> </h2>
+            <p><%= renewal_date %> <%= "day".pluralize(2) %> </p>
           <% end %>
         </div>
       </div>

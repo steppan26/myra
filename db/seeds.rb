@@ -74,9 +74,9 @@ end
   Subscription.create!(
     offer: offer,
     user_id: user.id,
-    additional_info: Faker::Lorem.sentence(word_count: rand(12..28)),
+    additional_info: "One of the best services out there",
     price_per_day_cents: calculatePrice(offer.frequency ,offer.price_cents, false),
-    renewal_date: Faker::Date.between(from: '2021-11-28', to: '2022-04-25'),
+    renewal_date: Faker::Date.between(from: '2021-11-28', to: '2022-01-30'),
     reminder_delay_days: rand(3..7),
     is_active: true,
     url: offer.service.url,
