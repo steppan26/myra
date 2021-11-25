@@ -14,6 +14,7 @@ class SubscriptionsController < ApplicationController
 
   def new
     @subscription = Subscription.new
+    @categories = Category.all
     @category = Category.all.map { |category| category.name }
 
     if params[:query].present?
@@ -40,12 +41,6 @@ class SubscriptionsController < ApplicationController
     redirect_to "/subscriptions"
   end
 
-  def display_services
-    @services = Category.where(name: params[:query]).first.services.uniq
-    authorize :subscription
-    render partial: 'search', locals: { services: @services }
-  end
-
   def active?
     @is_active
   end
@@ -58,13 +53,25 @@ class SubscriptionsController < ApplicationController
     @is_active = false
     render partial: 'display_services', locals: { services: @services }
   end
+  
+  def display_services
+    query = params[:query]
+    @services = query.downcase == 'none' ? Service.all : Category.where(name: query).first.services.uniq
+    authorize :subscription
+    render partial: 'services/services_list', locals: { services: @services }
+  end
 
   def display_offers
-    p params[:query]
     @service = Service.where(name: params[:query]).first
     @offers = @service.offers
     authorize :subscription
-    render partial: 'display_offers', locals: { offers: @offers }
+    render partial: 'offers/offers_list', locals: { offers: @offers }
+  end
+
+  def display_offer_form
+    authorize :subscription
+    @offer = Offer.new
+    render partial: 'offers/custom_offer', locals: { offer: @offer }
   end
 
   private

@@ -4,11 +4,11 @@
     <div class="card-body">
       <h4 class="card-title"><%= @subscription.offer.service.name %> - <span class="card-subtitle text-muted"><%= @subscription.offer.name %></span></h4>
       <h6 class="card-subtitle"><%= humanized_money_with_symbol @subscription.offer.price %> <%= @subscription.offer.frequency %></h6>
-      <div class="card-details">
-        <div class="details-icon">logo</div>
-        <div class="details-type">Remind me</div>
-        <div class="details-data"><%= pluralize(@subscription.reminder_delay_days, "day") %> before</div>
-      </div>
+        <%= render 'shared/card-details', 
+            logo: "logo", 
+            type: "Remind me", 
+            data: "#{pluralize(@subscription.reminder_delay_days, "day")} before" 
+        %>
       <hr>
       <p class="text-muted"><%= @subscription.additional_info %></p>
       <%= link_to "visit website", @subscription.url, class: "btn btn-outline-primary" %>
