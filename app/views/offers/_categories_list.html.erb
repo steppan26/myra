@@ -2,20 +2,18 @@
 <ul class="categories-list">
   <% categories.each do |cat| %>
     <li
-      class="categories-item"
+      class="categories-item <%= cat.name.gsub(/\W/, '') %>"
       data-action="click->newForm2#showServices"
       data-newForm2-target="category"
-      style="background-image: linear-gradient(to top, rgba(10,10,10,0.4), rgba(10,10,10,0.2)), url('https://loremflickr.com/640/360')"
     >
       <h4 class="categories-title"><%= cat.name %></h4>
     </li>
   <% end %>
   <li
-      class="categories-item"
+      class="categories-item other"
       data-action="click->newForm2#showServices"
       data-newForm2-target="category"
-      style="background-image: linear-gradient(to top, rgba(10,10,10,0.4), rgba(10,10,10,0.2)), url('https://loremflickr.com/640/360')"
     >
-      <h4 class="categories-title">None</h4>
+      <h4 class="categories-title">Other</h4>
     </li>
 </ul>

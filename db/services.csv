@@ -1,0 +1,46 @@
+Service Name,Site url,Offer Name,Offer Price,Trial Period,Recurrence,Service category,logo url
+Netflix,https://www.netflix.com,Basic,8.99,,monthly,Streaming,"https://c1.lestechnophiles.com/www.numerama.com/wp-content/uploads/2016/06/netflix-nouveau-logo.jpg?resize=1212,712"
+Netflix,https://www.netflix.com,Standard,13.49,,monthly,Streaming,"https://c1.lestechnophiles.com/www.numerama.com/wp-content/uploads/2016/06/netflix-nouveau-logo.jpg?resize=1212,712"
+Netflix,https://www.netflix.com,Premium,17.99,,monthly,Streaming,"https://c1.lestechnophiles.com/www.numerama.com/wp-content/uploads/2016/06/netflix-nouveau-logo.jpg?resize=1212,712"
+Disney+,https://www.disneyplus.com,annualy,89.99,,annualy,Streaming,https://logo-marque.com/wp-content/uploads/2021/03/Disney-Logo.png
+Disney+,https://www.disneyplus.com,monthly,8.99,,monthly,Streaming,https://logo-marque.com/wp-content/uploads/2021/03/Disney-Logo.png
+Spotify,https://www.spotify.com,Personal,9.99,,monthly,Streaming,https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1024px-Spotify_logo_without_text.svg.png
+Spotify,https://www.spotify.com,Duo,12.99,,monthly,Streaming,https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1024px-Spotify_logo_without_text.svg.png
+Spotify,https://www.spotify.com,Family,15.99,,monthly,Streaming,https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1024px-Spotify_logo_without_text.svg.png
+Spotify,https://www.spotify.com,Student,4.99,,monthly,Streaming,https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/Spotify_logo_without_text.svg/1024px-Spotify_logo_without_text.svg.png
+Apple Music,https://music.apple.com,Voice,4.99,,monthly,Streaming,https://www.apple.com/v/apple-music/q/images/shared/og__ckjrh2mu8b2a_image.png
+Apple Music,https://music.apple.com,Student,4.99,,monthly,Streaming,https://www.apple.com/v/apple-music/q/images/shared/og__ckjrh2mu8b2a_image.png
+Apple Music,https://music.apple.com,Individual,9.99,,monthly,Streaming,https://www.apple.com/v/apple-music/q/images/shared/og__ckjrh2mu8b2a_image.png
+Apple Music,https://music.apple.com,Family,14.99,,monthly,Streaming,https://www.apple.com/v/apple-music/q/images/shared/og__ckjrh2mu8b2a_image.png
+Le Monde,https://abo.lemonde.fr/,Essentiel,9.99,1 for 1 monthly,monthly,Books/News,https://www.zeplug.com/wp-content/uploads/2021/03/Logo-Le-Monde-large.jpg
+Le Monde,https://abo.lemonde.fr/,Essentiel,99.99,-50% 1 annualy (google),annualy,Books/News,https://www.zeplug.com/wp-content/uploads/2021/03/Logo-Le-Monde-large.jpg
+Le Monde,https://abo.lemonde.fr/,Intégral,14.99,1 for 1 monthly,monthly,Books/News,https://www.zeplug.com/wp-content/uploads/2021/03/Logo-Le-Monde-large.jpg
+Le Monde,https://abo.lemonde.fr/,Intégral,149.99,-50% 1 annualy (google),annualy,Books/News,https://www.zeplug.com/wp-content/uploads/2021/03/Logo-Le-Monde-large.jpg
+Le Monde,https://abo.lemonde.fr/,Famille,19.99,1 for 1 monthly,monthly,Books/News,https://www.zeplug.com/wp-content/uploads/2021/03/Logo-Le-Monde-large.jpg
+Le Monde,https://abo.lemonde.fr/,Famille,199.99,-50% 1 annualy (google),annualy,Books/News,https://www.zeplug.com/wp-content/uploads/2021/03/Logo-Le-Monde-large.jpg
+Le Monde,https://abo.lemonde.fr/,Papier + numérique,24.99,,monthly,Books/News,https://www.zeplug.com/wp-content/uploads/2021/03/Logo-Le-Monde-large.jpg
+Le Monde,https://abo.lemonde.fr/,Papier + numérique,275,,annualy,Books/News,https://www.zeplug.com/wp-content/uploads/2021/03/Logo-Le-Monde-large.jpg
+Le Monde,https://abo.lemonde.fr/,Etudiant Essentiel,8.49,1 for 1 monthly,monthly,Books/News,https://www.zeplug.com/wp-content/uploads/2021/03/Logo-Le-Monde-large.jpg
+Le Monde,https://abo.lemonde.fr/,Etudiant Intégral,12.99,1 for 1 monthly,monthly,Books/News,https://www.zeplug.com/wp-content/uploads/2021/03/Logo-Le-Monde-large.jpg
+Le Monde,https://abo.lemonde.fr/,Etudiant Papier + Numérique,16.99,,monthly,Books/News,https://www.zeplug.com/wp-content/uploads/2021/03/Logo-Le-Monde-large.jpg
+Le Monde,https://abo.lemonde.fr/,Weekend,9.99,,monthly,Books/News,https://www.zeplug.com/wp-content/uploads/2021/03/Logo-Le-Monde-large.jpg
+Le Monde,https://abo.lemonde.fr/,Weekend +,19.99,,monthly,Books/News,https://www.zeplug.com/wp-content/uploads/2021/03/Logo-Le-Monde-large.jpg
+Amazon Prime,amazon.com,Prime monthly,5.99,30 days free,monthly,eCommerce,https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Amazon_Prime_Logo.svg/2560px-Amazon_Prime_Logo.svg.png
+Amazon Prime,primevideo.com,Pass Ligue 1,12.99,9.99 for 3 monthly,monthly,eCommerce,https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Amazon_Prime_Logo.svg/2560px-Amazon_Prime_Logo.svg.png
+Amazon Prime,amazon.com,Prime annual,49,30 days free,annualy,eCommerce,https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Amazon_Prime_Logo.svg/2560px-Amazon_Prime_Logo.svg.png
+Amazon Prime,amazon.com,Prime student,24,90 days free,annualy,eCommerce,https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Amazon_Prime_Logo.svg/2560px-Amazon_Prime_Logo.svg.png
+Linkedin,https://www.linkedin.com/,Recruiter Lite,"109,08",,annualy,Communication,https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/768px-LinkedIn_logo_initials.png
+Orange,https://boutique.orange.fr/mobile/offre/forfait-70go-sim?withDevice=false&withOpenPrices=false,2h 100Mo,"2,99",,monthly,Communication,https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Orange_logo.svg/1022px-Orange_logo.svg.png
+Orange,https://boutique.orange.fr/mobile/offre/forfait-70go-sim?withDevice=false&withOpenPrices=false,2h 20Go,"13,99",,monthly,Communication,https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Orange_logo.svg/1022px-Orange_logo.svg.png
+Orange,https://boutique.orange.fr/mobile/offre/forfait-70go-sim?withDevice=false&withOpenPrices=false,10Go,"21,99",,monthly,Communication,https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Orange_logo.svg/1022px-Orange_logo.svg.png
+Orange,https://boutique.orange.fr/mobile/offre/forfait-70go-sim?withDevice=false&withOpenPrices=false,70Go,"14,99",,monthly,Communication,https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Orange_logo.svg/1022px-Orange_logo.svg.png
+Orange,https://boutique.orange.fr/mobile/offre/forfait-70go-sim?withDevice=false&withOpenPrices=false,5G 120Go,"20,99",,monthly,Communication,https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Orange_logo.svg/1022px-Orange_logo.svg.png
+Orange,https://boutique.orange.fr/mobile/offre/forfait-70go-sim?withDevice=false&withOpenPrices=false,5G 130 Go,"29,99",,monthly,Communication,https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Orange_logo.svg/1022px-Orange_logo.svg.png
+Orange,https://boutique.orange.fr/mobile/offre/forfait-70go-sim?withDevice=false&withOpenPrices=false,5G 200 Go,"49,99",,monthly,Communication,https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Orange_logo.svg/1022px-Orange_logo.svg.png
+Bouygues,https://www.bouyguestelecom.fr/forfaits-mobiles/sans-engagement,B&You 200 Go,"14,99",,monthly,Communication,https://upload.wikimedia.org/wikipedia/commons/3/31/Bouygues_Telecom_%28alt_logo%29.svg
+Bouygues,https://www.bouyguestelecom.fr/forfaits-mobiles/sans-engagement,B&You 100 Go,"12,99",,monthly,Communication,https://upload.wikimedia.org/wikipedia/commons/3/31/Bouygues_Telecom_%28alt_logo%29.svg
+Bouygues,https://www.bouyguestelecom.fr/forfaits-mobiles/sans-engagement,B&You 50 Go,"11,99",,monthly,Communication,https://upload.wikimedia.org/wikipedia/commons/3/31/Bouygues_Telecom_%28alt_logo%29.svg
+Bouygues,https://www.bouyguestelecom.fr/forfaits-mobiles/sans-engagement,B&You 200 Mo,"4,99",,monthly,Communication,https://upload.wikimedia.org/wikipedia/commons/3/31/Bouygues_Telecom_%28alt_logo%29.svg
+Bouygues,https://www.bouyguestelecom.fr/forfaits-mobiles/sans-engagement,Sensation 2h 100Mo,"4,99",,monthly,Communication,https://upload.wikimedia.org/wikipedia/commons/3/31/Bouygues_Telecom_%28alt_logo%29.svg
+Bouygues,https://www.bouyguestelecom.fr/forfaits-mobiles/sans-engagement,Sensation 5Go,"6,99",,monthly,Communication,https://upload.wikimedia.org/wikipedia/commons/3/31/Bouygues_Telecom_%28alt_logo%29.svg
+Bouygues,https://www.bouyguestelecom.fr/forfaits-mobiles/sans-engagement,Sensation 70Go,"10,99",,monthly,Communication,https://upload.wikimedia.org/wikipedia/commons/3/31/Bouygues_Telecom_%28alt_logo%29.svg

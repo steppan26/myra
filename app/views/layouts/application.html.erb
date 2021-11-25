@@ -11,11 +11,13 @@
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
   </head>
-
-  <body class="container">
+<%# # navbar must be outside container %>
+  <body>
     <%= render 'shared/navbar' %>
-    <%= render 'shared/flashes' %>
-    <%= yield %>
-    <%#= render 'shared/footer' %>
+    <div class="container">
+      <%= render 'shared/flashes' %>
+      <%= yield %>
+      <%= render 'shared/footer' %>
+    </div>
   </body>
 </html>

@@ -1,11 +1,20 @@
 <div class="fixed-bottom mb-3">
   <div class="container d-flex justify-content-center space-between align-items-center">
-    <div class="add-btn">
-      <svg width="75" height="75" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <circle cx="30" cy="30" r="30" fill="#758ED0"/>
-      <line x1="30.9109" y1="20.5479" x2="30.9109" y2="40.274" stroke="white"/>
-      <line x1="20.5479" y1="29.911" x2="40.2739" y2="29.911" stroke="white"/>
-      </svg>
+    <div data-controller="hidden-buttons">
+      <div class="add-btn">
+        <svg width="75" height="75" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" data-action="click->hidden-buttons#hidden">
+        <circle cx="30" cy="30" r="30" fill="#758ED0"/>
+        <line x1="30.9109" y1="20.5479" x2="30.9109" y2="40.274" stroke="white"/>
+        <line x1="20.5479" y1="29.911" x2="40.2739" y2="29.911" stroke="white"/>
+        </svg>
+      <%# <%= render "shared/button" %>
+        <div class="btn-dropshadow btn-green d-none", data-hidden-buttons-target="button">
+          <h5 class="text-btn">Subscription</h5>
+        </div>
+        <div class="btn-dropshadow btn-yellow d-none", data-hidden-buttons-target="button">
+          <h5 class="text-btn">Budget</h5>
+        </div>
+      </div>
     </div>
   </div>
 </div>
