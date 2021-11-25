@@ -28,12 +28,13 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  filter: saturate(60%);
 
   &.active {
   box-shadow: 0 2px 8px 2px rgba($color: #003cff, $alpha: 0.6);
   }
   &.inactive {
-    filter: grayscale(100%);
+    filter: grayscale(70%);
     opacity: 0.6;
   }
 }

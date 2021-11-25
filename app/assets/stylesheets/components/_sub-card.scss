@@ -1,4 +1,5 @@
 .sub-wrapper {
+  color: aliceblue;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -8,8 +9,8 @@
   margin: 1rem;
   padding: 0.5rem;
   border-radius: 1.5rem;
-  border: 2px solid rgba(4, 83, 230, 0.288);
-  box-shadow: 0 0 20px 2px rgba(4, 83, 230, 0.3);
+  //border: 2px solid rgba(4, 83, 230, 0.288);
+  filter: brightness(80%);
   font-size: 0.8rem;
 }
 

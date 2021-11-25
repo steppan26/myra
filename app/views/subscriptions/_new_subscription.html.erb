@@ -1,4 +1,4 @@
-<div class="sub-wrapper">
+<div class="sub-wrapper <%= offer.category.name.gsub(/\W/, '') %>">
   <img class="sub-logo" src="<%=offer.service.image_url%>" alt="<%=offer.service.name%>">
   <h3 class="sub-title"><%= offer.service.name %></h3>
   <div class="sub-price-wrapper">
