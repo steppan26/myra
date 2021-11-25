@@ -5,7 +5,7 @@ class SubscriptionsController < ApplicationController
   def index
     @subscriptions = Subscription.all
     user_subscriptions = Subscription.where(user_id: current_user)
-    @user_monthly_spend = (user_subscriptions.sum { |sub| sub.price_per_day_cents } * 30) / 100
+    @user_monthly_spend = Money.new(user_subscriptions.sum(:price_per_day_cents) * 30)
   end
 
   def show

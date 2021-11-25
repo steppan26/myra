@@ -1,7 +1,7 @@
 <h1>Settings</h1>
 
 <h6>Email: <%= current_user.email %></h6>
-<h6>Total budget: <%=  current_user.global_budget_cents / 100 %>€</h6>
+<h6>Total budget: <%= humanized_money_with_symbol current_user.global_budget %></h6>
 
 <% if policy(User).update? %>
   <%= link_to "Change the budget", edit_user_path(current_user) %>

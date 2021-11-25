@@ -1,5 +1,5 @@
 <h3><%= current_user.email%> Subscriptions.</h3>
-<h5>Budget: <%= current_user.global_budget_cents / 100 %>€ / month (current: <%= @user_monthly_spend %>€)</h5>
+<h5>Budget: <%= humanized_money_with_symbol current_user.global_budget %> / month (current: <%= humanized_money_with_symbol @user_monthly_spend %>)</h5>
 
 <ul class="d-flex">
   <% @subscriptions.each do |subscription| %>
@@ -9,7 +9,7 @@
           <img src="<%= subscription.image_url %>" />
           <div class="card-product-infos">
             <h2><%= subscription.offer.service.name %></h2>
-            <p><%= subscription.offer.price_cents / 100 %>€ <%= subscription.offer.frequency %></p>
+            <p><%= humanized_money_with_symbol subscription.offer.price %> <%= subscription.offer.frequency %></p>
           </div>
         </div>
       <% end %>

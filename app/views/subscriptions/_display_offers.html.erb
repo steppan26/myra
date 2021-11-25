@@ -17,7 +17,7 @@
             style='background: linear-gradient(to top, rgba(10,10,10,0.3), rgba(10,10,10,0.1));'
         >
           <h3><%= offer.name %></h3>
-          <h5><%= offer.price_cents / 100 %> <%= offer.frequency %></h5>
+          <h5><%= humanized_money_with_symbol offer.price %> <%= offer.frequency %></h5>
         </div>
       </li>
     <% end %>
