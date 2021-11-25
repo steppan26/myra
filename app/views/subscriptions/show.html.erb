@@ -1,18 +1,30 @@
 <div class="container">
-  <div class="card">
-    <div class="card-img" style="background-image: url('<%= @subscription.image_url %>'); height: 300px"></div>
+  <div class="card-subscription">
+    <div class="card-img">
+      <img src=<%= @subscription.image_url %>>
+    </div>
     <div class="card-body">
-      <h4 class="card-title"><%= @subscription.offer.service.name %> - <span class="card-subtitle text-muted"><%= @subscription.offer.name %></span></h4>
-      <h6 class="card-subtitle"><%= humanized_money_with_symbol @subscription.offer.price %> <%= @subscription.offer.frequency %></h6>
-        <%= render 'shared/card-details', 
-            logo: "logo", 
-            type: "Remind me", 
-            data: "#{pluralize(@subscription.reminder_delay_days, "day")} before" 
-        %>
+      <%= render 'shared/card-details',
+          icon: "icon",
+          type: "offer",
+          data: @subscription.offer.name
+      %>
+      <%= render 'shared/card-details',
+          icon: "icon",
+          type: "price",
+          data: "#{humanized_money_with_symbol @subscription.offer.price} #{@subscription.offer.frequency}"
+      %>
+      <%= render 'shared/card-details', 
+          icon: "icon", 
+          type: "Remind me", 
+          data: "#{pluralize(@subscription.reminder_delay_days, "day")} before" 
+      %>
       <hr>
       <p class="text-muted"><%= @subscription.additional_info %></p>
       <%= link_to "visit website", @subscription.url, class: "btn btn-outline-primary" %>
     </div>
   </div>
-  <%= link_to "back to dashboard", dashboard_path, class: "btn btn-primary" %>
+  <div>
+    <%= link_to "Done", subscriptions_path, class: "btn btn-primary" %>
+  </div>
 </div>
