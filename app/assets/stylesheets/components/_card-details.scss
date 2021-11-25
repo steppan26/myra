@@ -1,9 +1,9 @@
 .card-details {
   display: flex;
-  background: #424246;
+  background: $card;
   box-shadow: 0px 0px 20.0331px rgba(0, 0, 0, 0.04);
   border-radius: 9px;
-  color: #B0ADB4;
+  color: $text-gray;
   align-items: center;
   width: 300px;
   height: 77px;
