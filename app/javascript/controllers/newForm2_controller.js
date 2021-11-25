@@ -104,6 +104,7 @@ export default class extends Controller {
       this.priceInputTarget.value = priceInput.value;
       this.frequencyInputTarget.value = frequencyInput.value;
       this.display_sub_overview();
+      this.formPartOneTarget.classList.add('hidden');
     }
   }
 
@@ -117,10 +118,10 @@ export default class extends Controller {
   }
 
   display_sub_overview(){
-    const name = this.serviceInputTarget.value;
-    const price = this.priceInputTarget.value;
-    const frequency = this.frequencyInputTarget.value;
-    const category = this.categoryInputTarget.value;
+    const name = encodeURIComponent(this.serviceInputTarget.value);
+    const price = encodeURIComponent(this.priceInputTarget.value);
+    const frequency = encodeURIComponent(this.frequencyInputTarget.value);
+    const category = encodeURIComponent(this.categoryInputTarget.value);
 
     const formData = {category, name, price, frequency }
     fetch(`/subOverview/?name=${name}&category=${category}&price=${price}&frequency=${frequency}`
