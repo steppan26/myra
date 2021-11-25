@@ -65,8 +65,7 @@ p row
     name: row[2],
     price_cents: row[3].to_f * 100,
     frequency: row[5],
-    category: Category.find_by(name: row[6]),
-    user: User.first
+    category: Category.find_by(name: row[6])
   )
 end
 puts "seeding done!"
