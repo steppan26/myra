@@ -29,6 +29,10 @@ class SubscriptionPolicy < ApplicationPolicy
     true
   end
 
+  def subscription_overview?
+    true
+  end
+
   def display_offers?
     true
   end
