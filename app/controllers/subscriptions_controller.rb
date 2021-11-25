@@ -53,7 +53,7 @@ class SubscriptionsController < ApplicationController
     @is_active = false
     render partial: 'display_services', locals: { services: @services }
   end
-  
+
   def display_services
     query = params[:query]
     @services = query.downcase == 'none' ? Service.all : Category.where(name: query).first.services.uniq
@@ -72,6 +72,12 @@ class SubscriptionsController < ApplicationController
     authorize :subscription
     @offer = Offer.new
     render partial: 'offers/custom_offer', locals: { offer: @offer }
+  end
+
+  def subscription_overview
+    authorize :subscription
+    @offer = Offer.all.first
+    render partial: 'subscriptions/new_subscription', locals: { offer: @offer }
   end
 
   private

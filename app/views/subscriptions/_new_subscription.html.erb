@@ -1,0 +1,33 @@
+<div class="sub-wrapper">
+  <img class="sub-logo" src="<%=offer.service.image_url%>" alt="<%=offer.service.name%>">
+  <h3 class="sub-title"><%= offer.service.name %></h3>
+  <div class="sub-price-wrapper">
+    <h5><%= offer.price %></h5>
+    <h5> <%= offer.frequency %></h5>
+  </div>
+  <div class="user-submition-wrapper">
+    <h5>Renewal Date</h5>
+    <div class="input-wrapper">
+      <i class="far fa-calendar-alt"></i>
+      <input type="date" name="" id="">
+    </div>
+  </div>
+  <div class="user-submition-wrapper">
+    <h5>When would you like to be reminded?</h5>
+    <div class="input-wrapper">
+      <i class="far fa-bell"></i>
+      <input type="tel" name="reminder-delay" id="reminder-delay">
+      <select name="frequency-select" id="frequency-select">
+        <option value="Month(s)">Month(s)</option>
+        <option value="Week(s)">Week(s)</option>
+        <option value="Day(s)">Day(s)</option>
+      </select>
+      <p>before</p>
+    </div>
+  </div>
+  <div class="user-submition-wrapper">
+    <h5>Additional Info</h5>
+    <input type="text" name="" id="submit-sub">
+  </div>
+  <input type="submit" class="btn btn-primary my-3" value="Create Subscription">
+</div>

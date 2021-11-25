@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["selectService", "selectOffer", "categoryInput", "serviceInput", "priceInput", "frequencyInput", "displayNewOffer",
                     "category", "service", "offerServiceNameInput", "offerPriceInput", "offerFrequencyInput",
-                    "customOfferInput", "customService", "customOffer"]
+    "customOfferInput", "customService", "customOffer", "formPartOne", "formPartTwo"]
 
   connect() {
   };
@@ -103,7 +103,7 @@ export default class extends Controller {
       this.serviceInputTarget.value = nameInput.value;
       this.priceInputTarget.value = priceInput.value;
       this.frequencyInputTarget.value = frequencyInput.value;
-
+      this.display_sub_overview();
     }
   }
 
@@ -114,6 +114,18 @@ export default class extends Controller {
       left: 0,
       behavior: 'smooth'
     });
+  }
+
+  display_sub_overview(){
+    console.log('fetching subscription overview');
+    fetch("/subOverview")
+      .then(res => res.text())
+      .then(data => {
+        this.formPartOneTarget.classList.add('hidden-one');
+        this.formPartTwoTarget.innerHTML = data;
+        this.formPartTwoTarget.classList.remove('hidden-two');
+        this._scroll_to(this.formPartTwoTarget)
+      })
   }
 
   _activate_card(target, items_array) {

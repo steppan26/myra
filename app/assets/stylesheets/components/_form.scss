@@ -26,6 +26,31 @@
 
 ////////////////////////// FORM2 /////////////////////////
 
+.form-wrapper {
+  display: flex;
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+.form-section {
+  position: absolute;
+  top: 2.5em;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  transition: all 360ms ease-in-out;
+  overflow: hidden;
+}
+
+.form-section.hidden-one {
+  // width: 0;
+  left: -110%;
+}
+
+.form-section.hidden-two {
+  left: 110%;
+}
+
 .custom-offer-wrapper {
   text-align: center;
   padding: 1em 0;

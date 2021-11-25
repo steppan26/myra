@@ -66,7 +66,7 @@
 </div>
 
 <div class="form-wrapper">
-  <div id="form-part-one">
+  <div class="form-section" id="form-part-one" data-newForm2-target="formPartOne">
     <div id="select-category">
         <%= render 'offers/categories_list', categories: @categories %>
     </div>
@@ -74,5 +74,5 @@
     <div id="select-offer" data-newForm2-target="selectOffer"></div>
     <div id="custom-offer" data-newForm2-target="displayNewOffer"></div>
   </div>
-  <div id="form-part-one"></div>
+  <div class="form-section hidden-two" id="form-part-two" data-newForm2-target="formPartTwo"></div>
 </div>
