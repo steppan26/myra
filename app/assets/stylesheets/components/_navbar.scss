@@ -1,12 +1,8 @@
-.navbar-lewagon {
-  justify-content: space-between;
-  background: white;
-}
-
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
-}
-
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.rectangle {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.065) 100%);
+  backdrop-filter: blur(24.4645px);
+  width: 390px;
+  height: 40px;
+  opacity: 0,1;
+  color: black;
 }
