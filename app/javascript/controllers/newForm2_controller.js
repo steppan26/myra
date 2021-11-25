@@ -64,7 +64,9 @@ export default class extends Controller {
     items_array.forEach(item => {
       if (item === target) {
         item.classList.add('active');
+        item.classList.remove('inactive');
       } else {
+        item.classList.add('inactive');
         item.classList.remove('active');
       }
     });

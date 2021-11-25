@@ -32,6 +32,10 @@
   &.active {
   box-shadow: 0 2px 8px 2px rgba($color: #003cff, $alpha: 0.6);
   }
+  &.inactive {
+    filter: grayscale(100%);
+    opacity: 0.6;
+  }
 }
 
 .categories-title {
