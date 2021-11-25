@@ -1,7 +1,8 @@
 class Subscription < ApplicationRecord
   belongs_to :offer, optional: true
-  validates :additional_info, length: { minimum: 5, maximum: 260 }
-  validates :price_per_day_cents, numericality: true
+  validates :additional_info, length: { maximum: 260 }
+  validates :price_per_day_cents, presence: true
   validates :renewal_date, presence: true
   validates :reminder_delay_days, presence: true
+  monetize :price_per_day_cents
 end
