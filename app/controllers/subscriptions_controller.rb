@@ -1,11 +1,11 @@
 class SubscriptionsController < ApplicationController
   before_action :set_subscriptions, only: %i[show edit update destroy]
-  after_action :authorize_subscription, only: [:show, :new, :create, :edit, :update, :destroy]
+  after_action :authorize_subscription, only: %i[show new create edit update destroy active? active! desactive!]
 
   def index
     @subscriptions = Subscription.all
     user_subscriptions = Subscription.where(user_id: current_user)
-    @user_monthly_spend = (user_subscriptions.sum { |sub| sub.price_per_day_cents } * 30) / 100
+    @user_monthly_spend = Money.new(user_subscriptions.sum(:price_per_day_cents) * 30)
   end
 
   def show
@@ -40,14 +40,31 @@ class SubscriptionsController < ApplicationController
     redirect_to "/subscriptions"
   end
 
-  def search
-    @category = Category.where(name: params[:query]).first
-    @services = @category.services.uniq
-    p @services
-    # search_for_services(params[:query])
+  def display_services
+    @services = Category.where(name: params[:query]).first.services.uniq
     authorize :subscription
     render partial: 'search', locals: { services: @services }
+  end
 
+  def active?
+    @is_active
+  end
+
+  def activate!
+    @is_active = true
+  end
+
+  def deactivate!
+    @is_active = false
+    render partial: 'display_services', locals: { services: @services }
+  end
+
+  def display_offers
+    p params[:query]
+    @service = Service.where(name: params[:query]).first
+    @offers = @service.offers
+    authorize :subscription
+    render partial: 'display_offers', locals: { offers: @offers }
   end
 
   private

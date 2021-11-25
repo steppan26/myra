@@ -22,14 +22,43 @@
                     }
                   }
       %>
-      <%= o.input :price_cents, label: "How much does it cost?" %>
+      <%= o.input :price_cents,
+                  wrapper_html: {
+                    class: 'hidden'
+                  },
+                  label: "How much does it cost?",
+                  input_html: {
+                    data: {
+                      newForm_target: "priceInput"
+                    }
+                  }
+      %>
       <%= o.input :frequency,
                   collection: Offer::PERIODS,
-                  label: "How often is the payment?"
+                  wrapper_html: {
+                    class: 'hidden'
+                  },
+                  label: "How often is the payment?",
+                  input_html: {
+                    data: {
+                      newForm_target: "frequencyInput"
+                    }
+                  }
       %>
     <% end %>
-      <%= f.text_field :additional_info, label: "Additional Info", placeholder: "Additional Info" %>
-      <%= f.date_field :renewal_date, label: "Renewal Date" %>
+      <%= f.input :additional_info,
+                        label: "Additional Info",
+                        wrapper_html: {
+                          class: 'hidden'
+                        },
+                        placeholder: "Additional Info"
+      %>
+      <%= f.input :renewal_date,
+                        wrapper_html: {
+                          class: 'hidden'
+                        },
+                        label: "Renewal Date"
+      %>
       <%= f.submit "submit" %>
   <% end %>
 </div>

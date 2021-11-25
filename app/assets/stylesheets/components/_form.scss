@@ -1,4 +1,4 @@
-#autocomplete-services {
+.autocomplete-wrapper {
   position: relative;
   margin-top: 1em;
   max-height: 350px;
@@ -19,6 +19,6 @@
   background-size: cover;
 }
 
-.service.active {
+.autocomplete-wrapper .active {
   border: 2px solid red;
 }

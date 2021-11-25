@@ -8,6 +8,7 @@ class Offer < ApplicationRecord
 
   # length: { minimum: 5, maximum: 30 }
   validates :name, presence: true
-  validates :price_cents, numericality: true, presence: true
+  validates :price_cents, presence: true
   validates :frequency, presence: true, inclusion: PERIODS
+  monetize :price_cents
 end
