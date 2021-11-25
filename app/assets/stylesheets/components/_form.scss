@@ -22,3 +22,45 @@
 .autocomplete-wrapper .active {
   border: 2px solid red;
 }
+
+
+////////////////////////// FORM2 /////////////////////////
+
+.custom-offer-wrapper {
+  padding: 1em 0;
+}
+
+.form-input {
+  text-decoration: none;
+  appearance: none;
+  border: 1px solid rgba(10, 10, 10, 0.7);
+  border-radius: 0.3em;
+  margin: 1em 0 0.5em 0;
+  padding: 0.5em;
+
+  &.full-width{
+    width: 100%;
+  }
+}
+
+.dropdown {
+  padding: 0.5em;
+}
+
+.error-message {
+  display: block;
+  color: red;
+  font-size: 0.8em;
+  margin-top: 0;
+}
+
+.btn-next-screen {
+  cursor: pointer;
+  padding: 0.5em;
+  background-color: rgba(10, 60, 310, 0.95);
+  border-radius: 0.3em;
+  margin: 1em 0;
+  text-align: center;
+  color: white;
+
+}

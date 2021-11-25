@@ -2,7 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
   static targets = ["serviceInput", "categoryInput", "autocompleteServices", "autocompleteOffers", "serviceCustom",
-                    "servicePreset", "service", "offer", "offerCustom", "offerPreset", "priceInput", "frequencyInput"]
+                    "servicePreset", "service", "offer", "offerCustom", "offerPreset", "priceInput", "frequencyInput",
+                    "selectService"]
   connect() {
     this.categoryInputTarget.insertAdjacentHTML('afterend', `
         <div class="autocomplete-wrapper" id="autocomplete-services" data-newForm-target='autocompleteServices'></div>
