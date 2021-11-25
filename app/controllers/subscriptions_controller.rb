@@ -57,7 +57,7 @@ class SubscriptionsController < ApplicationController
     @is_active = true
   end
 
-  def desactivate!
+  def deactivate!
     @is_active = false
   end
 
