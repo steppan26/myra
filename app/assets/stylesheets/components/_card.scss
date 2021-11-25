@@ -16,10 +16,6 @@
   }
 }
 
-.card-title {
-  color: white;
-}
-
 .card-budget {
   width: 334px;
   height: 178px;
@@ -53,4 +49,17 @@
   font-size: 24px;
   line-height: 36px;
   padding-left: 200px;
+}
+
+.card-buttons-wrapper{
+  height: 1em;
+  position: relative;
+}
+
+.card-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  bottom: -1em;
 }
