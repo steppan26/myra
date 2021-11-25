@@ -35,7 +35,7 @@
   appearance: none;
   border: 1px solid rgba(10, 10, 10, 0.7);
   border-radius: 0.3em;
-  margin: 1em 0;
+  margin: 1em 0 0.5em 0;
   padding: 0.5em;
 
   &.full-width{
@@ -45,4 +45,21 @@
 
 .dropdown {
   padding: 0.5em;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 0;
+}
+
+.btn-next-screen {
+  cursor: pointer;
+  padding: 0.5em;
+  background-color: rgba(10, 60, 310, 0.95);
+  border-radius: 0.3em;
+  margin: 1em 0;
+  text-align: center;
+  color: white;
+
 }

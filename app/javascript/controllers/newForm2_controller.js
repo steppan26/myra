@@ -1,8 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["selectService", "selectOffer", "categoryInput", "serviceInput",
-                    "displayNewOffer", "category", "service"]
+  static targets = ["selectService", "selectOffer", "categoryInput", "serviceInput", "displayNewOffer",
+                    "category", "service", "offerServiceNameInput", "offerPriceInput", "offerFrequencyInput",
+                    "customOfferInput"]
+
   connect() {
   };
 
@@ -20,7 +22,6 @@ export default class extends Controller {
   };
 
   showOffers(event) {
-    console.log(this.serviceTargets)
     const service = event.currentTarget.innerText;
     this.serviceInputTarget.value = service;
     this._activate_card(event.currentTarget, this.serviceTargets)
@@ -38,17 +39,28 @@ export default class extends Controller {
   };
 
   createNewOffer(event) {
-    console.log("custom offer incoming...", this.displayNewOfferTarget);
     this._activate_card(event.currentTarget, this.serviceTargets)
     const url = "/newOffer";
     fetch(url)
-      .then(res => res.text())
-      .then(data => {
+    .then(res => res.text())
+    .then(data => {
         this.displayNewOfferTarget.innerHTML = data;
+        const nameInput = this.offerServiceNameInputTarget;
+        nameInput.value = this.serviceInputTarget.value;
+
         this._scroll_to(this.selectOfferTarget)
       })
 
   };
+
+  saveOffer(){
+    const nameInput = this.offerServiceNameInputTarget;
+    const priceInput = this.offerPriceInputTarget;
+    const frequencyInput = this.offerFrequencyInputTarget;
+    const customOfferInputs = this.customOfferInputTargets;
+
+    console.log(customOfferInputs)
+  }
 
   _scroll_to(target) {
     const top = target.offsetHeight + 80
