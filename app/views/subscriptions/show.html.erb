@@ -23,8 +23,9 @@
       <p class="text-muted"><%= @subscription.additional_info %></p>
       <%= link_to "visit website", @subscription.url, class: "btn btn-outline-primary" %>
     </div>
-  </div>
-  <div>
-    <%= link_to "Done", subscriptions_path, class: "btn btn-primary" %>
+    <div class="d-flex justify-content-around">
+      <%= link_to "Done", subscriptions_path, class: "btn btn-primary" %>
+      <%= link_to "Delete", subscription_path(@subscription), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+    </div>
   </div>
 </div>
