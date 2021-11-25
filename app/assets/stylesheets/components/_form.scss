@@ -27,6 +27,7 @@
 ////////////////////////// FORM2 /////////////////////////
 
 .custom-offer-wrapper {
+  text-align: center;
   padding: 1em 0;
 }
 
@@ -37,6 +38,7 @@
   border-radius: 0.3em;
   margin: 1em 0 0.5em 0;
   padding: 0.5em;
+  width: 46%;
 
   &.full-width{
     width: 100%;
@@ -45,6 +47,7 @@
 
 .dropdown {
   padding: 0.5em;
+  width: 46%;
 }
 
 .error-message {

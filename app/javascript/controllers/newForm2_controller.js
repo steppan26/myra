@@ -47,40 +47,48 @@ export default class extends Controller {
     .then(res => res.text())
     .then(data => {
       if (target === this.customServiceTarget) {
-        console.log('custom service');
         this.selectOfferTarget.innerHTML = "";
         this.displayNewOfferTarget.innerHTML = data;
         const nameInput = this.offerServiceNameInputTarget;
         nameInput.value = "";
         nameInput.removeAttribute("disabled");
       } else if (target === this.customOfferTarget) {
-        console.log('custom offer');
         this.displayNewOfferTarget.innerHTML = data;
         const nameInput = this.offerServiceNameInputTarget;
         nameInput.value = this.serviceInputTarget.value;
         nameInput.disabled = true;
       } else {
+        this.displayNewOfferTarget.innerHTML = data;
+        const nameInput = this.offerServiceNameInputTarget;
+        const priceInput = this.offerPriceInputTarget;
+        const frequencyInput = this.offerFrequencyInputTarget;
         nameInput.value = this.serviceInputTarget.value;
-        nameInput.removeAttribute("disabled");
-        this.displayNewOfferTarget.innerHTML = "";
-        this.selectOfferTarget.innerHTML = data;
-        }
-        this._scroll_to(this.selectOfferTarget)
-      })
-
+        priceInput.value = target.dataset.offerPrice;
+        frequencyInput.value = target.dataset.offerFrequency;
+        nameInput.disabled = true;
+        priceInput.disabled = true;
+        frequencyInput.disabled = true;
+      }
+      this._scroll_to(this.selectOfferTarget)
+    })
   };
 
   offerSelected(event) {
-    console.log('offer selected', event.currentTarget.innerText)
+    const url = "/newOffer";
+    fetch(url)
+    .then(res => res.text())
+    .then(data => {
+        this.displayNewOfferTarget.innerHTML = data;
+      })
   };
 
   saveOffer(){
     const nameInput = this.offerServiceNameInputTarget;
     const priceInput = this.offerPriceInputTarget;
     const frequencyInput = this.offerFrequencyInputTarget;
-
     const nameError = document.getElementById('name-error');
     const priceError = document.getElementById('price-error');
+
     nameError.classList.add('hidden');
     priceError.classList.add('hidden');
 
@@ -95,8 +103,8 @@ export default class extends Controller {
       this.serviceInputTarget.value = nameInput.value;
       this.priceInputTarget.value = priceInput.value;
       this.frequencyInputTarget.value = frequencyInput.value;
+
     }
-    // redirect form to the next page
   }
 
   _scroll_to(target) {

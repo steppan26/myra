@@ -1,4 +1,4 @@
-<div class="form-wrapper hidden">
+<div class="hidden">
   <%= simple_form_for(subscription) do |f| %>
     <%= f.simple_fields_for :offers, subscription.offer do |o| %>
       <%= o.input :category,
@@ -65,12 +65,14 @@
   <% end %>
 </div>
 
-<div id="select-category">
-    <%= render 'offers/categories_list', categories: @categories %>
-</div>
-<div id="select-service" data-newForm2-target="selectService">
-</div>
-<div id="select-offer" data-newForm2-target="selectOffer">
-</div>
-<div id="custom-offer" data-newForm2-target="displayNewOffer">
+<div class="form-wrapper">
+  <div id="form-part-one">
+    <div id="select-category">
+        <%= render 'offers/categories_list', categories: @categories %>
+    </div>
+    <div id="select-service" data-newForm2-target="selectService"></div>
+    <div id="select-offer" data-newForm2-target="selectOffer"></div>
+    <div id="custom-offer" data-newForm2-target="displayNewOffer"></div>
+  </div>
+  <div id="form-part-one"></div>
 </div>
