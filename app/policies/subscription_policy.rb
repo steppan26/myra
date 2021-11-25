@@ -10,7 +10,7 @@ class SubscriptionPolicy < ApplicationPolicy
   end
 
   def create?
-    return true
+    true
   end
 
   def update?
@@ -21,7 +21,11 @@ class SubscriptionPolicy < ApplicationPolicy
     !user.nil? && (record.user == user || user.admin)
   end
 
-  def search?
-    return true
+  def display_services?
+    true
+  end
+
+  def display_offers?
+    true
   end
 end

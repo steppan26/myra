@@ -1,0 +1,5 @@
+<%= simple_form_for(offer) do |f| %>
+  <%= f.input :name, label: "Offer Name" %>
+  <%= f.input :price_cents, label: "Price" %>
+  <%= f.input :frequency, collection: Offer::PERIODS %>
+<% end %>

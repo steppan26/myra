@@ -40,11 +40,8 @@ class SubscriptionsController < ApplicationController
     redirect_to "/subscriptions"
   end
 
-  def search
-    @category = Category.where(name: params[:query]).first
-    @services = @category.services.uniq
-    p @services
-    # search_for_services(params[:query])
+  def display_services
+    @services = Category.where(name: params[:query]).first.services.uniq
     authorize :subscription
     render partial: 'search', locals: { services: @services }
   end
@@ -59,6 +56,15 @@ class SubscriptionsController < ApplicationController
 
   def deactivate!
     @is_active = false
+    render partial: 'display_services', locals: { services: @services }
+  end
+
+  def display_offers
+    p params[:query]
+    @service = Service.where(name: params[:query]).first
+    @offers = @service.offers
+    authorize :subscription
+    render partial: 'display_offers', locals: { offers: @offers }
   end
 
   private
