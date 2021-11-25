@@ -1,3 +1,21 @@
+.card-subscription {
+  background-color: $glass;
+  border-radius: 20px;
+  margin-top: 4em;
+  .card-img {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    height: 5em;
+    img {
+      position: absolute;
+      top: -4em;
+      height: 150px;
+      width: 150px;
+    }
+  }
+}
+
 .card-budget {
   width: 334px;
   height: 178px;
@@ -31,4 +49,17 @@
   font-size: 24px;
   line-height: 36px;
   padding-left: 200px;
+}
+
+.card-buttons-wrapper{
+  height: 1em;
+  position: relative;
+}
+
+.card-buttons {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  bottom: -1em;
 }

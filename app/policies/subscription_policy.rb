@@ -14,11 +14,11 @@ class SubscriptionPolicy < ApplicationPolicy
   end
 
   def update?
-    !user.nil? && (record.user == user || user.admin)
+    !user.nil? && (record.user_id == user.id || user.admin)
   end
 
   def destroy?
-    !user.nil? && (record.user == user || user.admin)
+    !user.nil? && (record.user_id == user.id || user.admin)
   end
 
   def display_services?
