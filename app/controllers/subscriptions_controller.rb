@@ -28,12 +28,13 @@ class SubscriptionsController < ApplicationController
   def create
     @subscription = Subscription.new
     authorize :subscription
+    price_cents = (params[:subscription][:offers][:price_cents]).to_i * 100
     custom_offer = params[:subscription][:offer_id].to_i == -1
     if custom_offer
       offer = Offer.create(
         name: "custom offer",
         service_name: params[:subscription][:offers][:service_id],
-        price_cents: params[:subscription][:offers][:price_cents],
+        price_cents: price_cents,
         frequency: params[:subscription][:offers][:frequency],
         category_id: params[:subscription][:offers][:category_id],
       )
@@ -51,7 +52,7 @@ class SubscriptionsController < ApplicationController
       offer: offer,
       user_id: current_user.id,
       additional_info: params[:subscription][:additional_info],
-      price_per_day_cents: get_price_per_day_cents(params[:subscription][:offers][:price_cents].to_i, params[:subscription][:offers][:frequency]),
+      price_per_day_cents: get_price_per_day_cents(price_cents, params[:subscription][:offers][:frequency]),
       renewal_date: renewal_date,
       reminder_delay_days: params[:subscription][:reminder_delay_days],
       url: custom_offer ? "www.google.com" : offer.service.url,
