@@ -5,6 +5,7 @@
       class="categories-item <%= cat.name.gsub(/\W/, '') %>"
       data-action="click->newForm2#showServices"
       data-newForm2-target="category"
+      data-category-id="<%= cat.id %>"
     >
       <h4 class="categories-title"><%= cat.name %></h4>
     </li>

@@ -4,19 +4,18 @@ export default class extends Controller {
   static targets = ["selectService", "selectOffer", "categoryInput", "serviceInput", "priceInput", "frequencyInput", "displayNewOffer",
                     "category", "service", "offerServiceNameInput", "offerPriceInput", "offerFrequencyInput",
                     "customOfferInput", "customService", "customOffer", "formPartOne", "formPartTwo", "renewalInput",
-                    "delayInput", "infoInput", "delayFrequencyInput"]
+    "delayInput", "infoInput", "delayFrequencyInput", "serviceInput", "offerIdInput", "offerNameInput", "formSubmitButton", "reminderDelayDaysInput", "additionalInfoInput", "reminderDelayDaysInput"]
 
   connect() {
   };
 
   showServices(event) {
     const target = event.currentTarget
-    const category = target.children[0].innerText;
-    this.categoryInputTarget.value = category;
+    const categoryId = target.dataset.categoryId;
+    this.categoryInputTarget.value = categoryId;
     this._activate_card(target, this.categoryTargets)
-    let query = encodeURIComponent(category);
-    const url = `/searchService/${query}`;
-    fetch(url)
+    let query = encodeURIComponent(categoryId);
+    fetch(`/searchService/${query}`)
       .then(res => res.text())
       .then(data => {
         this.selectServiceTarget.innerHTML = data;
@@ -25,12 +24,12 @@ export default class extends Controller {
   };
 
   showOffers(event) {
-    const service = event.currentTarget.innerText;
-    this.serviceInputTarget.value = service;
-    this._activate_card(event.currentTarget, this.serviceTargets)
-    const query = encodeURIComponent(service);
-    const url = `/searchOffer/${query}`;
-    fetch(url)
+    const target = event.currentTarget
+    const serviceId = target.dataset.serviceId;
+    this.serviceInputTarget.value = serviceId;
+    this._activate_card(target, this.serviceTargets)
+    const query = encodeURIComponent(serviceId);
+    fetch(`/searchOffer/${query}`)
       .then(res => res.text())
       .then(data => {
         // display the offers OR inputs
@@ -65,12 +64,18 @@ export default class extends Controller {
         const nameInput = this.offerServiceNameInputTarget;
         const priceInput = this.offerPriceInputTarget;
         const frequencyInput = this.offerFrequencyInputTarget;
+        // set the values of the form with the offer details
         nameInput.value = this.serviceInputTarget.value;
         priceInput.value = target.dataset.offerPrice;
         frequencyInput.value = target.dataset.offerFrequency;
+        // disable the inputs as values are pre-defined
         nameInput.disabled = true;
         priceInput.disabled = true;
         frequencyInput.disabled = true;
+        // insert the values into the hidden form
+        this.offerIdInputTarget.value = target.dataset.offerId
+        this.priceInputTarget.value = target.dataset.offerPrice
+        this.offerNameInputTarget.value = target.dataset.offerName
       }
       this._scroll_to(this.selectOfferTarget)
     })
@@ -116,9 +121,9 @@ export default class extends Controller {
     const price = encodeURIComponent(this.priceInputTarget.value);
     const frequency = encodeURIComponent(this.frequencyInputTarget.value);
     const category = encodeURIComponent(this.categoryInputTarget.value);
+    const service = encodeURIComponent(this.serviceInputTarget.value);
 
-    const formData = {category, name, price, frequency }
-    fetch(`/subOverview/?name=${name}&category=${category}&price=${price}&frequency=${frequency}`
+    fetch(`/subOverview/?serviceId=${service}&name=${name}&categoryId=${category}&price=${price}&frequency=${frequency}`
     ).then(res => res.text())
      .then(data => {
         this.formPartOneTarget.classList.add('hidden-one');
@@ -129,40 +134,41 @@ export default class extends Controller {
   }
 
   createSubscription() {
-    const form = document.getElementById('real-form');
     const infoValue = this.infoInputTarget.value
     const renewalValue = this.renewalInputTarget.value
     const delayValue = this.delayInputTarget.value
     const delayFrequencyValue = this.delayFrequencyInputTarget.value
+    this.additionalInfoInputTarget.value = infoValue;
+    this.reminderDelayDaysInputTarget.value = this._get_reminder_in_days(delayValue, delayFrequencyValue);
+
     if (renewalValue === ""){
       this.renewalInputTarget.classList.add('error')
       return
     } else {
       this.renewalInputTarget.classList.remove('error')
-      console.log(document.getElementById('real-form'))
-      const data = {
-        subscription: {
-          renewal_date: renewalValue,
-          price: this.priceInputTarget.value,
-          reminder_delay_days: renewalValue,
-        },
-        offer: {
-          name: this.serviceInputTarget.value,
-          frequency: this.frequencyInputTarget.value,
-          category: this.categoryInputTarget.value,
-          price: this.priceInputTarget.value
-        }
-      }
-      this._create_new_subscription(data)
+      this._create_new_subscription();
     }
   };
 
-  _get_reminder_in_days() {
-    return this.delayInputTarget.value;
+  _get_reminder_in_days(num, type) {
+    switch (type.toLowerCase()) {
+      case 'month':
+        return num * 30
+        break;
+      case 'week':
+        return num * 7
+        break;
+      case 'day':
+        return num
+      default:
+        return num
+    }
   }
 
-  _create_new_subscription(data) {
-    console.log(data);
+  _create_new_subscription() {
+    const form = document.getElementById('real-form').children[0];
+    form.submit()
+    return
     fetch("/subscriptions", {
       method: 'POST',
       headers: {

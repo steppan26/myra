@@ -26,9 +26,10 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    authorize @subscription
+    authorize :subscription
 
     raise
+    redirect_to dashboard_path
   end
 
   def edit
@@ -58,13 +59,13 @@ class SubscriptionsController < ApplicationController
 
   def display_services
     query = params[:query]
-    @services = query.downcase == 'none' ? Service.all : Category.where(name: query).first.services.uniq
+    @services = query.downcase == 'none' ? Service.all : Category.find(query).services.uniq
     authorize :subscription
     render partial: 'services/services_list', locals: { services: @services }
   end
 
   def display_offers
-    @service = Service.where(name: params[:query]).first
+    @service = Service.find(params[:query])
     @offers = @service.offers
     authorize :subscription
     render partial: 'offers/offers_list', locals: { offers: @offers }
@@ -78,13 +79,14 @@ class SubscriptionsController < ApplicationController
 
   def subscription_overview
     authorize :subscription
-    name = params[:name]
-    frequency = params[:frequency]
-    price = (params[:price].to_f * 100).to_i
-    service = Service.where("name ILIKE '%#{name}%'").first
-    category = Category.where("name ILIKE '%#{params[:category]}%'").first
-    p name, service
-    @offer = Offer.new(service: service, name: name, category: category, price_cents: price, frequency: frequency)
+
+    @offer = Offer.new(
+      service_id: params[:serviceId],
+      name: params[:name],
+      category_id: params[:categoryId],
+      price_cents: (params[:price].to_f * 100).to_i,
+      frequency: params[:frequency]
+    )
     @offer.user = current_user if current_user
 
     render partial: 'subscriptions/new_subscription', locals: { offer: @offer }
