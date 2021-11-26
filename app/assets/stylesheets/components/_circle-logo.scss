@@ -2,7 +2,6 @@
   width: 10rem;
   height: 10rem;
   background: #46444E;
-  border: 4px solid #E9252E;
   box-sizing: border-box;
   border-radius: 80px;
   display: flex;
@@ -11,16 +10,42 @@
   align-items: center;
 }
 
+.red {
+  border: 4px solid #E9252E;
+  & a {
+    color: #F76F72;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
+.green {
+  border: 4px solid #59F0A2;
+  & a {
+    color: #59F0A2;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
+.orange {
+  border: 4px solid #FFF081;
+  & a{
+    color: #FFF081;
+    font-weight: bold;
+    text-decoration: none;
+  }
+}
+
 .circle-logo {
   width: 60px;
   height: 60px;
-  border: solid;
   text-align: center;
   line-height: 50px;
-}
-
-.circle-info {
-  //changing color depending the days
-  color: green;
-  font-weight: bold;
+  img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
 }
