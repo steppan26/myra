@@ -8,10 +8,13 @@
     justify-content: center;
     height: 5em;
     img {
-      position: absolute;
-      top: -4em;
-      height: 150px;
-      width: 150px;
+    position: absolute;
+    object-fit: cover;
+    top: -3em;
+    height: 130px;
+    width: 130px;
+    border-radius: 80px;
+    box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
     }
   }
 }
@@ -62,4 +65,19 @@
   justify-content: space-around;
   position: absolute;
   bottom: -1em;
+  align-items: center;
+}
+
+.btn-green-done {
+  background-color:#71CC9D ;
+  color: white;
+  border-radius: 50px;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.btn-red-delete {
+  color: white;
+  background-color: #E797B4;
+  border-radius: 50px;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
