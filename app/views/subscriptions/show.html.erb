@@ -14,10 +14,10 @@
           type: "price",
           data: "#{humanized_money_with_symbol @subscription.offer.price} #{@subscription.offer.frequency}"
       %>
-      <%= render 'shared/card-details', 
-          icon: "icon", 
-          type: "Remind me", 
-          data: "#{pluralize(@subscription.reminder_delay_days, "day")} before" 
+      <%= render 'shared/card-details',
+          icon: "icon",
+          type: "Remind me",
+          data: "#{pluralize(@subscription.reminder_delay_days, "day")} before"
       %>
       <hr>
       <p class="text-muted"><%= @subscription.additional_info %></p>
@@ -25,7 +25,7 @@
     </div>
     <div class="card-buttons-wrapper">
       <div class="card-buttons">
-        <%= link_to "Done", subscriptions_path, class: "btn btn-primary" %>
+        <%= link_to "Done", dashboard_path, class: "btn btn-primary" %>
         <%= link_to "Delete", subscription_path(@subscription), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
       </div>
     </div>
