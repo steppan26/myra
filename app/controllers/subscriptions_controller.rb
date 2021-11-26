@@ -73,7 +73,7 @@ class SubscriptionsController < ApplicationController
 
   def destroy
     @subscription.destroy
-    redirect_to "/subscriptions"
+    redirect_to "/dashboard"
   end
 
   def active?

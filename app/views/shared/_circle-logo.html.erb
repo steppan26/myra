@@ -12,7 +12,7 @@
     <% end %>
     </div>
   </div>
-<% elsif renewal_date >= 15 %>
+<% elsif renewal_date >= 24 %>
   <div class="circle green m-1">
     <%= link_to subscription_path(subscription) do %>
       <div class="circle-logo"><%= image_tag subscription.image_url %></div>

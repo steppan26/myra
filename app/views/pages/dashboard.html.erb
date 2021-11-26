@@ -1,42 +1,24 @@
+<div data-controller="change-dashboard">
 
-<div class="d-flex row col ls-6 justify-content-center">
-  <% @user_subscriptions.each do |subscription| %>
-      <%= render "shared/circle-logo", subscription: subscription %>
-  <% end %>
-</div>
+  <div class="btn btn-info" data-action="click->change-dashboard#hidden">Infos</div>
 
-<div class="d-none">
-<div class="total-spent">
-  <br>
-  <h3>Total Spent: <%= humanized_money_with_symbol @user_monthly_spend %>/month</h3>
-  <br>
-</div>
-  <h4>Monthly spend by category</h4>
-  <ul>
-    <% @category_sums.each do |category| %>
-      <% if category[1] > 0 %>
-        <li><%= category[0] %>: <%= humanized_money_with_symbol category[1] %>/month</li>
-      <% end %>
+  <div class="d-flex row col ls-6 justify-content-center" data-change-dashboard-target="board" >
+    <% current_user.subscriptions.each do |subscription| %>
+        <%= render "shared/circle-logo", subscription: subscription %>
     <% end %>
+  </div>
 
-  </ul>
-  <h3>Upcoming payments</h3>
-  <ul>
-    <% @my_next_in_payment_subscriptions.each do |subscription| %>
-      <%= link_to subscription_path(subscription) do %>
-        <div class="card-product my-3", style="width: 500px">
-          <img src="<%= subscription.image_url %>"  />
-          <div class="card-product-infos d-flex justify-content-between w-100">
-            <h2><%= subscription.offer.service_name %></h2>
-            <% renewal_date = (subscription.renewal_date - Date.today).to_i %>
-            <% if renewal_date > 30 %>
-              <h2> <%= time_ago_in_words(subscription.renewal_date) %> </h2>
-            <% else %>
-              <h2><%= renewal_date %> <%= "day".pluralize(2) %> </h2>
-            <% end %>
-          </div>
-        </div>
+  <div class="d-none" data-change-dashboard-target="board">
+    <br>
+    <h3>Total Spent: <%= humanized_money_with_symbol @user_monthly_spend %>/month</h3>
+    <br>
+    <h4>Monthly spend by category</h4>
+    <ul>
+      <% @category_sums.each do |category| %>
+        <% if category[1] > 0 %>
+          <li><%= category[0] %>: <%= humanized_money_with_symbol category[1] %>/month</li>
+        <% end %>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
+  </div>
 </div>
