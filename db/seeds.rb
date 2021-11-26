@@ -6,7 +6,7 @@ csv_options = { col_sep: ',', quote_char: '"', headers: :first_row }
 
 puts "seeding started..."
 
-User.create!(email: 'test@gmail.com', password: 'password', global_budget_cents: 10_000)
+#User.create!(email: 'test@gmail.com', password: 'password', global_budget_cents: 10_000)
 
 def calculatePrice(frequency ,offer_value, multiplied)
   if multiplied
@@ -56,6 +56,7 @@ Category.create!(name: "Gaming")
 Category.create!(name: "eCommerce")
 Category.create!(name: "Books/News")
 Category.create!(name: "Academy")
+Category.create!(name: "None")
 
 
 CSV.foreach(filepath, csv_options) do |row|
