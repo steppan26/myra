@@ -1,6 +1,6 @@
 
 <div class="d-flex row col ls-6 justify-content-center">
-  <% current_user.subscriptions.each do |subscription| %>
+  <% @user_subscriptions.each do |subscription| %>
       <%= render "shared/circle-logo", subscription: subscription %>
   <% end %>
 </div>

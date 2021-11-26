@@ -1,34 +1,21 @@
 <div class="hidden" id="real-form">
   <%= simple_form_for(subscription) do |f| %>
     <%= f.simple_fields_for :offers, subscription.offer do |o| %>
-      <%= o.input :category,
-                  label: "Subscription category",
-                  wrapper_html: {
-                    class: 'hidden'
-                  },
-                  input_html: {
-                    data: {
-                      action: "click->newForm#showServices",
-                      newForm2_target: "categoryInput"
-                    }
-                  }
-      %>
-      <%= o.input :name,
-                  label: "Service Name",
-                  wrapper_html: {
-                    class: 'hidden'
-                  },
+      <%= o.input :service_id,
                   input_html: {
                     data: {
                       newForm2_target: "serviceInput"
                     }
                   }
       %>
+      <%= o.input :name,
+                  input_html: {
+                    data: {
+                      newForm2_target: "offerNameInput"
+                    }
+                  }
+      %>
       <%= o.input :price_cents,
-                  wrapper_html: {
-                    class: 'hidden'
-                  },
-                  label: "How much does it cost?",
                   input_html: {
                     data: {
                       newForm2_target: "priceInput"
@@ -36,32 +23,51 @@
                   }
       %>
       <%= o.input :frequency,
-                  collection: Offer::PERIODS,
-                  wrapper_html: {
-                    class: 'hidden'
-                  },
-                  label: "How often is the payment?",
                   input_html: {
                     data: {
                       newForm2_target: "frequencyInput"
                     }
                   }
       %>
+      <%= o.input :category_id,
+                  input_html: {
+                    data: {
+                      action: "click->newForm#showServices",
+                      newForm2_target: "categoryInput"
+                    }
+                  }
+      %>
     <% end %>
+      <%= f.input :offer_id,
+                  input_html: {
+                    data: {
+                      newForm2_target: "offerIdInput"
+                    }
+                  }
+      %>
       <%= f.input :additional_info,
-                        label: "Additional Info",
-                        wrapper_html: {
-                          class: 'hidden'
-                        },
-                        placeholder: "Additional Info"
+                  input_html: {
+                    data: {
+                      newForm2_target: "additionalInfoInput"
+                    }
+                  }
       %>
       <%= f.input :renewal_date,
-                        wrapper_html: {
-                          class: 'hidden'
-                        },
-                        label: "Renewal Date"
+                  input_html: {
+                    data: {
+                      newForm2_target: "renewalDateInput"
+                    }
+                  }
       %>
-      <%= f.submit "submit" %>
+      <%= f.input :reminder_delay_days,
+                  input_html: {
+                    data: {
+                      newForm2_target: "reminderDelayDaysInput"
+                    }
+                  }
+      %>
+      <%= f.submit "submit", id: "submitFormBtn"
+      %>
   <% end %>
 </div>
 
