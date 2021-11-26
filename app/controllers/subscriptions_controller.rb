@@ -26,6 +26,8 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
+    authorize @subscription
+
     raise
   end
 
@@ -79,8 +81,9 @@ class SubscriptionsController < ApplicationController
     name = params[:name]
     frequency = params[:frequency]
     price = (params[:price].to_f * 100).to_i
-    service = Service.where("name = '#{name}'").first
-    category = Category.where("name = '#{params[:category]}'").first
+    service = Service.where("name ILIKE '%#{name}%'").first
+    category = Category.where("name ILIKE '%#{params[:category]}%'").first
+    p name, service
     @offer = Offer.new(service: service, name: name, category: category, price_cents: price, frequency: frequency)
     @offer.user = current_user if current_user
 
