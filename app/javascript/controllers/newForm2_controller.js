@@ -3,21 +3,24 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static targets = ["selectService", "selectOffer", "categoryInput", "serviceInput", "priceInput", "frequencyInput", "displayNewOffer",
                     "category", "service", "offerServiceNameInput", "offerPriceInput", "offerFrequencyInput",
-    "customOfferInput", "customService", "customOffer", "formPartOne", "formPartTwo", "renewalInput", "delayInput", "infoInput"]
+                    "customOfferInput", "customService", "customOffer", "formPartOne", "formPartTwo", "renewalInput",
+                    "delayInput", "infoInput"]
 
   connect() {
   };
 
   showServices(event) {
-    const category = event.currentTarget.children[0].innerText;
+    const target = event.currentTarget
+    const category = target.children[0].innerText;
     this.categoryInputTarget.value = category;
-    this._activate_card(event.currentTarget, this.categoryTargets)
+    this._activate_card(target, this.categoryTargets)
     let query = encodeURIComponent(category);
     const url = `/searchService/${query}`;
     fetch(url)
       .then(res => res.text())
       .then(data => {
         this.selectServiceTarget.innerHTML = data;
+        target.scrollIntoView();
     })
   };
 
@@ -108,15 +111,6 @@ export default class extends Controller {
     }
   }
 
-  _scroll_to(target) {
-    const top = target.offsetHeight + 80
-    window.scrollTo({
-      top: top,
-      left: 0,
-      behavior: 'smooth'
-    });
-  }
-
   display_sub_overview(){
     const name = encodeURIComponent(this.serviceInputTarget.value);
     const price = encodeURIComponent(this.priceInputTarget.value);
@@ -141,6 +135,16 @@ export default class extends Controller {
     const delayValue = this.delayInputTarget.value
 
   };
+
+  _scroll_to(target) {
+    const top = target.offsetTop + 200
+    console.log(target, top)
+    window.scrollTo({
+      top: top,
+      left: 0,
+      behavior: 'smooth'
+    });
+  }
 
   _activate_card(target, items_array) {
     items_array.forEach(item => {

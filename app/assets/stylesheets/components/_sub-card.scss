@@ -1,5 +1,5 @@
 .sub-wrapper {
-  color: aliceblue;
+  color: rgb(227, 232, 236);
   position: relative;
   overflow: hidden;
   display: flex;
@@ -72,4 +72,8 @@ img {
 
 #reminder-delay {
   width: 5rem;
+}
+
+.section-buffer {
+  height: 20vh;
 }
