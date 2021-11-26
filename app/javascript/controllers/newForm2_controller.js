@@ -28,6 +28,7 @@ export default class extends Controller {
     const target = event.currentTarget
     const serviceId = target.dataset.serviceId;
     this.serviceInputTarget.value = serviceId;
+    this.serviceInputTarget.dataset.serviceName = target.dataset.serviceName
     this._activate_card(target, this.serviceTargets)
     const query = encodeURIComponent(serviceId);
     fetch(`/searchOffer/${query}`)
@@ -70,7 +71,7 @@ export default class extends Controller {
         const priceInput = this.offerPriceInputTarget;
         const frequencyInput = this.offerFrequencyInputTarget;
         // set the values of the form with the offer details
-        nameInput.value = this.serviceInputTarget.value;
+        nameInput.value = this.serviceInputTarget.dataset.serviceName;
         priceInput.value = target.dataset.offerPrice;
         frequencyInput.value = target.dataset.offerFrequency;
         // disable the inputs as values are pre-defined
@@ -86,7 +87,7 @@ export default class extends Controller {
     })
   };
 
-  offerSelected(event) {
+  offerSelected() {
     const url = "/newOffer";
     fetch(url)
     .then(res => res.text())
