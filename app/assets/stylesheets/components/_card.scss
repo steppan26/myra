@@ -8,7 +8,8 @@
     justify-content: center;
     height: 5em;
     img {
-      position: absolute;
+    position: absolute;
+    object-fit: cover;
     top: -3em;
     height: 130px;
     width: 130px;
@@ -54,7 +55,7 @@
 }
 
 .card-buttons-wrapper{
-  height: 3em;
+  height: 1em;
   position: relative;
 }
 
@@ -64,6 +65,7 @@
   justify-content: space-around;
   position: absolute;
   bottom: -1em;
+  align-items: center;
 }
 
 .btn-green-done {
