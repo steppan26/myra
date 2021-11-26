@@ -2,6 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: :home
 
   def home
+    @subscriptions = Subscription.where(user_id: current_user.id)
   end
 
   def dashboard

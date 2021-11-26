@@ -38,17 +38,17 @@
   left: 0;
   right: 0;
   width: 100vw;
-  transition: all 360ms ease-in-out;
+  transition: all 1360ms ease-in-out;
   overflow: hidden;
 }
 
 .form-section.hidden-one {
-  // width: 0;
-  left: -110%;
+  bottom: 110%;
+  //left: -110%;
 }
 
 .form-section.hidden-two {
-  left: 110%;
+  bottom: 110%;
 }
 
 .custom-offer-wrapper {

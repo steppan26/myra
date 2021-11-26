@@ -1,13 +1,16 @@
 .sub-wrapper {
+  color: rgb(227, 232, 236);
+  position: relative;
+  overflow: hidden;
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
   margin: 1rem;
   padding: 0.5rem;
-  border-radius: 0.5rem;
-  border: 2px solid black;
-  box-shadow: 0 0 20px 2px rgba(10, 10, 10, 0.6);
+  border-radius: 1.5rem;
+  //border: 2px solid rgba(4, 83, 230, 0.288);
+  filter: brightness(80%);
   font-size: 0.8rem;
 }
 
@@ -34,7 +37,8 @@ img {
 .user-submition-wrapper {
   margin-top: 2rem;
   & input,
-  & select {
+  & select,
+  & textarea {
     width: 8rem;
     width: max-content;
     font-size: 1rem;
@@ -44,10 +48,16 @@ img {
     background-color: rgba(210, 210, 210, 0.4);
     border: 1px solid rgba(10, 10, 10, 0.6);
   }
-    & h5{
+  & h5{
+    font-size: 1.1rem;
     margin-bottom: 0.5rem;
     text-align: center;
   }
+}
+
+#renewal-date-input.error {
+  color: rgb(192, 0, 0);
+  border: 2px solid rgb(192, 0, 0);
 }
 
 .input-wrapper {
@@ -57,13 +67,18 @@ img {
   flex-wrap: nowrap;
   & i {
     margin-right: 1rem;
-    font-size: 2rem;
+    font-size: 1.75rem;
   }
   & p {
+    margin: 0;
     margin-left: 1rem;
   }
 }
 
 #reminder-delay {
   width: 5rem;
+}
+
+.section-buffer {
+  height: 20vh;
 }

@@ -1,5 +1,5 @@
-<div class="footer mb-3 mt-4">
-  <div class="container d-flex justify-content-center space-between align-items-center">
+<div class="footer mb-3">
+  <div class="d-flex justify-content-center">
     <div data-controller="hidden-buttons">
       <div class="add-btn">
         <svg width="75" height="75" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" data-action="click->hidden-buttons#hidden">
@@ -7,9 +7,11 @@
         <line x1="30.9109" y1="20.5479" x2="30.9109" y2="40.274" stroke="white"/>
         <line x1="20.5479" y1="29.911" x2="40.2739" y2="29.911" stroke="white"/>
         </svg>
-        <div class="btn-dropshadow btn-green d-none", data-hidden-buttons-target="button">
-          <h5 class="text-btn">Subscription</h5>
-        </div>
+        <%= link_to new_subscription_path do %>
+          <div class="btn-dropshadow btn-green d-none", data-hidden-buttons-target="button">
+            <h5 class="text-btn">Subscription</h5>
+          </div>
+        <% end %>
         <div class="btn-dropshadow btn-yellow d-none", data-hidden-buttons-target="button">
           <h5 class="text-btn">Budget</h5>
         </div>
