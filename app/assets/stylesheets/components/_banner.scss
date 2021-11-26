@@ -1,10 +1,67 @@
-.banner-img {
-  width: 54vh;
-  height: 92vh;
+.myra-text-logo {
+  animation: fadein 3s;
+
+  position: absolute;
+  width: 150px;
+  height: 84px;
+  left: 120px;
+  top: 171px;
+  font-family: Text Me One;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 69px;
+  line-height: 84px;
+  text-align: center;
+  letter-spacing: 0.0703846px;
+  color: #FFFFFF;
+}
+
+.myra-description {
+  animation-timing-function: ease-in-out;
+  animation: fadein 4s;
+
+  position: absolute;
+  width: 314px;
+  height: 90px;
+  left: 38px;
+  top: 305px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 45px;
+  text-align: center;
+  letter-spacing: 0.0703846px;
+  color: #FFFFFF;
+}
+
+.call-to-action svg {
+  animation: fadein 5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 431px;
+  margin-left: 100px;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
 }
 
 .landing-wrap {
-
   background-color: black;
   position: fixed;
   top: 0;

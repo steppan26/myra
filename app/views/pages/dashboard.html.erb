@@ -1,36 +1,44 @@
 
+<div class="d-flex row col ls-6 justify-content-center">
+<% current_user.subscriptions.each do |subscription| %>
+  <%= render "shared/circle-logo", subscription: subscription %>
+<% end %>
+<% link_to  %>
+</div>
 
-<h1>Hello <%= current_user.email %></h1>
-<br>
-<h2><%= @date.strftime("%b #{@date.day.ordinalize}") %></h2>
-<br>
-<h3>Total Spent: <%= humanized_money_with_symbol @user_monthly_spend %>/month</h3>
-<br>
-<h4>Monthly spend by category</h4>
- <ul>
-  <% @category_sums.each do |category| %>
-    <% if category[1] > 0 %>
-      <li><%= category[0] %>: <%= humanized_money_with_symbol category[1] %>/month</li>
+
+<div class="d-none">
+  <br>
+  <h3>Total Spent: <%= humanized_money_with_symbol @user_monthly_spend %>/month</h3>
+  <br>
+  <h4>Monthly spend by category</h4>
+  <ul>
+    <% @category_sums.each do |category| %>
+      <% if category[1] > 0 %>
+        <li><%= category[0] %>: <%= humanized_money_with_symbol category[1] %>/month</li>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
-<h3>Upcoming payments</h3>
-<ul>
-  <% @my_next_in_payment_subscriptions.each do |subscription| %>
-    <%= link_to subscription_path(subscription) do %>
-      <div class="card-product my-3", style="width: 100%">
-        <img src="<%= subscription.image_url %>"  />
-        <div class="card-product-infos d-flex justify-content-between w-100">
-          <p><%= subscription.offer.service.name %></p>
-          <% renewal_date = (subscription.renewal_date - Date.today).to_i %>
-          <% if renewal_date > 30 %>
-            <p> <%= time_ago_in_words(subscription.renewal_date) %> </p>
-          <% else %>
-            <p><%= renewal_date %> <%= "day".pluralize(2) %> </p>
-          <% end %>
+
+  </ul>
+  <h3>Upcoming payments</h3>
+  <ul>
+    <% @my_next_in_payment_subscriptions.each do |subscription| %>
+      <%= link_to subscription_path(subscription) do %>
+        <div class="card-product my-3", style="width: 500px">
+          <img src="<%= subscription.image_url %>"  />
+          <div class="card-product-infos d-flex justify-content-between w-100">
+            <h2><%= subscription.offer.service.name %></h2>
+            <% renewal_date = (subscription.renewal_date - Date.today).to_i %>
+            <% if renewal_date > 30 %>
+              <h2> <%= time_ago_in_words(subscription.renewal_date) %> </h2>
+            <% else %>
+              <h2><%= renewal_date %> <%= "day".pluralize(2) %> </h2>
+            <% end %>
+          </div>
         </div>
-      </div>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </ul>
+</div>
+
 <%= render 'shared/footer' %>

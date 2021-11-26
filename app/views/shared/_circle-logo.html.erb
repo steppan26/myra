@@ -1,4 +1,35 @@
-<div class="circle m-1">
-  <div class="circle-logo">Logo</div>
-  <div class="circle-info">3 days</div>
-</div>
+<% renewal_date = (subscription.renewal_date - Date.today).to_i %>
+<% if renewal_date <= 7 %>
+  <div class="circle red m-1">
+    <div class="circle-logo"><%= image_tag subscription.image_url %></div>
+    <div class="circle-info">
+    <% if renewal_date > 30 %>
+      <%= time_ago_in_words(renewal_date) %>
+    <% else %>
+      <%= renewal_date %> <%= "day".pluralize(2) %>
+    <% end %>
+    </div>
+  </div>
+<% elsif (subscription.renewal_date - Date.today).to_i >= 15 %>
+  <div class="circle green m-1">
+    <div class="circle-logo"><%= image_tag subscription.image_url %></div>
+    <div class="circle-info">
+     <% if renewal_date > 30 %>
+      <%= time_ago_in_words(renewal_date) %>
+    <% else %>
+      <%= renewal_date %> <%= "day".pluralize(2) %>
+    <% end %>
+    </div>
+  </div>
+<% else %>
+   <div class="circle orange m-1">
+    <div class="circle-logo"><%= image_tag subscription.image_url %></div>
+    <div class="circle-info">
+     <% if renewal_date > 30 %>
+      <%= time_ago_in_words(renewal_date) %>
+    <% else %>
+      <%= renewal_date %> <%= "day".pluralize(2) %>
+    <% end %>
+    </div>
+  </div>
+<% end %>
