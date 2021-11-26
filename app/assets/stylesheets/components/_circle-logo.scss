@@ -47,5 +47,13 @@
     height: 60px;
     object-fit: cover;
     border-radius: 8px;
+    object-fit: contain;
   }
+}
+
+.total-spent {
+  position: absolute;
+  top: 500px;
+  font-weight: bolder;
+  font-style: normal;
 }
