@@ -1,32 +1,36 @@
 <div class="container">
   <div class="card-subscription">
-    <div class="card-img">
-      <img src=<%= @subscription.image_url %>>
-    </div>
+    <%= link_to @subscription.url do%>
+      <div class="card-img">
+        <img src=<%= @subscription.image_url %>>
+      </div>
+    <% end %>
     <div class="card-body">
       <%= render 'shared/card-details',
-          icon: "icon",
-          type: "offer",
+          icon: "💳",
+          type: "Offer",
           data: @subscription.offer.name
       %>
       <%= render 'shared/card-details',
-          icon: "icon",
-          type: "price",
+          icon: "📆",
+          type: "Renewal Date",
+          data: @subscription.renewal_date
+      %>
+      <%= render 'shared/card-details',
+          icon: "💰",
+          type: "Price",
           data: "#{humanized_money_with_symbol @subscription.offer.price} #{@subscription.offer.frequency}"
       %>
-      <%= render 'shared/card-details', 
-          icon: "icon", 
-          type: "Remind me", 
-          data: "#{pluralize(@subscription.reminder_delay_days, "day")} before" 
+      <%= render 'shared/card-details',
+          icon: "🛎",
+          type: "Remind me",
+          data: "#{pluralize(@subscription.reminder_delay_days, "day")} before"
       %>
-      <hr>
-      <p class="text-muted"><%= @subscription.additional_info %></p>
-      <%= link_to "visit website", @subscription.url, class: "btn btn-outline-primary" %>
     </div>
     <div class="card-buttons-wrapper">
       <div class="card-buttons">
-        <%= link_to "Done", subscriptions_path, class: "btn btn-primary" %>
-        <%= link_to "Delete", subscription_path(@subscription), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+        <%= link_to "Done", dashboard_path, class: "btn btn-green-done" %>
+        <%= link_to "Delete", subscription_path(@subscription), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-red-delete" %>
       </div>
     </div>
   </div>
