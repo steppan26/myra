@@ -6,9 +6,11 @@
 </div>
 
 <div class="d-none">
+<div class="total-spent">
   <br>
   <h3>Total Spent: <%= humanized_money_with_symbol @user_monthly_spend %>/month</h3>
   <br>
+</div>
   <h4>Monthly spend by category</h4>
   <ul>
     <% @category_sums.each do |category| %>
