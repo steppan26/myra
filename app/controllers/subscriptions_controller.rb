@@ -58,7 +58,6 @@ class SubscriptionsController < ApplicationController
       url: custom_offer ? "www.google.com" : offer.service.url,
       image_url: custom_offer ? custom_img_url : offer.service.image_url
     )
-    raise
     if new_subscription.save
       redirect_to dashboard_path
     else
