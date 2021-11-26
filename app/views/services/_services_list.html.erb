@@ -1,5 +1,6 @@
 <h2 class="text-center my-3">Who are you subscribed with?</h2>
 <ul class="categories-list">
+<% if services %>
   <% services.each do |service| %>
     <li
       class="categories-item"
@@ -11,10 +12,12 @@
       <h4 class="categories-title"><%= service.name %></h4>
     </li>
   <% end %>
+<% end %>
       <li
-      class="categories-item <%= services.first.offers.first.category.name.gsub(/\W/, '') %>"
+      class="categories-item <%= services.empty? ? "None" : services.first.offers.first.category.name.gsub(/\W/, '') %>"
       data-action="click->newForm2#createNewOffer"
       data-newForm2-target="service customService"
+      data-service-id="custom"
     >
       <h4 class="categories-title">Custom...</h4>
     </li>

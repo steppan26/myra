@@ -14,7 +14,8 @@ export default class extends Controller {
     const categoryId = target.dataset.categoryId;
     this.categoryInputTarget.value = categoryId;
     this._activate_card(target, this.categoryTargets)
-    let query = encodeURIComponent(categoryId);
+    const query = encodeURIComponent(categoryId);
+    console.log(query)
     fetch(`/searchService/${query}`)
       .then(res => res.text())
       .then(data => {
@@ -48,6 +49,9 @@ export default class extends Controller {
     fetch(url)
     .then(res => res.text())
     .then(data => {
+      console.log(this.offerIdInputTarget, this.offerIdInputTarget.value)
+      this.offerIdInputTarget.value = -1;
+      console.log(this.offerIdInputTarget, this.offerIdInputTarget.value)
       if (target === this.customServiceTarget) {
         this.selectOfferTarget.innerHTML = "";
         this.displayNewOfferTarget.innerHTML = data;
@@ -59,6 +63,7 @@ export default class extends Controller {
         const nameInput = this.offerServiceNameInputTarget;
         nameInput.value = this.serviceInputTarget.value;
         nameInput.disabled = true;
+        this.offerNameInputTarget.value = 'custom offer'
       } else {
         this.displayNewOfferTarget.innerHTML = data;
         const nameInput = this.offerServiceNameInputTarget;
@@ -180,7 +185,6 @@ export default class extends Controller {
 
   _scroll_to(target) {
     const top = target.offsetTop + 200
-    console.log(target, top)
     window.scrollTo({
       top: top,
       left: 0,

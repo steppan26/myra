@@ -26,10 +26,42 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
+    @subscription = Subscription.new
     authorize :subscription
-
-    raise
-    redirect_to dashboard_path
+    custom_offer = params[:subscription][:offer_id].to_i == -1
+    if custom_offer
+      offer = Offer.create(
+        name: "custom offer",
+        service_name: params[:subscription][:offers][:service_id],
+        price_cents: params[:subscription][:offers][:price_cents],
+        frequency: params[:subscription][:offers][:frequency],
+        category_id: params[:subscription][:offers][:category_id],
+      )
+      offer.user = current_user
+    else
+      offer_id = params[:subscription][:offer_id]
+      offer = Offer.find(offer_id)
+    end
+    year = params[:subscription]['renewal_date(1i)']
+    month = params[:subscription]['renewal_date(2i)']
+    day = params[:subscription]['renewal_date(3i)']
+    renewal_date = Date.parse("#{day}/#{month}/#{year}")
+    custom_img_url = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shareicon.net%2Fdata%2F2017%2F07%2F13%2F888376_office_512x512.png&f=1&nofb=1"
+    new_subscription = Subscription.new(
+      offer: offer,
+      user_id: current_user,
+      additional_info: params[:subscription][:additional_info],
+      price_per_day_cents: get_price_per_day_cents(params[:subscription][:offers][:price_cents].to_i, params[:subscription][:offers][:frequency]),
+      renewal_date: renewal_date,
+      reminder_delay_days: params[:subscription][:reminder_delay_days],
+      url: custom_offer ? "www.google.com" : offer.service.url,
+      image_url: custom_offer ? custom_img_url : offer.service.image_url
+    )
+    if new_subscription.save
+      redirect_to dashboard_path
+    else
+      puts 'there was a problem creating the subscription'
+    end
   end
 
   def edit
@@ -93,6 +125,17 @@ class SubscriptionsController < ApplicationController
   end
 
   private
+
+  def get_price_per_day_cents(value, frequency)
+    case frequency
+    when 'annualy'
+      return (value / 365).round.to_i
+    when 'monthly'
+      return (value / 30).round.to_i
+    else
+      return (value / 7).round.to_i
+    end
+  end
 
   def subscription_params
     params.require(:subscription).permit(:additional_info, :url, :renewal_date, :reminder_delay_days, :image_url)
