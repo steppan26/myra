@@ -17,6 +17,8 @@
       <%= render 'shared/flashes' %>
       <%= yield %>
     </div>
-    <%= render 'shared/footer' %>
+    <% if controller_name == "subscriptions" && controller.action_name == "index" %>
+      <%= render 'shared/footer' %>
+    <% end %>
   </body>
 </html>
