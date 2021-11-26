@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = ["selectService", "selectOffer", "categoryInput", "serviceInput", "priceInput", "frequencyInput", "displayNewOffer",
                     "category", "service", "offerServiceNameInput", "offerPriceInput", "offerFrequencyInput",
                     "customOfferInput", "customService", "customOffer", "formPartOne", "formPartTwo", "renewalInput",
-    "delayInput", "infoInput", "delayFrequencyInput", "serviceInput", "offerIdInput", "offerNameInput", "formSubmitButton", "reminderDelayDaysInput", "additionalInfoInput", "reminderDelayDaysInput"]
+    "delayInput", "infoInput", "delayFrequencyInput", "serviceInput", "offerIdInput", "offerNameInput", "formSubmitButton", "reminderDelayDaysInput", "additionalInfoInput", "reminderDelayDaysInput", "renewalDateInput"]
 
   connect() {
   };
@@ -139,10 +139,11 @@ export default class extends Controller {
   }
 
   createSubscription() {
-    const infoValue = this.infoInputTarget.value
-    const renewalValue = this.renewalInputTarget.value
-    const delayValue = this.delayInputTarget.value
-    const delayFrequencyValue = this.delayFrequencyInputTarget.value
+    const infoValue = this.infoInputTarget.value;
+    const renewalValue = this.renewalInputTarget.value;
+    const delayValue = this.delayInputTarget.value;
+    const delayFrequencyValue = this.delayFrequencyInputTarget.value;
+    this.renewalDateInputTarget.value = renewalValue;
     this.additionalInfoInputTarget.value = infoValue;
     this.reminderDelayDaysInputTarget.value = this._get_reminder_in_days(delayValue, delayFrequencyValue);
 
