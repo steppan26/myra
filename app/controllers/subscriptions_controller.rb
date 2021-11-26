@@ -49,7 +49,7 @@ class SubscriptionsController < ApplicationController
     custom_img_url = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shareicon.net%2Fdata%2F2017%2F07%2F13%2F888376_office_512x512.png&f=1&nofb=1"
     new_subscription = Subscription.new(
       offer: offer,
-      user_id: current_user,
+      user_id: current_user.id,
       additional_info: params[:subscription][:additional_info],
       price_per_day_cents: get_price_per_day_cents(params[:subscription][:offers][:price_cents].to_i, params[:subscription][:offers][:frequency]),
       renewal_date: renewal_date,

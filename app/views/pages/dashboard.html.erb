@@ -25,7 +25,7 @@
         <div class="card-product my-3", style="width: 500px">
           <img src="<%= subscription.image_url %>"  />
           <div class="card-product-infos d-flex justify-content-between w-100">
-            <h2><%= subscription.offer.service.name %></h2>
+            <h2><%= subscription.offer.service_name %></h2>
             <% renewal_date = (subscription.renewal_date - Date.today).to_i %>
             <% if renewal_date > 30 %>
               <h2> <%= time_ago_in_words(subscription.renewal_date) %> </h2>
