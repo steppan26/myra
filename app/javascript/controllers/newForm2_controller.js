@@ -173,14 +173,6 @@ export default class extends Controller {
   _create_new_subscription() {
     const form = document.getElementById('real-form').children[0];
     form.submit()
-    return
-    fetch("/subscriptions", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
   };
 
   _scroll_to(target) {
