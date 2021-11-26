@@ -55,6 +55,11 @@ img {
   }
 }
 
+#renewal-date-input.error {
+  color: rgb(192, 0, 0);
+  border: 2px solid rgb(192, 0, 0);
+}
+
 .input-wrapper {
   display: flex;
   justify-content: center;

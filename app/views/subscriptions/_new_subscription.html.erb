@@ -9,7 +9,7 @@
     <h5>Renewal Date</h5>
     <div class="input-wrapper">
       <i class="far fa-calendar-alt"></i>
-      <input type="date" name="" data-newForm2-target="renewalInput">
+      <input type="date" id="renewal-date-input" data-newForm2-target="renewalInput">
     </div>
   </div>
   <div class="user-submition-wrapper">
@@ -17,10 +17,10 @@
     <div class="input-wrapper">
       <i class="far fa-bell"></i>
       <input type="tel" name="reminder-delay" id="reminder-delay" data-newForm2-target="delayInput">
-      <select name="frequency-select" id="frequency-select">
-        <option value="Month(s)">Month(s)</option>
-        <option value="Week(s)">Week(s)</option>
-        <option value="Day(s)">Day(s)</option>
+      <select name="frequency-select" id="frequency-select" data-newForm2-target="delayFrequencyInput">
+        <option value="month">Month(s)</option>
+        <option value="week">Week(s)</option>
+        <option value="day">Day(s)</option>
       </select>
       <p>before</p>
     </div>

@@ -26,6 +26,8 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
+    authorize @subscription
+
     raise
   end
 
