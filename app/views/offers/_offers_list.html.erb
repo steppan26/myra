@@ -13,10 +13,9 @@
     </li>
   <% end %>
   <li
-      class="categories-item"
+      class="categories-item <%= offers.first.category.name.gsub(/\W/, '') %>"
       data-action="click->newForm2#createNewOffer"
       data-newForm2-target="customOffer"
-      style="background-image: linear-gradient(to top, rgba(10,10,10,0.4), rgba(10,10,10,0.2)), url('https://loremflickr.com/640/360')"
     >
       <h4 class="categories-title">Custom...</h4>
     </li>

@@ -1,15 +1,15 @@
-<div class="sub-wrapper">
+<div class="sub-wrapper <%= offer.category.name.gsub(/\W/, '') %>">
   <img class="sub-logo" src="<%=offer.service.image_url%>" alt="<%=offer.service.name%>">
   <h3 class="sub-title"><%= offer.service.name %></h3>
   <div class="sub-price-wrapper">
-    <h5><%= offer.price %></h5>
-    <h5> <%= offer.frequency %></h5>
+    <h5><%= offer.price %>€ </h5>
+    <h5> / <%= offer.frequency %></h5>
   </div>
   <div class="user-submition-wrapper">
     <h5>Renewal Date</h5>
     <div class="input-wrapper">
       <i class="far fa-calendar-alt"></i>
-      <input type="date" name="" data-newForm2-target="renewalInput">
+      <input type="date" id="renewal-date-input" data-newForm2-target="renewalInput">
     </div>
   </div>
   <div class="user-submition-wrapper">
@@ -17,19 +17,21 @@
     <div class="input-wrapper">
       <i class="far fa-bell"></i>
       <input type="tel" name="reminder-delay" id="reminder-delay" data-newForm2-target="delayInput">
-      <select name="frequency-select" id="frequency-select">
-        <option value="Month(s)">Month(s)</option>
-        <option value="Week(s)">Week(s)</option>
-        <option value="Day(s)">Day(s)</option>
+      <select name="frequency-select" id="frequency-select" data-newForm2-target="delayFrequencyInput">
+        <option value="month">Month(s)</option>
+        <option value="week">Week(s)</option>
+        <option value="day">Day(s)</option>
       </select>
       <p>before</p>
     </div>
   </div>
   <div class="user-submition-wrapper">
-    <h5>Additional Info</h5>
-    <input type="text" name="" id="submit-sub" data-newForm2-target="infoInput">
+    <textarea row='2' placeholder="Additional Info" name="" id="submit-sub" data-newForm2-target="infoInput"></textarea>
   </div>
-  <div class="btn btn-primary my-3" data-action='click->newForm2#createSubscription'>
-  "Create Subscription"
+  <%= link_to dashboard_path, class: "button-cancel" do %>
+    <i class="fas fa-times"></i>
+  <% end %>
+  <div class="button-accept" data-action='click->newForm2#createSubscription'>
+    <i class="fas fa-check"></i>
   </div>
 </div>
