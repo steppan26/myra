@@ -1,9 +1,12 @@
 <div class="sub-wrapper <%= offer.category.name.gsub(/\W/, '') %>">
-  <img class="sub-logo" src="<%=offer.service.image_url%>" alt="<%=offer.service.name%>">
-  <h3 class="sub-title"><%= offer.service.name %></h3>
+  <% if offer.service %>
+    <img class="sub-logo" src="<%=offer.service.image_url%>" alt="<%=offer.service.name%>">
+  <% else %>
+    <img class="sub-logo" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shareicon.net%2Fdata%2F2017%2F07%2F13%2F888376_office_512x512.png&f=1&nofb=1" alt="custom offer">
+  <% end %>
+  <h3 class="sub-title"><%= offer.service_name %></h3>
   <div class="sub-price-wrapper">
-    <h5><%= offer.price %>€ </h5>
-    <h5> / <%= offer.frequency %></h5>
+    <h5><%= humanized_money_with_symbol offer.price %> <%= offer.frequency %></h5>
   </div>
   <div class="user-submition-wrapper">
     <h5>Renewal Date</h5>

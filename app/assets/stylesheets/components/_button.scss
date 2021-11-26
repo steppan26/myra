@@ -50,7 +50,7 @@
   font-weight: 700;
   color: #313133;
   background: #4FD1C5;
-background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 100%);
+  background: linear-gradient(90deg, rgb(113, 158, 209) 0%, rgba(79,209,197,1) 100%);
   border: none;
   border-radius: 1000px;
   box-shadow: 12px 12px 24px rgba(79,209,197,.64);
@@ -60,7 +60,7 @@ background: linear-gradient(90deg, rgba(129,230,217,1) 0%, rgba(79,209,197,1) 10
   position: absolute;
   padding: 10px;
   bottom: 3em;
-  left: 6em;
+  left: 38%;
   }
 
 .home-button::before {
@@ -112,8 +112,8 @@ content: '';
     opacity: 1;
   }
   100% {
-    width: 300px;
-    height: 300px;
+    width: 220px;
+    height: 220px;
     opacity: 0;
   }
 }

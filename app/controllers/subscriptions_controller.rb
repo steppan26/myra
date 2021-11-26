@@ -26,9 +26,42 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    authorize @subscription
-
-    raise
+    @subscription = Subscription.new
+    authorize :subscription
+    custom_offer = params[:subscription][:offer_id].to_i == -1
+    if custom_offer
+      offer = Offer.create(
+        name: "custom offer",
+        service_name: params[:subscription][:offers][:service_id],
+        price_cents: params[:subscription][:offers][:price_cents],
+        frequency: params[:subscription][:offers][:frequency],
+        category_id: params[:subscription][:offers][:category_id],
+      )
+      offer.user = current_user
+    else
+      offer_id = params[:subscription][:offer_id]
+      offer = Offer.find(offer_id)
+    end
+    year = params[:subscription]['renewal_date(1i)']
+    month = params[:subscription]['renewal_date(2i)']
+    day = params[:subscription]['renewal_date(3i)']
+    renewal_date = Date.parse("#{day}/#{month}/#{year}")
+    custom_img_url = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shareicon.net%2Fdata%2F2017%2F07%2F13%2F888376_office_512x512.png&f=1&nofb=1"
+    new_subscription = Subscription.new(
+      offer: offer,
+      user_id: current_user,
+      additional_info: params[:subscription][:additional_info],
+      price_per_day_cents: get_price_per_day_cents(params[:subscription][:offers][:price_cents].to_i, params[:subscription][:offers][:frequency]),
+      renewal_date: renewal_date,
+      reminder_delay_days: params[:subscription][:reminder_delay_days],
+      url: custom_offer ? "www.google.com" : offer.service.url,
+      image_url: custom_offer ? custom_img_url : offer.service.image_url
+    )
+    if new_subscription.save
+      redirect_to dashboard_path
+    else
+      puts 'there was a problem creating the subscription'
+    end
   end
 
   def edit
@@ -58,13 +91,13 @@ class SubscriptionsController < ApplicationController
 
   def display_services
     query = params[:query]
-    @services = query.downcase == 'none' ? Service.all : Category.where(name: query).first.services.uniq
+    @services = query.downcase == 'none' ? Service.all : Category.find(query).services.uniq
     authorize :subscription
     render partial: 'services/services_list', locals: { services: @services }
   end
 
   def display_offers
-    @service = Service.where(name: params[:query]).first
+    @service = Service.find(params[:query])
     @offers = @service.offers
     authorize :subscription
     render partial: 'offers/offers_list', locals: { offers: @offers }
@@ -78,19 +111,31 @@ class SubscriptionsController < ApplicationController
 
   def subscription_overview
     authorize :subscription
-    name = params[:name]
-    frequency = params[:frequency]
-    price = (params[:price].to_f * 100).to_i
-    service = Service.where("name ILIKE '%#{name}%'").first
-    category = Category.where("name ILIKE '%#{params[:category]}%'").first
-    p name, service
-    @offer = Offer.new(service: service, name: name, category: category, price_cents: price, frequency: frequency)
+
+    @offer = Offer.new(
+      service_id: params[:serviceId],
+      name: params[:name],
+      category_id: params[:categoryId],
+      price_cents: (params[:price].to_f * 100).to_i,
+      frequency: params[:frequency]
+    )
     @offer.user = current_user if current_user
 
     render partial: 'subscriptions/new_subscription', locals: { offer: @offer }
   end
 
   private
+
+  def get_price_per_day_cents(value, frequency)
+    case frequency
+    when 'annualy'
+      return (value / 365).round.to_i
+    when 'monthly'
+      return (value / 30).round.to_i
+    else
+      return (value / 7).round.to_i
+    end
+  end
 
   def subscription_params
     params.require(:subscription).permit(:additional_info, :url, :renewal_date, :reminder_delay_days, :image_url)
