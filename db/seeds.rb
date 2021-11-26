@@ -64,7 +64,8 @@ CSV.foreach(filepath, csv_options) do |row|
     name: row[2],
     price_cents: row[3].to_f * 100,
     frequency: row[5],
-    category: Category.find_by(name: row[6])
+    category: Category.find_by(name: row[6]),
+    service_name: row[0]
   )
 end
 
