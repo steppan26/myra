@@ -3,7 +3,10 @@
   <% offers.each do |offer| %>
     <li
       class="categories-item"
-      data-action="click->newForm2#offerSelected"
+      data-action="click->newForm2#createNewOffer"
+      data-offer-name="<%= offer.name %>"
+      data-offer-price="<%= offer.price %>"
+      data-offer-frequency="<%= offer.frequency %>"
       style="background-image: linear-gradient(to top, rgba(10,10,10,0.4), rgba(10,10,10,0.2)), url('https://loremflickr.com/640/360')"
     >
       <h4 class="categories-title"><%= offer.name %></h4>
