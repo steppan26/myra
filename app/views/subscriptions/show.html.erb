@@ -23,13 +23,12 @@
       %>
       <%= render 'shared/card-details',
           icon: "🛎",
-          type: "Remind me",
+          type: "Remind me by ",
           data: "#{pluralize(@subscription.reminder_delay_days, "day")} before"
       %>
     </div>
     <div class="card-buttons-wrapper">
       <div class="card-buttons">
-        <%= link_to "Done", dashboard_path, class: "btn btn-green-done" %>
         <%= link_to "Delete", subscription_path(@subscription), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-red-delete" %>
       </div>
     </div>
