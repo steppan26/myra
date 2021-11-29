@@ -1,28 +1,30 @@
-    <div class="exit-btn"><%= link_to "X", dashboard_path %>
+    <div class="exit-btn d-flex justify-content-end">
+    <%= link_to "X", dashboard_path %>
     </div>
 
 <%= link_to @subscription.url do%>
   <div class="card-img">
     <img src=<%= @subscription.image_url %>>
-    </div>
-    <div class="card-description">
-    <h1><%= @subscription.offer.service_name %></h1>
-    <h4><%= @subscription.offer.category.name %></h4>
-    </div>
-      <p>edit</p>
 <% end %>
-      <div class="card-body">
-        <%= render 'shared/card-details',
-            icon: "💳",
-            type: "Offer",
-            data: @subscription.offer.name
-        %>
-        <br>
-        <%= render 'shared/card-remindme' %>
+    </div>
+    <div class="card-description d-flex inline-block justify-content-between">
+    <h1 style="font-weight: bolder;"><%= @subscription.offer.service_name %></h1>
+      <div class="edit-btn">edit</div>
+    </div>
+    <h6 style="color: grey;"><%= @subscription.offer.category.name %> service</h6>
+
+    <div class="card-details justify-content-start align-items-center">
+    <i class="fas fa-money-bill-alt"></i> You are actually on <%=@subscription.offer.name%>
+    <br>
+    and you pay <%= @subscription.offer.price %> €
+    <br>
+    <i class="fas fa-bullhorn"></i> until <%= @subscription.renewal_date %>
+    </div>
+
+      <div class="card-remind-option justify-content-start align-items-center">
+      <div class="card-text"> remind me by email </div>
       </div>
 
-    <div class="card-buttons-wrapper">
       <div class="card-buttons">
         <%= link_to "Delete", subscription_path(@subscription), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-delete" %>
       </div>
-    </div>

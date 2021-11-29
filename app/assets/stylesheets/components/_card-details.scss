@@ -1,11 +1,26 @@
 .card-details {
   display: flex;
   background: #210F37;
-  box-shadow: 0px 0px 20.0331px #292634;
+  border-radius: 9px;
+  color: $white;
+  width: 100%;
+  width: 335px;
+  height: 132px;
+  justify-content: center;
+
+}
+.card-text {
+  display: flex;
+  align-items: flex-start;
+}
+
+.card-remind-option {
+  display: flex;
+  background: #210F37;
   border-radius: 9px;
   color: $white;
   align-items: center;
   width: 100%;
-  height: auto;
-  margin: 1em 0;
+  width: 335px;
+  height: 80px;
 }

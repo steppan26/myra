@@ -2,17 +2,26 @@
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.btn-delete {
+  color: white;
+  border-radius: 20px;
+}
+
 .exit-btn {
   width: 32px;
   height: 32px;
   background: rgba(255, 255, 255, 0.17);
   border-radius: 12px;
-  position: absolute;
-  left: 85.07%;
-  right: 5.07%;
-  top: 3.15%;
-  bottom: 91.3%;
 }
+
+.edit-btn {
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.17);
+  border-radius: 12px;
+  text-decoration: none;
+  color: white;
+  }
 
 .text-btn {
   color: white;
@@ -24,33 +33,8 @@
   letter-spacing: 0.0703846px;
 }
 
-.btn-green {
-  position: absolute;
-  background: #71CC9D;
-  width: 114px;
-  height: 57px;
-  left: calc(50% - 114px/2 - 67px);
-  bottom: 70px;
-  border-radius: 50px;
-  z-index: 4;
-  transition-timing-function: ease;
-}
-
-.btn-yellow {
-  position: absolute;
-  background: #E7CA74;
-  width: 114px;
-  height: 57px;
-  left: calc(50% - 114px/2 + 68px);
-  bottom: 70px;
-  border-radius: 50px;
-  z-index: 4;
-  transition-timing-function: ease;
-}
-
 
 // home-button & animations
-
 
 .home-button {
   min-width: 100px;
