@@ -3,8 +3,11 @@
 <h2>Upcomming renewals</h2>
 
 <% subs = @user.subscriptions.select { |sub| (sub.renewal_date - sub.reminder_delay_days) == Date.today } %>
-<% subs.each do |sub| %>
-  <p><%= Offer.find(sub.offer_id).name %></p>
-  <p>due: <%= sub.renewal_date %></p>
-  <br>
-<% end %>
+<ul>
+  <% subs.each do |sub| %>
+    <li>
+      <p><%= Offer.find(sub.offer_id).name %></p>
+      <p>due: <%= sub.renewal_date %></p>
+    </li>
+  <% end %>
+</ul>

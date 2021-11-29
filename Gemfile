@@ -47,6 +47,7 @@ gem 'cloudinary', '~> 1.16.0'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 
+
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
@@ -65,6 +66,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'letter_opener'
+  gem 'launchy'
 end
 
 group :test do
