@@ -5,8 +5,8 @@ class UserMailer < ApplicationMailer
   #
   #   en.user_mailer.reminder.subject
   #
-  def reminder(user)
-    @user = user
+  def reminder
+    @user = params[:user]
 
     mail(to: @user.email, subject: 'Reminder')
   end
