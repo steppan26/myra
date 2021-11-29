@@ -4,12 +4,14 @@
   <% end %>
   <h3><%= @budget.name.upcase %></h3>
   <h5 class="mb-5"><%= @budget.price_per_month_cents %>€ per month</h5>
-  <% if @subscriptions.empty? %>
+  <% if @budget.subscriptions.empty? %>
     <h6>There are no subscriptions in this budget</h6>
   <% else %>
-    <ul class=list-group>
-      <% @subscriptions.each do |subscription| %>
-        <li class="list-group-item"><%= subscription.offer.service_name %> - <%= subscription.offer.price %></li>
+    <ul>
+      <% @budget.subscriptions.each do |subscription| %>
+        <li>
+          <%= render 'subscriptions/subscription_card', subscription: subscription %>
+        </li>
       <% end %>
     </ul>
   <% end %>

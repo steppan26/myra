@@ -17,11 +17,11 @@ class BudgetsController < ApplicationController
     if @budget.save
       params[:budget][:subscription_ids].each do |sub_id|
         next if sub_id == ""
-
+        budget_item = BudgetItem.create(subscription_id: sub_id, budget_id: @budget.id)
         sub = Subscription.find(sub_id)
-        sub.budget_id = @budget.id
+        sub.budget_item_id = budget_item.id
         sub.save
-      end
+    end
       redirect_to budget_path(@budget)
     else
       render :new
