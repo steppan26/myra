@@ -1,0 +1,10 @@
+<h1>NEW BUDGET</h1>
+<%= link_to dashboard_path, class: "home-btn" do %>
+  <i class="fas fa-undo-alt"></i><strong>Home</strong>
+<% end %>
+
+<%= simple_form_for(@budget) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :price_per_month_cents %>
+  <%= f.submit "Create new budget" %>
+<% end %>

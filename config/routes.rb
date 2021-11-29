@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :subscriptions do
     resources :offers, only: %i[new create edit update]
   end
+  resources :budgets, only: %i[show new create]
   resources :services, only: %i[index show]
   resources :offers, only: :destroy
   resources :users, only: %i[edit update]
