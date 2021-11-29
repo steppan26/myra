@@ -9,7 +9,6 @@ class PagesController < ApplicationController
 
   def dashboard
     @user_subscriptions = Subscription.where(user_id: current_user)
-    p @user_subscriptions.count
     @user_monthly_spend = Money.new(@user_subscriptions.sum(:price_per_day_cents) * 30)
     @my_next_in_payment_subscriptions = Subscription.where(user_id: current_user).order(renewal_date: :asc)
     @date = Date.today

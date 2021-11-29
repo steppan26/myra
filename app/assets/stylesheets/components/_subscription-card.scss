@@ -1,0 +1,47 @@
+.show-budget-wrapper {
+  padding-top: 1rem;
+  & ul {
+    list-style: none;
+    padding: 0;
+  }
+}
+
+.sub-card {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  border-radius: 0.4rem;
+  background-color: $clr-bg-primary;
+  padding: 1em;
+  margin: 1rem 0.5rem;
+  & img {
+    height: fit-content;
+    width: 20%;
+    border-radius: 0.4rem;
+    margin-right: 1.2rem;
+  }
+  & h4 {
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+  & h6 {
+    font-size: 0.8rem;
+  }
+}
+
+.notification {
+  margin-top: 1rem;
+  padding: 0.4em;
+  border-radius: 3px;
+  font-family: inherit;
+  font-size: 0.7rem !important;
+
+  &.success{
+  color: rgb(13, 102, 7);
+  background-color: rgb(221, 250, 212);
+  }
+  &.alert{
+  color: rgb(112, 6, 6);
+  background-color: rgb(247, 217, 217);
+  }
+}

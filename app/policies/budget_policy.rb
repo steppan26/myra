@@ -17,5 +17,6 @@ class BudgetPolicy < ApplicationPolicy
   end
 
   def destroy?
+    true
   end
 end
