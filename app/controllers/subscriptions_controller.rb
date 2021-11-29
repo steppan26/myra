@@ -43,10 +43,7 @@ class SubscriptionsController < ApplicationController
       offer_id = params[:subscription][:offer_id]
       offer = Offer.find(offer_id)
     end
-    year = params[:subscription]['renewal_date(1i)']
-    month = params[:subscription]['renewal_date(2i)']
-    day = params[:subscription]['renewal_date(3i)']
-    renewal_date = Date.parse("#{day}/#{month}/#{year}")
+    renewal_date = Date.parse(params[:subscription][:renewal_date])
     custom_img_url = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shareicon.net%2Fdata%2F2017%2F07%2F13%2F888376_office_512x512.png&f=1&nofb=1"
     new_subscription = Subscription.new(
       offer: offer,
