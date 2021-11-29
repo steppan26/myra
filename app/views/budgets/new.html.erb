@@ -5,6 +5,20 @@
 
 <%= simple_form_for(@budget) do |f| %>
   <%= f.input :name %>
-  <%= f.input :price_per_month_cents %>
+  <%= f.input :price_per_month_cents, class: "mb-3" %>
+  <ul class="list-group">
+  <%= f.association :subscriptions,
+                    as: :check_boxes,
+                    input_html: {
+                      data: {
+                        value: 3
+                      },
+                      class: "#{lambda { |sub| "#{sub.offer.service_name}"}}"
+                    },
+                    collection: @subscriptions,
+                    include_blank: false,
+                    label_method: lambda { |sub| "#{sub.offer.service_name}"}
+  %>
+  </ul>
   <%= f.submit "Create new budget" %>
 <% end %>

@@ -9,16 +9,23 @@
   </div>
 
   <div class="d-none" data-change-dashboard-target="board">
-    <br>
-    <h3>Total Spent: <%= humanized_money_with_symbol @user_monthly_spend %>/month</h3>
-    <br>
-    <h4>Monthly spend by category</h4>
-    <ul>
-      <% @category_sums.each do |category| %>
-        <% if category[1] > 0 %>
-          <li><%= category[0] %>: <%= humanized_money_with_symbol category[1] %>/month</li>
-        <% end %>
-      <% end %>
-    </ul>
+    <div class="info-card-wrapper">
+    <h1> INFORMATION </h1>
+      <div class="info-card">
+      <div class="info-card-title">Entertainment</div>
+        <h3><%= humanized_money_with_symbol @user_monthly_spend %>/month</h3>
+        <br>
+        <h3><%= humanized_money_with_symbol @user_yearly_spend %>/year</h3>
+        <ul>
+          <% @category_sums.each do |category| %>
+            <% if category[1] > 0 %>
+              <li><%= category[0] %>: <%= humanized_money_with_symbol category[1] %>/month</li>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+
+      
+    </div>
   </div>
 </div>

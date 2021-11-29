@@ -1,116 +1,116 @@
 .Streaming {
   &.sub-wrapper {
-    box-shadow: 0 0 15px 1px rgba(255,0,0, 0.4);
+    box-shadow: 0 0 20px 2px rgba(255,0,0, 0.4);
     background: $card;
   }
-  background: rgb(255,0,0);
+  background: $card;
   background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(176,6,6,1) 50%, rgba(119,0,0,1) 100%);
 }
 
 .Communication {
   &.sub-wrapper {
-    box-shadow: 0 0 15px 1px rgba(255,0,253, 0.4);
+    box-shadow: 0 0 20px 2px rgba(255,0,253, 0.4);
     background: $card;
   }
-  background: rgb(255,0,253);
+  background: $card;
   background: linear-gradient(90deg, rgba(255,0,253,1) 0%, rgba(176,6,160,1) 50%, rgba(119,0,108,1) 100%);
 }
 
 .Foodanddrink {
   &.sub-wrapper {
-    box-shadow: 0 0 15px 1px rgba(255,130,0, 0.4);
+    box-shadow: 0 0 20px 2px rgba(255,130,0, 0.4);
     background: $card;
   }
-  background: rgb(255,130,0);
+  background: $card;
   background: linear-gradient(90deg, rgba(255,130,0,1) 0%, rgba(176,87,6,1) 50%, rgba(119,64,0,1) 100%);
 }
 
 .Fitness {
   &.sub-wrapper {
-    box-shadow: 0 0 15px 1px rgba(50,255,0, 0.4);
+    box-shadow: 0 0 20px 2px rgba(50,255,0, 0.4);
     background: $card;
   }
-  background: rgb(50,255,0);
+  background: $card;
   background: linear-gradient(90deg, rgba(50,255,0,1) 0%, rgba(39,176,6,1) 50%, rgba(17,119,0,1) 100%);
 }
 
 .PersonalcareHealth {
   &.sub-wrapper {
-    box-shadow: 0 0 15px 1px rgba(0,151,255, 0.4);
+    box-shadow: 0 0 20px 2px rgba(0,151,255, 0.4);
     background: $card;
   }
-  background: rgb(0,151,255);
+  background: $card;
   background: linear-gradient(90deg, rgba(0,151,255,1) 0%, rgba(6,110,176,1) 50%, rgba(0,75,119,1) 100%);
 }
 
 .Software {
   &.sub-wrapper {
-    box-shadow: 0 0 15px 1px rgba(168,184,217, 0.4);
+    box-shadow: 0 0 20px 2px rgba(168,184,217, 0.4);
     background: $card;
   }
-  background: rgb(168,184,217);
+  background: $card;
   background: linear-gradient(90deg, rgba(168,184,217,1) 0%, rgba(104,116,136,1) 50%, rgba(73,85,102,1) 100%);
 }
 
 .Transport {
   &.sub-wrapper {
-    box-shadow: 0 0 15px 1px rgba(223,230,0, 0.4);
+    box-shadow: 0 0 20px 2px rgba(223,230,0, 0.4);
     background: $card;
   }
-  background: rgb(223,230,0);
+  background: $card;
   background: linear-gradient(90deg, rgba(223,230,0,1) 0%, rgba(179,187,0,1) 50%, rgba(121,127,0,1) 100%);
 }
 
 .Petcare {
   &.sub-wrapper {
-    box-shadow: 0 0 15px 1px rgba(0,230,33, 0.4);
+    box-shadow: 0 0 20px 2px rgba(0,230,33, 0.4);
     background: $card;
   }
-  background: rgb(0,230,33);
+  background: $card;
   background: linear-gradient(90deg, rgba(0,230,33,1) 0%, rgba(0,187,30,1) 50%, rgba(0,127,7,1) 100%);
 }
 
 .Gaming {
   &.sub-wrapper {
-    box-shadow: 0 0 15px 1px rgba(230,78,0, 0.4);
+    box-shadow: 0 0 20px 2px rgba(230,78,0, 0.4);
     background: $card;
   }
-  background: rgb(230,78,0);
+  background: $card;
   background: linear-gradient(90deg, rgba(230,78,0,1) 0%, rgba(187,54,0,1) 50%, rgba(127,45,0,1) 100%);
 }
 
 .eCommerce {
   &.sub-wrapper {
-    box-shadow: 0 0 15px 1px rgba(0,1,230, 0.4);
+    box-shadow: 0 0 20px 2px rgba(0,1,230, 0.4);
     background: $card;
   }
-  background: rgb(0,1,230);
+  background: $card;
   background: linear-gradient(90deg, rgba(0,1,230,1) 0%, rgba(0,16,187,1) 50%, rgba(0,15,127,1) 100%);
 }
 
 .BooksNews {
   &.sub-wrapper {
-    box-shadow: 0 0 15px 1px rgba(230,0,151, 0.4);
+    box-shadow: 0 0 20px 2px rgba(230,0,151, 0.4);
     background: $card;
   }
-  background: rgb(230,0,151);
+  background: $card;
   background: linear-gradient(90deg, rgba(230,0,151,1) 0%, rgba(187,0,135,1) 50%, rgba(127,0,92,1) 100%);
 }
 
 .Academy {
   &.sub-wrapper {
-    box-shadow: 0 0 15px 1px rgba(142,230,0, 0.4);
+    box-shadow: 0 0 20px 2px rgba(142,230,0, 0.4);
     background: $card;
   }
-  background: rgb(142,230,0);
+  background: $card;
   background: linear-gradient(90deg, rgba(142,230,0,1) 0%, rgba(131,187,0,1) 50%, rgba(93,127,0,1) 100%);
 }
 
 .None {
   &.sub-wrapper {
-    box-shadow: 0 0 15px 1px rgba(226,232,216, 0.4);
+    box-shadow: 0 0 20px 2px rgba(226,232,216, 0.4);
     background: $card;
   }
-  background: rgb(226,232,216);
+  background: $card;
   background: linear-gradient(90deg, rgba(226,232,216,1) 0%, rgba(185,189,175,1) 50%, rgba(148,150,141,1) 100%);
 }
