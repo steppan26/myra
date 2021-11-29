@@ -8,13 +8,20 @@ class BudgetsController < ApplicationController
 
   def new
     @budget = Budget.new
+    @subscriptions = Subscription.where(user_id: current_user)
   end
 
   def create
     @budget = Budget.new(budget_params)
     @budget.user_id = current_user.id
-
     if @budget.save
+      params[:budget][:subscription_ids].each do |sub_id|
+        next if sub_id == ""
+
+        sub = Subscription.find(sub_id)
+        sub.budget_id = @budget.id
+        sub.save
+      end
       redirect_to budget_path(@budget)
     else
       render :new
