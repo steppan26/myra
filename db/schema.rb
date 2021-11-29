@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_29_160249) do
+ActiveRecord::Schema.define(version: 2021_11_29_112538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,15 @@ ActiveRecord::Schema.define(version: 2021_11_29_160249) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "budget_items", force: :cascade do |t|
+    t.bigint "budget_id", null: false
+    t.bigint "subscription_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["budget_id"], name: "index_budget_items_on_budget_id"
+    t.index ["subscription_id"], name: "index_budget_items_on_subscription_id"
   end
 
   create_table "budgets", force: :cascade do |t|
@@ -93,8 +102,8 @@ ActiveRecord::Schema.define(version: 2021_11_29_160249) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image_url"
-    t.bigint "budget_id"
-    t.index ["budget_id"], name: "index_subscriptions_on_budget_id"
+    t.bigint "budget_item_id"
+    t.index ["budget_item_id"], name: "index_subscriptions_on_budget_item_id"
     t.index ["offer_id"], name: "index_subscriptions_on_offer_id"
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
@@ -120,11 +129,13 @@ ActiveRecord::Schema.define(version: 2021_11_29_160249) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "budget_items", "budgets"
+  add_foreign_key "budget_items", "subscriptions"
   add_foreign_key "budgets", "users"
   add_foreign_key "offers", "categories"
   add_foreign_key "offers", "services"
   add_foreign_key "offers", "users"
-  add_foreign_key "subscriptions", "budgets"
+  add_foreign_key "subscriptions", "budgets", column: "budget_item_id"
   add_foreign_key "subscriptions", "offers"
   add_foreign_key "users", "budgets"
 end

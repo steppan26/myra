@@ -1,24 +1,19 @@
-<div class="navbar-wrapper">
-          <nav class="navbar purple-rounded">
-            <a href="">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 9.88014C2 8.92659 2.45332 8.02983 3.22115 7.46442L12 1L20.7788 7.46443C21.5467 8.02983 22 8.92659 22 9.88014V20.5C22 21.8807 20.8807 23 19.5 23H16C15.4477 23 15 22.5523 15 22V16C15 15.7239 14.7761 15.5 14.5 15.5H9.5C9.22386 15.5 9 15.7239 9 16V22C9 22.5523 8.55228 23 8 23H4.5C3.11929 23 2 21.8807 2 20.5V9.88014Z" stroke="#FCFCFC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            </a>
-
-            <%= link_to new_subscription_path do %>
-                <svg width="75" height="75" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" data-action="click->hidden-buttons#hidden">
-                <circle cx="30" cy="30" r="30" fill="#6644B8"/>
-                <line x1="30.9109" y1="20.5479" x2="30.9109" y2="40.274" stroke="white"/>
-                <line x1="20.5479" y1="29.911" x2="40.2739" y2="29.911" stroke="white"/>
-                </svg>
-            <% end %>
-
-
-            <a href="">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z" stroke="white" stroke-opacity="0.2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            </a>
-          </nav>
-</div>
+<nav class="navbar purple-rounded">
+  <%= link_to dashboard_path do %>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M2 9.88014C2 8.92659 2.45332 8.02983 3.22115 7.46442L12 1L20.7788 7.46443C21.5467 8.02983 22 8.92659 22 9.88014V20.5C22 21.8807 20.8807 23 19.5 23H16C15.4477 23 15 22.5523 15 22V16C15 15.7239 14.7761 15.5 14.5 15.5H9.5C9.22386 15.5 9 15.7239 9 16V22C9 22.5523 8.55228 23 8 23H4.5C3.11929 23 2 21.8807 2 20.5V9.88014Z" stroke="#FCFCFC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  <% end %>
+  <%= link_to new_subscription_path do %>
+    <svg width="75" height="75" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" data-action="click->hidden-buttons#hidden">
+    <circle cx="30" cy="30" r="30" fill="#6644B8"/>
+    <line x1="30.9109" y1="20.5479" x2="30.9109" y2="40.274" stroke="white"/>
+    <line x1="20.5479" y1="29.911" x2="40.2739" y2="29.911" stroke="white"/>
+    </svg>
+  <% end %>
+  <%= link_to budgets_path do %>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M19 21L12 16L5 21V5C5 4.46957 5.21071 3.96086 5.58579 3.58579C5.96086 3.21071 6.46957 3 7 3H17C17.5304 3 18.0391 3.21071 18.4142 3.58579C18.7893 3.96086 19 4.46957 19 5V21Z" stroke="white" stroke-opacity="0.2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  <% end %>
+</nav>
