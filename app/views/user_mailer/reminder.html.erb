@@ -1,5 +1,10 @@
 <h1>Hi <%= @user.email %></h1>
 
-<p>
-  This is a test
-</p>
+<h2>Upcomming renewals</h2>
+
+<% subs = @user.subscriptions.select { |sub| (sub.renewal_date - sub.reminder_delay_days) == Date.today } %>
+<% subs.each do |sub| %>
+  <p><%= Offer.find(sub.offer_id).name %></p>
+  <p>due: <%= sub.renewal_date %></p>
+  <br>
+<% end %>
