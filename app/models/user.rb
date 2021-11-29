@@ -6,5 +6,6 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: [:facebook, :google, :apple]
   has_many :subscriptions, dependent: :destroy
   has_many :offers, through: :subscriptions
+  has_many :budgets
   monetize :global_budget_cents
 end
