@@ -1,5 +1,7 @@
 class Subscription < ApplicationRecord
+  belongs_to :user
   belongs_to :offer, optional: true
+  has_many :budgets, through: :user
   validates :additional_info, length: { maximum: 260 }
   validates :price_per_day_cents, presence: true
   validates :renewal_date, presence: true
