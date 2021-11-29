@@ -12,9 +12,11 @@
             <h5 class="text-btn">Subscription</h5>
           </div>
         <% end %>
-        <div class="btn-dropshadow btn-yellow d-none", data-hidden-buttons-target="button">
-          <h5 class="text-btn">Budget</h5>
-        </div>
+        <%= link_to new_budget_path do %>
+          <div class="btn-dropshadow btn-yellow d-none", data-hidden-buttons-target="button">
+            <h5 class="text-btn">Budget</h5>
+          </div>
+        <% end %>
       </div>
     </div>
   </div>

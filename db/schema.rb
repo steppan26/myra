@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_29_090514) do
+ActiveRecord::Schema.define(version: 2021_11_29_091610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "budgets", force: :cascade do |t|
+    t.string "name"
+    t.integer "price_per_month_cents"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_budgets_on_user_id"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -56,6 +65,8 @@ ActiveRecord::Schema.define(version: 2021_11_29_090514) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image_url"
+    t.bigint "budget_id"
+    t.index ["budget_id"], name: "index_subscriptions_on_budget_id"
     t.index ["offer_id"], name: "index_subscriptions_on_offer_id"
     t.index ["user_id"], name: "index_subscriptions_on_user_id"
   end
@@ -72,12 +83,17 @@ ActiveRecord::Schema.define(version: 2021_11_29_090514) do
     t.boolean "admin", default: false
     t.string "provider"
     t.string "uid"
+    t.bigint "budget_id"
+    t.index ["budget_id"], name: "index_users_on_budget_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "budgets", "users"
   add_foreign_key "offers", "categories"
   add_foreign_key "offers", "services"
   add_foreign_key "offers", "users"
+  add_foreign_key "subscriptions", "budgets"
   add_foreign_key "subscriptions", "offers"
+  add_foreign_key "users", "budgets"
 end
