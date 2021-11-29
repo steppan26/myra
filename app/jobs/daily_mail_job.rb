@@ -10,7 +10,7 @@ class DailyMailJob < ApplicationJob
         puts user
         mail = UserMailer.with(user: user).reminder
         p "mail created"
-        mail.deliver_now!
+        mail.deliver_now
         p "mail delivered"
       end
       p "----------"
