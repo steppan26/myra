@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2021_11_29_091610) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
   create_table "budgets", force: :cascade do |t|
     t.string "name"
     t.integer "price_per_month_cents"
@@ -115,12 +117,9 @@ ActiveRecord::Schema.define(version: 2021_11_29_091610) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-<<<<<<< HEAD
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-=======
   add_foreign_key "budgets", "users"
->>>>>>> master
   add_foreign_key "offers", "categories"
   add_foreign_key "offers", "services"
   add_foreign_key "offers", "users"
