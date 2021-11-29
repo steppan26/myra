@@ -1,0 +1,16 @@
+<section class="show-budget-wrapper">
+  <%= link_to dashboard_path, class: "home-btn" do %>
+    <i class="fas fa-undo-alt"></i><strong>Home</strong>
+  <% end %>
+  <h3><%= @budget.name.upcase %></h3>
+  <h5 class="mb-5"><%= @budget.price_per_month_cents %>€ per month</h5>
+  <% if @subscriptions.empty? %>
+    <h6>There are no subscriptions in this budget</h6>
+  <% else %>
+    <ul class=list-group>
+      <% @subscriptions.each do |subscription| %>
+        <li class="list-group-item"><%= subscription.offer.service_name %> - <%= subscription.offer.price %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</section>
