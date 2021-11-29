@@ -136,7 +136,7 @@ class SubscriptionsController < ApplicationController
   end
 
   def subscription_params
-    params.require(:subscription).permit(:additional_info, :url, :renewal_date, :reminder_delay_days, :image_url)
+    params.require(:subscription).permit(:additional_info, :url, :renewal_date, :reminder_delay_days, :image_url, :photo)
   end
 
   def set_subscriptions
