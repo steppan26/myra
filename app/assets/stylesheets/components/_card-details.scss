@@ -1,3 +1,19 @@
+.card {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #210F37;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+
+.banner{
+  width: 375px;
+  height: 309px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
 .card-details {
   display: flex;
   background: #210F37;
@@ -9,10 +25,6 @@
   justify-content: center;
 
 }
-.card-text {
-  display: flex;
-  align-items: flex-start;
-}
 
 .card-remind-option {
   display: flex;
@@ -23,4 +35,8 @@
   width: 100%;
   width: 335px;
   height: 80px;
+}
+
+.card-details {
+  display: flex;
 }
