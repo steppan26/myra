@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(version: 2021_11_29_091610) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "global_budget_cents"
+    t.integer "global_budget_cents", default: 0
     t.boolean "admin", default: false
     t.string "provider"
     t.string "uid"
