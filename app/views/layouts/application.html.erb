@@ -28,11 +28,13 @@
 <%# # navbar must be outside container %>
   <body>
     <div class="container">
-      <%= render 'shared/flashes' %>
-      <%= yield %>
+      <main>
+        <%= render 'shared/flashes' %>
+        <%= yield %>
+      </main>
     </div>
-    <% if controller_name == "pages" && controller.action_name == "dashboard" %>
+    <%# if controller_name == "pages" && controller.action_name == "dashboard" %>
       <%= render 'shared/footer' %>
-    <% end %>
+    <%# end %>
   </body>
 </html>

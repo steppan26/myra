@@ -1,4 +1,7 @@
-<h1>My Budgets</h1>
+<div class="budgets-header">
+  <h1>My Budgets</h1>
+  <%= link_to "+", new_budget_path, class: "new-budget-btn" %>
+</div>
 <ul class="budgets-wrapper">
   <% @budgets.each do |budget| %>
   <li>

@@ -1,24 +1,23 @@
-<h1>NEW BUDGET</h1>
-<%= link_to dashboard_path, class: "home-btn" do %>
-  <i class="fas fa-undo-alt"></i><strong>Home</strong>
-<% end %>
+<div data-controller="subscriptionsList">
+  <div class="budgets-header">
+    <h1>NEW BUDGET</h1>
+  </div>
 
-<%= simple_form_for(@budget) do |f| %>
-  <%= f.input :name %>
-  <%= f.input :price_per_month_cents, class: "mb-3" %>
-  <ul class="list-group">
-  <%= f.association :subscriptions,
-                    as: :check_boxes,
-                    input_html: {
-                      data: {
-                        value: 3
-                      },
-                      class: "#{lambda { |sub| "#{sub.offer.service_name}"}}"
-                    },
-                    collection: @subscriptions,
-                    include_blank: false,
-                    label_method: lambda { |sub| "#{sub.offer.service_name}"}
-  %>
+  <%= simple_form_for(@budget) do |f| %>
+    <%= f.input_field :name, label: "Budget name", placeholder: "Budget name", class: "my-3" %>
+    <%= f.input_field :price_per_month_cents, placeholder: "Budget per month", class: "my-3 budget-amount" %>
+    <%= f.association :subscriptions,
+                      input_html: {data: {subscriptionsList_target: "subscriptions"}},
+                      wrapper_html: {class: "d-none"},
+                      as: :check_boxes,
+                      collection: @subscriptions
+    %>
+    <%= f.submit "Create budget", class: "my-3 ms-2 submit-btn" %>
+  <% end %>
+  <ul class="budgets-wrapper new">
+    <h6>Subscriptions to add to budget</h6>
+    <% @subscriptions.each do |subscription| %>
+      <li data-action="click->subscriptionsList#toggleSub"><%= render 'subscriptions/subscription_card', subscription: subscription %></li>
+    <% end %>
   </ul>
-  <%= f.submit "Create new budget" %>
-<% end %>
+</div>

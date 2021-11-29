@@ -1,11 +1,59 @@
+#new_budget {
+  border-radius: 0.4rem;
+  & input {
+    color: $clr-text-primary;
+    background-color: $clr-bg-primary;
+    border-radius: 4px;
+    border: none;
+    padding: 0.5em;
+  }
+  .submit-btn {
+    background-color: $clr-btn-submit;
+  }
+}
+
+.budgets-header {
+  margin: 1rem 0;
+  padding: 0 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & a {
+    color: $clr-text-primary;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 2rem;
+    opacity: 0.7;
+    transition: opacity 160ms ease-out;
+  }
+  & a:hover {
+    color: $clr-text-primary;
+    opacity: 1;
+  }
+}
+
 .budgets-wrapper {
   list-style: none;
   padding: 0;
+  padding-bottom: 1rem;
+  &.new{
+    max-height: 58vh;
+    overflow: scroll;
+    scrollbar-width: none;
+    & .sub-card.selected {
+      border: 2px solid white;
+    }
+  }
   & a,
   & a:hover{
     text-decoration: none;
-    appearance: none;
+    -moz-appearance: none;
   }
+}
+
+.budget-amount {
+  appearance: none;
+  width: 50%;
 }
 
 .title-wrapper {

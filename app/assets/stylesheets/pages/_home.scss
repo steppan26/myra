@@ -1,11 +1,19 @@
 // Specific CSS for your home-page
 body{
   background-color: $clr-bg-secondary;
-  color: $text-gray;
+  color: $clr-text-primary;
   height: 100vh;
   width: 100vw;
-  //overflow: hidden;
-  &.container {
-    overflow: scroll;
+  & main {
+    margin-bottom: 16vh;
   }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
 }

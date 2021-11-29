@@ -4,7 +4,7 @@ class Subscription < ApplicationRecord
   has_one_attached :photo
 
   has_many :budgets
-  has_many :budget_items
+  has_many :budget_items, dependent: :destroy
   validates :additional_info, length: { maximum: 260 }
   validates :price_per_day_cents, presence: true
   validates :renewal_date, presence: true
