@@ -2,9 +2,9 @@
 
   <div class="btn btn-info" data-action="click->change-dashboard#hidden">Infos</div>
 
-  <div class="d-flex row col ls-6 justify-content-center" data-change-dashboard-target="board" >
+  <div class="" data-change-dashboard-target="board" >
     <% current_user.subscriptions.each do |subscription| %>
-        <%= render "shared/circle-logo", subscription: subscription %>
+        <%= render "subscriptions/subscription_card", subscription: subscription %>
     <% end %>
   </div>
 
@@ -24,8 +24,6 @@
           <% end %>
         </ul>
       </div>
-
-      
     </div>
   </div>
 </div>
