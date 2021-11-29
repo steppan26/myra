@@ -1,6 +1,11 @@
 <div data-controller="change-dashboard">
 
+<div class="nav-infos">
   <div class="btn btn-info" data-action="click->change-dashboard#hidden">Infos</div>
+  <%= link_to settings_path do  %>
+    <i class="fas fa-cog settings"></i>
+  <% end %>
+</div>
 
   <div class="d-flex row col ls-6 justify-content-center" data-change-dashboard-target="board" >
     <% current_user.subscriptions.each do |subscription| %>
@@ -25,7 +30,7 @@
         </ul>
       </div>
 
-      
+
     </div>
   </div>
 </div>
