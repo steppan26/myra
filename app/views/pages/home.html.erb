@@ -1,17 +1,5 @@
 <h1 class="myra-text-logo special-font a1"> MYRA </h1>
 <h2 class="myra-description a2">ALL YOUR SUBSCRIPTIONS IN ONE PLACE</h2>
-<% if current_user %>
-  <% if @subscriptions.length == 0 %>
-    <%= link_to new_subscription_path do %>
-      <%= render "homepage_button" %>
-    <% end %>
-  <% elsif %>
-    <%= link_to dashboard_path do %>
-      <%= render "homepage_button" %>
-    <% end %>
-  <% end %>
-<% else %>
-  <%= link_to home_path do %>
-      <%= render "homepage_button" %>
-  <% end %>
+<%= link_to dashboard_path do %>
+    <%= render "homepage_button" %>
 <% end %>

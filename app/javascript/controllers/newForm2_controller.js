@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = ["selectService", "selectOffer", "categoryInput", "serviceInput", "priceInput", "frequencyInput", "displayNewOffer",
                     "category", "service", "offerServiceNameInput", "offerPriceInput", "offerFrequencyInput",
                     "customOfferInput", "customService", "customOffer", "formPartOne", "formPartTwo", "renewalInput",
-    "delayInput", "infoInput", "delayFrequencyInput", "serviceInput", "offerIdInput", "offerNameInput", "formSubmitButton", "reminderDelayDaysInput", "additionalInfoInput", "reminderDelayDaysInput"]
+    "delayInput", "infoInput", "delayFrequencyInput", "serviceInput", "offerIdInput", "offerNameInput", "formSubmitButton", "reminderDelayDaysInput", "additionalInfoInput", "reminderDelayDaysInput", "renewalDateInput"]
 
   connect() {
   };
@@ -28,6 +28,7 @@ export default class extends Controller {
     const target = event.currentTarget
     const serviceId = target.dataset.serviceId;
     this.serviceInputTarget.value = serviceId;
+    this.serviceInputTarget.dataset.serviceName = target.dataset.serviceName
     this._activate_card(target, this.serviceTargets)
     const query = encodeURIComponent(serviceId);
     fetch(`/searchOffer/${query}`)
@@ -70,7 +71,7 @@ export default class extends Controller {
         const priceInput = this.offerPriceInputTarget;
         const frequencyInput = this.offerFrequencyInputTarget;
         // set the values of the form with the offer details
-        nameInput.value = this.serviceInputTarget.value;
+        nameInput.value = this.serviceInputTarget.dataset.serviceName;
         priceInput.value = target.dataset.offerPrice;
         frequencyInput.value = target.dataset.offerFrequency;
         // disable the inputs as values are pre-defined
@@ -86,7 +87,7 @@ export default class extends Controller {
     })
   };
 
-  offerSelected(event) {
+  offerSelected() {
     const url = "/newOffer";
     fetch(url)
     .then(res => res.text())
@@ -139,10 +140,11 @@ export default class extends Controller {
   }
 
   createSubscription() {
-    const infoValue = this.infoInputTarget.value
-    const renewalValue = this.renewalInputTarget.value
-    const delayValue = this.delayInputTarget.value
-    const delayFrequencyValue = this.delayFrequencyInputTarget.value
+    const infoValue = this.infoInputTarget.value;
+    const renewalValue = this.renewalInputTarget.value;
+    const delayValue = this.delayInputTarget.value;
+    const delayFrequencyValue = this.delayFrequencyInputTarget.value;
+    this.renewalDateInputTarget.value = renewalValue;
     this.additionalInfoInputTarget.value = infoValue;
     this.reminderDelayDaysInputTarget.value = this._get_reminder_in_days(delayValue, delayFrequencyValue);
 
@@ -173,14 +175,6 @@ export default class extends Controller {
   _create_new_subscription() {
     const form = document.getElementById('real-form').children[0];
     form.submit()
-    return
-    fetch("/subscriptions", {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
   };
 
   _scroll_to(target) {
