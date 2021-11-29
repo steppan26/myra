@@ -11,10 +11,31 @@
   transition: all 0.5s ease-in;
 }
 
-.footer {
-  height: 100px;
+.navbar-wrapper {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-height: 16vh;
+  height: 3.5rem;
+  flex-wrap: wrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  align-content: center;
+  justify-content: center;
+}
+
+.navbar {
+  width: 80%;
+  justify-content: space-around;
+}
+
+.purple-rounded {
+  background-color: #210F37;
+  border-radius: 20px;
 }
 
 circle {
-  background: linear-gradient(90deg, rgb(113, 158, 209) 0%, rgba(79,209,197,1) 100%)
+  background-color: #6644B8;
 }
