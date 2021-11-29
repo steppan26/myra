@@ -11,13 +11,13 @@
   justify-content: stretch;
   border-radius: 0.4rem;
   background-color: $clr-bg-primary;
-  padding: 0.8em;
+  padding: 1em;
+  margin: 1rem 0.5rem;
   & img {
     height: fit-content;
-    flex: 0 1 23%;
+    flex: 0 1 20%;
     border-radius: 0.4rem;
-    margin-right: 1rem;
-    margin-bottom: 1.5rem;
+    margin-right: 1.2rem;
   }
   & h4 {
     font-weight: 600;
@@ -26,9 +26,6 @@
   & h6 {
     font-size: 0.8rem;
   }
-}
-
-.sub-card-remaining-days {
 }
 
 .notification {

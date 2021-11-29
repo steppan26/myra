@@ -1,6 +1,10 @@
 class BudgetsController < ApplicationController
   after_action :authorize_budget, only: %i[new show create]
 
+  def index
+    @budgets = Budget.where(user_id: current_user.id)
+  end
+
   def show
     @budget = Budget.find(params[:id])
     @subscriptions = Subscription.where(budget_id: @budget.id)

@@ -1,0 +1,10 @@
+<h1>My Budgets</h1>
+<ul class="budgets-wrapper">
+  <% @budgets.each do |budget| %>
+  <li>
+    <%= link_to budget_path(budget) do %>
+      <%= render 'budgets/budget_card', budget: budget %>
+    <% end %>
+  </li>
+  <% end %>
+</ul>
