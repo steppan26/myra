@@ -13,6 +13,3 @@
   <h6><%=budget.subscriptions.count%> <%= "subscriptions".pluralize(2) %></h6>
 </div>
 
-<% link_to budget_path(@budget), data: {method: :delete, confirm: "DELETE #{@budget.name}?"} do %>
-  <i class="fas fa-trash-alt"></i>
-<% end %>

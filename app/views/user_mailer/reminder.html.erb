@@ -7,22 +7,19 @@
   <title>Myra Reminder</title>
 </head>
 <body>
-<header>
+  <% subs = @user.subscriptions.select { |sub| (sub.renewal_date - sub.reminder_delay_days) == Date.today } %>
 
-</header>
-<% subs = @user.subscriptions.select { |sub| (sub.renewal_date - sub.reminder_delay_days) == Date.today } %>
+  <h1>Hi <%= @user.email %></h1>
+    <% subs.each do |sub| %>
+        <% offer = Offer.find(sub.offer_id) %>
+        <p>Your subscription to <%= offer.service_name %> is about to renew !</p>
+        <p> <%= offer.name %> / <%= sub.renewal_date %> </p>
+  <% end %>
 
-<h1>Hi <%= @user.email %></h1>
-  <% subs.each do |sub| %>
-      <% offer = Offer.find(sub.offer_id) %>
-      <p>Your subscription to <%= offer.service_name %> is about to renew !</p>
-      <p> <%= offer.name %> / <%= sub.renewal_date %> </p>
-<% end %>
-
-<p>You don't use <%= offer.service_name %> anymore ? </p>
-<p> -> <span>Cancel here</span> <- </p>
-<% link_to budget_path(@budget), data: {method: :delete, confirm: "DELETE #{@budget.name}?"} do %>
-  <i class="fas fa-trash-alt"></i>
-<% end %>
+  <p>You don't use this anymore ? </p>
+  <p> -> <span> Cancel here </span> <- </p>
+  <%# <% link_to budget_path(@budget), data: {method: :delete, confirm: "DELETE #{@budget.name}?"} do %>
+    <%# <i class="fas fa-trash-alt"></i> %>
+  <%# <% end %> %> %>
 </body>
 </html>
