@@ -51,8 +51,9 @@
         <%= yield %>
       </main>
     </div>
-    <%# if controller_name == "pages" && controller.action_name == "dashboard" %>
+
+<% unless params[:action] == "home" %>
       <%= render 'shared/footer' %>
-    <%# end %>
+    <% end %>
   </body>
 </html>

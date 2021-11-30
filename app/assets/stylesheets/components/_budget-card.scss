@@ -69,3 +69,17 @@
   padding: 1em;
   margin: 1rem 0.5rem;
 }
+
+.shrink {
+   display: flex;
+   flex-shrink: 1;
+   width: 100%
+}
+
+.slider-delete {
+  width: 0;
+  overflow: hidden;
+  transition: width 250ms ease-in-out;
+}
+
+

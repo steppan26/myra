@@ -1,5 +1,5 @@
 <div class="budget-card">
-  <div class="title-wrapper">
+  <div>
     <h4><%= budget.name %></h4>
     <div class="budget-amounts">
       <h6>Budget: <%= humanized_money_with_symbol budget.price_per_month %></h6>
@@ -12,3 +12,4 @@
   </div>
   <h6><%=budget.subscriptions.count%> <%= "subscriptions".pluralize(2) %></h6>
 </div>
+
