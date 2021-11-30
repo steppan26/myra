@@ -1,5 +1,6 @@
 
 <div class="dashboard-cards">
+<h1 class="my-3">My Subscriptions</h1>
   <% current_user.subscriptions.each do |subscription| %>
     <%= render "subscriptions/subscription_card", subscription: subscription %>
   <% end %>
