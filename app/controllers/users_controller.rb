@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user.global_budget_cents = params[:user]["global_budget"] * 100
     @user.update(user_params)
     redirect_to "/settings"
   end
@@ -13,7 +14,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:global_budget_cents)
+    params.require(:user).permit(:global_budget)
   end
 
   def set_user

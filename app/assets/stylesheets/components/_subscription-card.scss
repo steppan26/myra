@@ -29,6 +29,13 @@
   }
 }
 
+.dashboard-cards {
+  & a {
+    color: white;
+    text-decoration: none;
+  }
+}
+
 .notification {
   margin-top: 1rem;
   padding: 0.4em;

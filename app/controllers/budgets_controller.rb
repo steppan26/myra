@@ -21,7 +21,6 @@ class BudgetsController < ApplicationController
     if @budget.save
       params[:budget][:subscription_ids].each do |sub_id|
       next if sub_id == ""
-
       new_budget_item = BudgetItem.new(budget_id: @budget.id, subscription_id: sub_id)
       new_budget_item.save
       end
@@ -40,7 +39,7 @@ class BudgetsController < ApplicationController
   private
 
   def budget_params
-    params.require(:budget).permit(:name, :price_per_month_cents)
+    params.require(:budget).permit(:name, :price_per_month)
   end
 
   def authorize_budget

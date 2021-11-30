@@ -5,7 +5,7 @@
 
   <%= simple_form_for(@budget) do |f| %>
     <%= f.input_field :name, label: "Budget name", placeholder: "Budget name", class: "my-3" %>
-    <%= f.input_field :price_per_month_cents, placeholder: "Budget per month", class: "my-3 budget-amount" %>
+    <%= f.input_field :price_per_month, placeholder: "Budget per month", class: "my-3 budget-amount" %>
     <%= f.association :subscriptions,
                       input_html: {data: {subscriptionsList_target: "subscriptions"}},
                       wrapper_html: {class: "d-none"},
@@ -17,7 +17,7 @@
   <ul class="budgets-wrapper new">
     <h6>Subscriptions to add to budget</h6>
     <% @subscriptions.each do |subscription| %>
-      <li data-action="click->subscriptionsList#toggleSub"><%= render 'subscriptions/subscription_card', subscription: subscription %></li>
+      <li data-action="click->subscriptionsList#toggleSub"><%= render 'subscriptions_choice', subscription: subscription %></li>
     <% end %>
   </ul>
 </div>

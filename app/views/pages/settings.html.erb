@@ -1,13 +1,23 @@
-<h1>Settings</h1>
-
-<h6>Email: <%= current_user.email %></h6>
-<h6>Total budget: <%= humanized_money_with_symbol current_user.global_budget %></h6>
-
-<% if policy(User).update? %>
-  <%= link_to "Change the budget", edit_user_path(current_user) %>
-<% end %>
-
-<br>
-<%= link_to "Back", dashboard_path %>
-
-<%= render 'shared/footer' %>
+  <h2>Settings</h2>
+  <br>
+  <div class="infos" data-controller="edit-infos">
+    <div data-edit-infos-target="mail">
+      <h6><i class="fas fa-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Email</strong>: <%= current_user.email %>
+      <i class="far fa-edit" data-action="click->edit-infos#displayForm"></i>
+    </div>
+    <%= simple_form_for current_user, html: { class: 'd-none', data: { edit_infos_target: 'mail_form' } } do |f| %>
+      <%= f.input :email %>
+      <%= f.submit "Done", class:"btn btn-primary" %>
+    <% end %>
+  </h6>
+  <br>
+  <div data-edit-infos-target="budget">
+    <h6><i class="fas fa-money-check"></i>&nbsp;&nbsp;&nbsp;<strong>Total budget</strong>: <%= humanized_money_with_symbol current_user.global_budget%>/month
+      <i class="far fa-edit" data-action="click->edit-infos#displayForm"></i>
+   </div>
+      <%= simple_form_for current_user, html: { class: 'd-none', data: { edit_infos_target: 'budget_form' } } do |f| %>
+        <%= f.input :global_budget %>
+        <%= f.submit "Done", class:"btn btn-primary" %>
+      <% end %>
+    </h6>
+</div>
