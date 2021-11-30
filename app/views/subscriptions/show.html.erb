@@ -7,12 +7,16 @@
   </div>
   <div class="show-info">
     <div class="info-description">
-      <i class="fas fa-info-circle"></i>
+      <i class="far fa-credit-card"></i>
       <p><%= @subscription.offer.name %> at <strong><%= @subscription.offer.price %>€</strong> <%= @subscription.offer.frequency %></p>
     </div>
     <div class="info-description">
       <i class="fas fa-bullhorn"></i>
       <p>Next Renewal: <span><%= @subscription.renewal_date.strftime("%d %B, %Y") %></span></p>
+    </div>
+    <div class="info-description">
+      <i class="fas fa-info-circle"></i>
+      <p><%= @subscription.additional_info %></p>
     </div>
   </div>
   <div class="reminder-section">
@@ -24,8 +28,7 @@
       <p>Email</p>
     </div>
   </div>
-  <%= link_to "Delete", subscription_path(@subscription), class: "button-wide-red-no-bg", method: :delete %>
-  <%= link_to dashboard_path, class: "close-btn" do %>
-    <i class="fas fa-times"></i>
+  <%= link_to dashboard_path, class: "delete-btn" do %>
+    <i class="fas fa-trash-alt"></i>
   <% end %>
 </div>
