@@ -1,3 +1,45 @@
+.button-wide-red-no-bg {
+  display: block;
+  text-align: center;
+  width: 100%;
+  color: $hardred;
+  font-weight: 600;
+  margin: 2rem 0;
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+    color: $hardred;
+  }
+}
+
+.delete-btn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  color: $hardred;
+  font-size: 1.5rem;
+  font-weight: 700;
+  opacity: 0.6;
+  transition: opacity 220ms ease-in-out;
+  &:hover {
+    color: $hardred;
+    opacity: 1;
+  }
+}
+
+.edit-btn i {
+  position: absolute;
+  top: -8px;
+  right: 5px;
+  border-radius: 50%;
+  background-color: rgba(115, 115, 115, 0.3);
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  border: 1px solid $clr-text-primary;
+  opacity: 0.4;
+}
+
+
 .btn-delete {
   color: white;
   border-radius: 20px;
@@ -9,15 +51,6 @@
   background: rgba(255, 255, 255, 0.17);
   border-radius: 12px;
 }
-
-.edit-btn {
-  width: 32px;
-  height: 32px;
-  background: rgba(255, 255, 255, 0.17);
-  border-radius: 12px;
-  text-decoration: none;
-  color: white;
-  }
 
 .text-btn {
   color: white;
