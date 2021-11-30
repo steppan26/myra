@@ -1,34 +1,37 @@
-<%# <div class="container"> %>
-
-  <div class="banner" style="background-image:  linear-gradient(360deg, #17092A 0%, rgba(23, 9, 42, 0) 100%), url('<%= @subscription.image_url %>')">
-  <h1><%= @subscription.offer.service_name %></h1>
-  <p style="color: grey;"><%= @subscription.offer.category.name %> service</p>
+<div class="show-wrapper">
+  <div class="show-banner" style="background-image: url('<%= @subscription.image_url %>');">
+    <div class="image-fader">
+      <h3><%= @subscription.offer.service_name %></h3>
+      <h5><%= @subscription.offer.category.name %></h5>
+    </div>
   </div>
-
-
-  <div class="card">
-  <div class="card-icon">
-  <i class="fas fa-money-bill-alt"></i>
+  <div class="show-info">
+    <div class="edit-btn">
+      <i class="fas fa-edit"></i>
+    </div>
+    <div class="info-description">
+      <i class="far fa-credit-card"></i>
+      <p><%= @subscription.offer.name %> at <strong><%= @subscription.offer.price %>€</strong> <%= @subscription.offer.frequency %></p>
+    </div>
+    <div class="info-description">
+      <i class="fas fa-bullhorn"></i>
+      <p>Next Renewal: <span><%= @subscription.renewal_date.strftime("%d %B, %Y") %></span></p>
+    </div>
+    <div class="info-description">
+      <i class="fas fa-info-circle"></i>
+      <p><%= @subscription.additional_info %></p>
+    </div>
   </div>
-  <div class="card-text"><%=@subscription.offer.name%>
-  <%= @subscription.offer.price %>€ /month
+  <div class="reminder-section">
+    <h5>Remind me by</h5>
+    <div class="reminder-options-wrapper">
+      <div class="custom-checkbox"><div class="checked hidden"><i class="fas fa-check"></i></div></div>
+      <p>Phone</p>
+      <div class="custom-checkbox checked"><div class="checked"><i class="fas fa-check"></i></div></div>
+      <p>Email</p>
+    </div>
   </div>
-  </div>
-
-  <div class="card">
-  <div class="card-icon">
-  <i class="fas fa-bullhorn"></i>
-  </div>
-  <div class="card-text"> until <%= @subscription.renewal_date %>
-  </div>
-  </div>
-
-  <div class="card">
-  <p>remind me by </p>
-  </div>
-
-
-  <div class="btn-delete d-flex justify-content-around">
-  <%= link_to "Ok", dashboard_path, class: "btn btn-delete" %>
-  <%= link_to "Delete", subscription_path(@subscription), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-delete" %>
-  </div>
+  <%= link_to dashboard_path, class: "delete-btn" do %>
+    <i class="fas fa-trash-alt"></i>
+  <% end %>
+</div>
