@@ -1,3 +1,7 @@
 <div class="wrap">
-  <button class="home-button">>></button>
+  <% if current_user %>
+    <button class="home-button"><i class="fas fa-angle-double-right"></i></button>
+  <% else %>
+    <button class="home-button"><i class="fas fa-sign-in-alt"></i></button>
+  <% end %>
 </div>
