@@ -66,7 +66,10 @@ class SubscriptionsController < ApplicationController
   end
 
   def update
-    @subscription.update(subscription_params)
+    authorize @subscription
+    subscription = Subscription.find(params[:id])
+    subscription.update(subscription_params)
+    redirect_to subscription_path(subscription)
   end
 
   def destroy

@@ -1,7 +1,8 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["show", "edit", "renewalInput", "renewalElement", "addInfoInput", "addInfoElement", "delayInput", "delayElement"]
+  static targets = ["show", "edit", "renewalInput", "renewalElement", "addInfoInput", "addInfoElement",
+                    "delayInput", "delayElement", "formRenewalDate", "formAddInfo", "formDaysDelay"]
 
 
   connect(){
@@ -26,9 +27,10 @@ export default class extends Controller {
   }
 
   save_changes(){
-    const renewalDateValue = this.renewalInputTarget.value
-    const addInfoValue = this.addInfoInputTarget.value
-    const delayValue = this.delayInputTarget.value
+    this.formRenewalDateTarget.value = this.renewalInputTarget.value
+    this.formAddInfoTarget.value = this.addInfoInputTarget.value
+    this.formDaysDelayTarget.value = this.delayInputTarget.value
+    document.getElementById('form-wrapper').children[0].submit()
   }
 
   discard_changes(){

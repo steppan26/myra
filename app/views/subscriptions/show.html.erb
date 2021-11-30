@@ -1,4 +1,4 @@
-<div class="show-wrapper" data-controller="subscriptionShow">
+<div class="show-wrapper" data-controller="subscriptionShow" data-sub-id="<%=@subscription.id%>" >
   <div class="show-banner" style="background-image: url('<%= @subscription.image_url %>');">
     <div class="image-fader">
       <h3><%= @subscription.offer.service_name %></h3>
@@ -7,6 +7,14 @@
   </div>
   <div>
     <div class="show-info hidden" id="sub-edit" data-subscriptionShow-target="edit">
+      <div class="hidden" id="form-wrapper">
+        <%= simple_form_for(@subscription) do |f| %>
+          <%= f.input :renewal_date, as: :string, input_html: { data: {subscriptionShow_target: "formRenewalDate"}} %>
+          <%= f.input :additional_info, input_html: { data: {subscriptionShow_target: "formAddInfo"}} %>
+          <%= f.input :reminder_delay_days, input_html: { data: {subscriptionShow_target: "formDaysDelay"}} %>
+          <%= f.submit%>
+        <% end %>
+      </div>
       <div class="edit-btns">
         <i class="far fa-check-circle green-icon" data-action='click->subscriptionShow#save_changes'></i>
         <i class="far fa-times-circle red-icon" data-action='click->subscriptionShow#discard_changes'></i>
