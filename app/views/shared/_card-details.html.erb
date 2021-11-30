@@ -1,4 +1,7 @@
 <div class="card-details">
   <div class="details-icon"><%= icon %></div>
-  <div class="details-type"><%= type %> <%= data %> paiement par mois</div>
+  <div class="details-type"><%= type %> <%= data %>
+  <%= "#{humanized_money_with_symbol @subscription.offer.price} #{@subscription.offer.frequency}"%>
+  </div>
+  <br>
 </div>

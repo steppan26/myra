@@ -1,36 +1,34 @@
-<div class="container">
-  <div class="card-subscription">
-    <%= link_to @subscription.url do%>
-      <div class="card-img">
-        <img src=<%= @subscription.image_url %>>
-      </div>
-    <% end %>
-    <div class="card-body">
-      <%= render 'shared/card-details',
-          icon: "💳",
-          type: "Offer",
-          data: @subscription.offer.name
-      %>
-      <%= render 'shared/card-details',
-          icon: "📆",
-          type: "Renewal Date",
-          data: @subscription.renewal_date
-      %>
-      <%= render 'shared/card-details',
-          icon: "💰",
-          type: "Price",
-          data: "#{humanized_money_with_symbol @subscription.offer.price} #{@subscription.offer.frequency}"
-      %>
-      <%= render 'shared/card-details',
-          icon: "🛎",
-          type: "Remind me by ",
-          data: "#{pluralize(@subscription.reminder_delay_days, "day")} before"
-      %>
-    </div>
-    <div class="card-buttons-wrapper">
-      <div class="card-buttons">
-        <%= link_to "Delete", subscription_path(@subscription), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-red-delete" %>
-      </div>
-    </div>
+<%# <div class="container"> %>
+
+  <div class="banner" style="background-image:  linear-gradient(360deg, #17092A 0%, rgba(23, 9, 42, 0) 100%), url('<%= @subscription.image_url %>')">
+  <h1><%= @subscription.offer.service_name %></h1>
+  <p style="color: grey;"><%= @subscription.offer.category.name %> service</p>
   </div>
-</div>
+
+
+  <div class="card">
+  <div class="card-icon">
+  <i class="fas fa-money-bill-alt"></i>
+  </div>
+  <div class="card-text"><%=@subscription.offer.name%>
+  <%= @subscription.offer.price %>€ /month
+  </div>
+  </div>
+
+  <div class="card">
+  <div class="card-icon">
+  <i class="fas fa-bullhorn"></i>
+  </div>
+  <div class="card-text"> until <%= @subscription.renewal_date %>
+  </div>
+  </div>
+
+  <div class="card">
+  <p>remind me by </p>
+  </div>
+
+
+  <div class="btn-delete d-flex justify-content-around">
+  <%= link_to "Ok", dashboard_path, class: "btn btn-delete" %>
+  <%= link_to "Delete", subscription_path(@subscription), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-delete" %>
+  </div>

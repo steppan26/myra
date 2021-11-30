@@ -1,33 +1,12 @@
-.card-subscription {
-  background-color: $glass;
-  border-radius: 20px;
-  margin-top: 4em;
-  backdrop-filter: blur(86.985px);
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
-  .card-img {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    height: 5em;
-    img {
-    position: absolute;
-    object-fit: cover;
-    top: -3em;
-    height: 130px;
-    width: 130px;
-    border-radius: 50px;
-    img {
-      width: 100%;
-    }
-    }
-  }
+.card-img {
+  background: linear-gradient(180deg, #17092A 0%, rgba(23, 9, 42, 0) 100%);
+  transform: rotate(-180deg);
 }
 
-.card-budget {
-  width: 334px;
-  height: 178px;
-  background: linear-gradient(132.02deg, rgba(247, 178, 103, 0.65) 26.3%, rgba(247, 178, 103, 0.3315) 85.19%);
-  border-radius: 20px;
+.card-body {
+  width: 335px;
+  height: 132px;
+  background: #210F37;
 }
 
 .budget-name {
@@ -58,32 +37,13 @@
   padding-left: 200px;
 }
 
-.card-buttons-wrapper{
-  height: 1em;
-  position: relative;
-}
 
 .card-buttons {
   width: 100%;
   display: flex;
-  justify-content: space-around;
-  position: absolute;
+  justify-content: center;
   bottom: -1em;
   align-items: center;
-}
-
-.btn-green-done {
-  background-color:#71CC9D ;
-  color: white;
-  border-radius: 50px;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.btn-red-delete {
-  color: white;
-  background-color: #E797B4;
-  border-radius: 50px;
-  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.14), 0px 1px 10px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 
