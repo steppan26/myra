@@ -27,6 +27,19 @@
   }
 }
 
+.edit-btn i {
+  position: absolute;
+  top: -8px;
+  right: 5px;
+  border-radius: 50%;
+  background-color: rgba(115, 115, 115, 0.3);
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  border: 1px solid $clr-text-primary;
+  opacity: 0.4;
+}
+
+
 .btn-delete {
   color: white;
   border-radius: 20px;
@@ -38,15 +51,6 @@
   background: rgba(255, 255, 255, 0.17);
   border-radius: 12px;
 }
-
-.edit-btn {
-  width: 32px;
-  height: 32px;
-  background: rgba(255, 255, 255, 0.17);
-  border-radius: 12px;
-  text-decoration: none;
-  color: white;
-  }
 
 .text-btn {
   color: white;
