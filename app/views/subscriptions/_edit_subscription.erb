@@ -1,0 +1,37 @@
+<div class="show-wrapper">
+  <div class="show-banner" style="background-image: url('<%= @subscription.image_url %>');">
+    <div class="image-fader">
+      <h3><%= @subscription.offer.service_name %></h3>
+      <h5><%= @subscription.offer.category.name %></h5>
+    </div>
+  </div>
+  <div class="show-info" id="sub-show">
+    <div class="edit-btn">
+      <i class="fas fa-edit"></i>
+    </div>
+    <div class="info-description">
+      <i class="far fa-credit-card"></i>
+      <p><%= @subscription.offer.name %> at <strong><%= @subscription.offer.price %>€</strong> <%= @subscription.offer.frequency %></p>
+    </div>
+    <div class="info-description">
+      <i class="fas fa-bullhorn"></i>
+      <p>Next Renewal: <span><%= @subscription.renewal_date.strftime("%d %B, %Y") %></span></p>
+    </div>
+    <div class="info-description">
+      <i class="fas fa-info-circle"></i>
+      <p><%= @subscription.additional_info %></p>
+    </div>
+  </div>
+  <div class="reminder-section">
+    <h5>Remind me by</h5>
+    <div class="reminder-options-wrapper">
+      <div class="custom-checkbox"><div class="checked hidden"><i class="fas fa-check"></i></div></div>
+      <p>Phone</p>
+      <div class="custom-checkbox checked"><div class="checked"><i class="fas fa-check"></i></div></div>
+      <p>Email</p>
+    </div>
+  </div>
+  <%= link_to dashboard_path, class: "delete-btn" do %>
+    <i class="fas fa-trash-alt"></i>
+  <% end %>
+</div>

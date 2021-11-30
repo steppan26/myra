@@ -37,6 +37,12 @@
   padding: 0.3rem 1.5rem;
   color: rgba($color: $clr-text-primary, $alpha: 0.8);
   font-size: 0.9rem;
+  & .red-icon {
+    color: $hardred;
+  }
+  & .green-icon {
+    color: $hardgreen;
+  }
   & .info-description {
     margin: 1.5rem 0;
     display: flex;
@@ -53,6 +59,17 @@
       font-size: 1rem;
       color: rgba($color: $clr-text-primary, $alpha: 1);
     }
+  }
+  & textarea {
+    width: 100%;
+  }
+
+  & input,
+  & textarea {
+    color: $clr-text-primary;
+    background-color: $clr-btn-submit;
+    border-radius: 4px;
+    border: none;
   }
 }
 
@@ -92,6 +109,16 @@
   & p {
     margin-right: 2rem;
   }
+}
+
+#days-delay-edit input {
+  color: $clr-text-primary;
+  width: 15%;
+  text-align: center;
+  margin: 0 0.5rem;
+  background-color: $clr-btn-submit;
+  border-radius: 4px;
+  border: none;
 }
 
 /////////////// previous ///////////////////
