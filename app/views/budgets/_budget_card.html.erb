@@ -1,5 +1,5 @@
 <div class="budget-card">
-  <div class="shrink">
+  <div>
     <h4><%= budget.name %></h4>
     <div class="budget-amounts">
       <h6>Budget: <%= humanized_money_with_symbol budget.price_per_month %></h6>
@@ -13,8 +13,6 @@
   <h6><%=budget.subscriptions.count%> <%= "subscriptions".pluralize(2) %></h6>
 </div>
 
-<div class="slider-delete">
-<%= link_to "fas fa-trash-alt" budget_path(@budget), data: {method: :delete, confirm: "Are you sure you wish to delete #{@budget.name}?"} do %>
-  <h5>Delete Budget</h5>
+<% link_to budget_path(@budget), data: {method: :delete, confirm: "DELETE #{@budget.name}?"} do %>
+  <i class="fas fa-trash-alt"></i>
 <% end %>
-</div>

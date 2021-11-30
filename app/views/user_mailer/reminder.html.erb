@@ -1,14 +1,28 @@
-<h1>Hi <%= @user.email %></h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Myra Reminder</title>
+</head>
+<body>
+<header>
 
-<h2>Upcomming renewals</h2>
-
+</header>
 <% subs = @user.subscriptions.select { |sub| (sub.renewal_date - sub.reminder_delay_days) == Date.today } %>
-<ul>
+
+<h1>Hi <%= @user.email %></h1>
   <% subs.each do |sub| %>
-    <li>
       <% offer = Offer.find(sub.offer_id) %>
-      <p><%= offer.service_name %> <%= offer.name %></p>
-      <p>due: <%= sub.renewal_date %></p>
-    </li>
-  <% end %>
-</ul>
+      <p>Your subscription to <%= offer.service_name %> is about to renew !</p>
+      <p> <%= offer.name %> / <%= sub.renewal_date %> </p>
+<% end %>
+
+<p>You don't use <%= offer.service_name %> anymore ? </p>
+<p> -> <span>Cancel here</span> <- </p>
+<% link_to budget_path(@budget), data: {method: :delete, confirm: "DELETE #{@budget.name}?"} do %>
+  <i class="fas fa-trash-alt"></i>
+<% end %>
+</body>
+</html>
