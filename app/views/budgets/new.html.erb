@@ -17,7 +17,7 @@
   <ul class="budgets-wrapper new">
     <h6>Subscriptions to add to budget</h6>
     <% @subscriptions.each do |subscription| %>
-      <li data-action="click->subscriptionsList#toggleSub"><%= render 'subscriptions/subscription_card', subscription: subscription %></li>
+      <li data-action="click->subscriptionsList#toggleSub"><%= render 'subscriptions_choice', subscription: subscription %></li>
     <% end %>
   </ul>
 </div>

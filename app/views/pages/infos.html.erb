@@ -1,0 +1,24 @@
+<div class="info-card-wrapper">
+  <div class="text-center"><h1> INFORMATIONS </h1></div>
+  <div class="info-card">
+    <h3>Global budget: <%= humanized_money_with_symbol current_user.global_budget %>/month</h3>
+    <h3>Total expenses: <%= humanized_money_with_symbol @user_monthly_spend %>/month</h3>
+    <br>
+    <h3> Expenses by category:</h3>
+    <ul>
+      <% @category_sums.each do |category| %>
+        <% if category[1] > 0 %>
+          <li><h6><%= category[0] %>: <%= humanized_money_with_symbol category[1] %>/month</h6></li>
+        <% end %>
+      <% end %>
+    </ul>
+  <% unless @user_budgets.length == 0 %>
+    <h3>Expenses by budget:</h3>
+    <% @user_budgets.each do |budget| %>
+      <ul>
+        <li><h6><%= budget.name %>:  <%= humanized_money_with_symbol ((budget.subscriptions.sum(:price_per_day_cents).to_f * 30) / 100) %>/month</h6></li>
+      </ul>
+    <% end %>
+  <% end %>
+  </div>
+</div>

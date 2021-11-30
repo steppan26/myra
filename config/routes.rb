@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get "/dashboard", to: "pages#dashboard"
   get "settings", to: "pages#settings"
+  get "infos", to: "pages#infos"
 
   # 'new' form routes
   get "/searchService/:query", to: 'subscriptions#display_services'
