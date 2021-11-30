@@ -112,7 +112,7 @@ class SubscriptionsController < ApplicationController
 
   def subscription_overview
     authorize :subscription
-
+    @service = params[:serviceId] == "-1" ? nil : Service.find(params[:serviceId])
     @offer = Offer.new(
       service_id: params[:serviceId],
       name: params[:name],
@@ -122,7 +122,7 @@ class SubscriptionsController < ApplicationController
     )
     @offer.user = current_user if current_user
 
-    render partial: 'subscriptions/new_subscription', locals: { offer: @offer }
+    render partial: 'subscriptions/new_subscription', locals: { offer: @offer, service: @service }
   end
 
   private
