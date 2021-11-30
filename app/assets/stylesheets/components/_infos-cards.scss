@@ -1,0 +1,18 @@
+.infos-card {
+  background: #6644B8;
+  border-radius: 10px;
+  padding: 6px;
+  margin: 13px;
+  & p {
+    margin: 0px;
+    text-decoration: none;
+  }
+  & ul {
+    display: inline-block;
+  }
+}
+
+.infos-cards {
+  text-align: center;
+  margin-top: 20px;
+}
