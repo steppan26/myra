@@ -3,7 +3,7 @@
     <i class="fas fa-undo-alt"></i><strong>Home</strong>
   <% end %>
   <h2><%= @budget.name.upcase %></h2>
-  <h5 class="mt-3 mb-5"><%= @budget.price_per_month_cents %>€ per month</h5>
+  <h5 class="mt-3 mb-5"><%= humanized_money_with_symbol @budget.price_per_month %> per month</h5>
   <% if @budget.subscriptions.empty? %>
     <h6>There are no subscriptions in this budget</h6>
   <% else %>
