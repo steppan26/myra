@@ -10,3 +10,15 @@
   display: flex;
   justify-content: space-around;
 }
+
+.active {
+  font-size: 25px;
+  color: white;
+  opacity: 1;
+}
+
+.inactive {
+  font-size: 25px;
+  color: white;
+  opacity: 0.3;
+}
