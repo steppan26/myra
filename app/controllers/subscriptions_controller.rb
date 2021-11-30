@@ -63,9 +63,6 @@ class SubscriptionsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
   def update
     authorize @subscription
     subscription = Subscription.find(params[:id])
