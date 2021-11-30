@@ -6,7 +6,8 @@
 <ul>
   <% subs.each do |sub| %>
     <li>
-      <p><%= Offer.find(sub.offer_id).name %></p>
+      <% offer = Offer.find(sub.offer_id) %>
+      <p><%= offer.service_name %> <%= offer.name %></p>
       <p>due: <%= sub.renewal_date %></p>
     </li>
   <% end %>
