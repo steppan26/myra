@@ -96,7 +96,7 @@ export default class extends Controller {
   };
 
   saveOffer(){
-    const nameInput = this.offerNameInputTarget;
+    const nameInput = this.offerServiceNameInputTarget;
     const priceInput = this.offerPriceInputTarget;
     const frequencyInput = this.offerFrequencyInputTarget;
     const nameError = document.getElementById('name-error');
@@ -113,7 +113,7 @@ export default class extends Controller {
     } else if (priceInput.value === "") {
       priceError.classList.remove('hidden');
     } else {
-      //this.serviceNameInputTarget.value = nameInput.value;
+      this.serviceNameInputTarget.value = nameInput.value;
       this.priceInputTarget.value = priceInput.value;
       this.frequencyInputTarget.value = frequencyInput.value;
       this.display_sub_overview();
@@ -126,9 +126,10 @@ export default class extends Controller {
     const price = encodeURIComponent(this.priceInputTarget.value);
     const frequency = encodeURIComponent(this.frequencyInputTarget.value);
     const category = encodeURIComponent(this.categoryInputTarget.value);
-    const service = encodeURIComponent(this.serviceIdInputTarget.value) || -1;
-    console.log(name)
-    fetch(`/subOverview/?serviceId=${service}&name=${name}&categoryId=${category}&price=${price}&frequency=${frequency}`
+    const service = encodeURIComponent(this.serviceNameInputTarget.value);
+    const offerId = encodeURIComponent(this.offerIdInputTarget.value)
+
+    fetch(`/subOverview/?serviceName=${service}&name=${name}&categoryId=${category}&price=${price}&frequency=${frequency}&offerId=${offerId}`
     ).then(res => res.text())
      .then(data => {
         this.formPartOneTarget.classList.add('hidden-one');

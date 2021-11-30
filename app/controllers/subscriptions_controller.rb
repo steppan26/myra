@@ -30,10 +30,11 @@ class SubscriptionsController < ApplicationController
     authorize :subscription
     price_cents = (params[:subscription][:offers][:price_cents]).to_i * 100
     custom_offer = params[:subscription][:offer_id].to_i == -1
+
     if custom_offer
       offer = Offer.create(
         name: "custom offer",
-        service_name: params[:subscription][:offers][:service_id],
+        service_name: params[:subscription][:offers][:service_name],
         price_cents: price_cents,
         frequency: params[:subscription][:offers][:frequency],
         category_id: params[:subscription][:offers][:category_id],
@@ -112,17 +113,21 @@ class SubscriptionsController < ApplicationController
 
   def subscription_overview
     authorize :subscription
-    @service = params[:serviceId] == "-1" ? nil : Service.find(params[:serviceId])
-    @offer = Offer.new(
-      service_id: params[:serviceId],
-      name: params[:name],
-      category_id: params[:categoryId],
-      price_cents: (params[:price].to_f * 100).to_i,
-      frequency: params[:frequency],
-      service_name: params[:serviceId] == "-1" ? params[:name] : Service.find(params[:serviceId]).name
-    )
-    @offer.user = current_user if current_user
+    if params[:offerId] == "-1"
+      @offer = Offer.new(
+        name: params[:name],
+        category_id: params[:categoryId],
+        price_cents: (params[:price].to_f * 100).to_i,
+        frequency: params[:frequency],
+        service_name: params[:serviceName]
+      )
+      @service = nil
+    else
+      @offer = Offer.find(params[:offerId])
+      @service = @offer.service
+    end
 
+    @offer.user = current_user if current_user
     render partial: 'subscriptions/new_subscription', locals: { offer: @offer, service: @service }
   end
 
