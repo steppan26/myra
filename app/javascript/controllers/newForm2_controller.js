@@ -56,11 +56,12 @@ export default class extends Controller {
         this.displayNewOfferTarget.innerHTML = data;
         const nameInput = this.offerServiceNameInputTarget;
         nameInput.value = "";
+        this.offerNameInputTarget.value = 'custom offer'
         nameInput.removeAttribute("disabled");
       } else if (target === this.customOfferTarget) {
         this.displayNewOfferTarget.innerHTML = data;
         const nameInput = this.offerServiceNameInputTarget;
-        nameInput.value = this.serviceIdInputTarget.value;
+        nameInput.value = this.serviceIdInputTarget.dataset.serviceName;
         nameInput.disabled = true;
         this.offerNameInputTarget.value = 'custom offer'
       } else {
@@ -95,7 +96,7 @@ export default class extends Controller {
   };
 
   saveOffer(){
-    const nameInput = this.offerServiceNameInputTarget;
+    const nameInput = this.offerNameInputTarget;
     const priceInput = this.offerPriceInputTarget;
     const frequencyInput = this.offerFrequencyInputTarget;
     const nameError = document.getElementById('name-error');
@@ -112,7 +113,7 @@ export default class extends Controller {
     } else if (priceInput.value === "") {
       priceError.classList.remove('hidden');
     } else {
-      this.serviceNameInputTarget.value = nameInput.value;
+      //this.serviceNameInputTarget.value = nameInput.value;
       this.priceInputTarget.value = priceInput.value;
       this.frequencyInputTarget.value = frequencyInput.value;
       this.display_sub_overview();
@@ -121,7 +122,7 @@ export default class extends Controller {
   }
 
   display_sub_overview(){
-    const name = encodeURIComponent(this.offerServiceNameInputTarget.value);
+    const name = encodeURIComponent(this.offerNameInputTarget.value);
     const price = encodeURIComponent(this.priceInputTarget.value);
     const frequency = encodeURIComponent(this.frequencyInputTarget.value);
     const category = encodeURIComponent(this.categoryInputTarget.value);
