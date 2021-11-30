@@ -7,6 +7,10 @@ body{
   & main {
     margin-bottom: 16vh;
   }
+  & a,
+  & a:hover {
+    text-decoration: none;
+  }
 }
 
 input::-webkit-outer-spin-button,
