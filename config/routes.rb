@@ -20,4 +20,8 @@ Rails.application.routes.draw do
   get "/newOffer", to: 'subscriptions#display_offer_form'
   get "/subOverview", to: 'subscriptions#subscription_overview'
 
+  require "sidekiq/web"
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 end
