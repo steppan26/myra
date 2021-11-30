@@ -3,7 +3,7 @@
     <img src="<%= subscription.image_url %>" alt="<%= subscription.offer.service_name %>">
     <div>
       <h4><%= subscription.offer.service_name %></h4>
-      <h6><%= subscription.offer.price %>€ <%= subscription.offer.frequency %></h6>
+      <h6><%= humanized_money_with_symbol subscription.offer.price %> <%= subscription.offer.frequency %></h6>
       <div class="sub-card-days-remaining">
         <% renewal_date = (subscription.renewal_date - Date.today).to_i %>
         <% if renewal_date < 2  %>
