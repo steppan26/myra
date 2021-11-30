@@ -8,9 +8,13 @@
 </div>
 
   <div class="" data-change-dashboard-target="board" >
-    <% current_user.subscriptions.each do |subscription| %>
-        <%= render "subscriptions/subscription_card", subscription: subscription %>
-    <% end %>
+    <div class="dashboard-cards">
+      <% current_user.subscriptions.each do |subscription| %>
+        <%= link_to subscription_path(subscription) do %>
+            <%= render "subscriptions/subscription_card", subscription: subscription %>
+          <% end %>
+      <% end %>
+    </div>
   </div>
 
 
