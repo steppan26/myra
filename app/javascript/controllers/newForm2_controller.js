@@ -51,14 +51,15 @@ export default class extends Controller {
     .then(res => res.text())
     .then(data => {
       this.offerIdInputTarget.value = -1;
-      const nameInput = this.offerServiceNameInputTarget;
       if (target === this.customServiceTarget) {
         this.selectOfferTarget.innerHTML = "";
         this.displayNewOfferTarget.innerHTML = data;
+        const nameInput = this.offerServiceNameInputTarget;
         nameInput.value = "";
         nameInput.removeAttribute("disabled");
       } else if (target === this.customOfferTarget) {
         this.displayNewOfferTarget.innerHTML = data;
+        const nameInput = this.offerServiceNameInputTarget;
         nameInput.value = this.serviceIdInputTarget.value;
         nameInput.disabled = true;
         this.offerNameInputTarget.value = 'custom offer'
@@ -67,6 +68,7 @@ export default class extends Controller {
         const priceInput = this.offerPriceInputTarget;
         const frequencyInput = this.offerFrequencyInputTarget;
         // set the values of the form with the offer details
+        const nameInput = this.offerServiceNameInputTarget;
         nameInput.value = this.serviceIdInputTarget.dataset.serviceName;
         priceInput.value = target.dataset.offerPrice;
         frequencyInput.value = target.dataset.offerFrequency;
@@ -119,12 +121,12 @@ export default class extends Controller {
   }
 
   display_sub_overview(){
-    const name = encodeURIComponent(this.offerNameInputTarget.value);
+    const name = encodeURIComponent(this.offerServiceNameInputTarget.value);
     const price = encodeURIComponent(this.priceInputTarget.value);
     const frequency = encodeURIComponent(this.frequencyInputTarget.value);
     const category = encodeURIComponent(this.categoryInputTarget.value);
     const service = encodeURIComponent(this.serviceIdInputTarget.value) || -1;
-
+    console.log(name)
     fetch(`/subOverview/?serviceId=${service}&name=${name}&categoryId=${category}&price=${price}&frequency=${frequency}`
     ).then(res => res.text())
      .then(data => {

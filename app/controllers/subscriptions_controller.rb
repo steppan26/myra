@@ -118,7 +118,8 @@ class SubscriptionsController < ApplicationController
       name: params[:name],
       category_id: params[:categoryId],
       price_cents: (params[:price].to_f * 100).to_i,
-      frequency: params[:frequency]
+      frequency: params[:frequency],
+      service_name: params[:serviceId] == "-1" ? params[:name] : Service.find(params[:serviceId]).name
     )
     @offer.user = current_user if current_user
 
