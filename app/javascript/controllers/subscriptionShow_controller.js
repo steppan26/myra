@@ -26,7 +26,9 @@ export default class extends Controller {
   }
 
   save_changes(){
-    console.log('saving changes');
+    const renewalDateValue = this.renewalInputTarget.value
+    const addInfoValue = this.addInfoInputTarget.value
+    const delayValue = this.delayInputTarget.value
   }
 
   discard_changes(){
