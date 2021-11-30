@@ -1,10 +1,11 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["selectService", "selectOffer", "categoryInput", "serviceInput", "priceInput", "frequencyInput", "displayNewOffer",
+  static targets = ["selectService", "selectOffer", "categoryInput", "serviceIdInput", "priceInput", "frequencyInput", "displayNewOffer",
                     "category", "service", "offerServiceNameInput", "offerPriceInput", "offerFrequencyInput",
                     "customOfferInput", "customService", "customOffer", "formPartOne", "formPartTwo", "renewalInput",
-    "delayInput", "infoInput", "delayFrequencyInput", "serviceInput", "offerIdInput", "offerNameInput", "formSubmitButton", "reminderDelayDaysInput", "additionalInfoInput", "reminderDelayDaysInput", "renewalDateInput"]
+                    "delayInput", "infoInput", "delayFrequencyInput", "serviceIdInput", "offerIdInput", "offerNameInput", "formSubmitButton",
+                    "reminderDelayDaysInput", "additionalInfoInput", "reminderDelayDaysInput", "renewalDateInput", "serviceNameInput"]
 
   connect() {
   };
@@ -15,7 +16,6 @@ export default class extends Controller {
     this.categoryInputTarget.value = categoryId;
     this._activate_card(target, this.categoryTargets)
     const query = encodeURIComponent(categoryId);
-    console.log(query)
     fetch(`/searchService/${query}`)
       .then(res => res.text())
       .then(data => {
@@ -27,8 +27,8 @@ export default class extends Controller {
   showOffers(event) {
     const target = event.currentTarget
     const serviceId = target.dataset.serviceId;
-    this.serviceInputTarget.value = serviceId;
-    this.serviceInputTarget.dataset.serviceName = target.dataset.serviceName
+    this.serviceIdInputTarget.value = serviceId;
+    this.serviceIdInputTarget.dataset.serviceName = target.dataset.serviceName
     this._activate_card(target, this.serviceTargets)
     const query = encodeURIComponent(serviceId);
     fetch(`/searchOffer/${query}`)
@@ -50,28 +50,27 @@ export default class extends Controller {
     fetch(url)
     .then(res => res.text())
     .then(data => {
-      console.log(this.offerIdInputTarget, this.offerIdInputTarget.value)
       this.offerIdInputTarget.value = -1;
-      console.log(this.offerIdInputTarget, this.offerIdInputTarget.value)
       if (target === this.customServiceTarget) {
         this.selectOfferTarget.innerHTML = "";
         this.displayNewOfferTarget.innerHTML = data;
         const nameInput = this.offerServiceNameInputTarget;
         nameInput.value = "";
+        this.offerNameInputTarget.value = 'custom offer'
         nameInput.removeAttribute("disabled");
       } else if (target === this.customOfferTarget) {
         this.displayNewOfferTarget.innerHTML = data;
         const nameInput = this.offerServiceNameInputTarget;
-        nameInput.value = this.serviceInputTarget.value;
+        nameInput.value = this.serviceIdInputTarget.dataset.serviceName;
         nameInput.disabled = true;
         this.offerNameInputTarget.value = 'custom offer'
       } else {
         this.displayNewOfferTarget.innerHTML = data;
-        const nameInput = this.offerServiceNameInputTarget;
         const priceInput = this.offerPriceInputTarget;
         const frequencyInput = this.offerFrequencyInputTarget;
         // set the values of the form with the offer details
-        nameInput.value = this.serviceInputTarget.dataset.serviceName;
+        const nameInput = this.offerServiceNameInputTarget;
+        nameInput.value = this.serviceIdInputTarget.dataset.serviceName;
         priceInput.value = target.dataset.offerPrice;
         frequencyInput.value = target.dataset.offerFrequency;
         // disable the inputs as values are pre-defined
@@ -97,7 +96,7 @@ export default class extends Controller {
   };
 
   saveOffer(){
-    const nameInput = this.offerServiceNameInputTarget;
+    const nameInput = this.offerNameInputTarget;
     const priceInput = this.offerPriceInputTarget;
     const frequencyInput = this.offerFrequencyInputTarget;
     const nameError = document.getElementById('name-error');
@@ -114,7 +113,7 @@ export default class extends Controller {
     } else if (priceInput.value === "") {
       priceError.classList.remove('hidden');
     } else {
-      this.serviceInputTarget.value = nameInput.value;
+      //this.serviceNameInputTarget.value = nameInput.value;
       this.priceInputTarget.value = priceInput.value;
       this.frequencyInputTarget.value = frequencyInput.value;
       this.display_sub_overview();
@@ -123,12 +122,12 @@ export default class extends Controller {
   }
 
   display_sub_overview(){
-    const name = encodeURIComponent(this.serviceInputTarget.value);
+    const name = encodeURIComponent(this.offerNameInputTarget.value);
     const price = encodeURIComponent(this.priceInputTarget.value);
     const frequency = encodeURIComponent(this.frequencyInputTarget.value);
     const category = encodeURIComponent(this.categoryInputTarget.value);
-    const service = encodeURIComponent(this.serviceInputTarget.value);
-
+    const service = encodeURIComponent(this.serviceIdInputTarget.value) || -1;
+    console.log(name)
     fetch(`/subOverview/?serviceId=${service}&name=${name}&categoryId=${category}&price=${price}&frequency=${frequency}`
     ).then(res => res.text())
      .then(data => {
@@ -143,7 +142,7 @@ export default class extends Controller {
     const infoValue = this.infoInputTarget.value;
     const renewalValue = this.renewalInputTarget.value;
     const delayValue = this.delayInputTarget.value;
-    const delayFrequencyValue = this.delayFrequencyInputTarget.value;
+    const delayFrequencyValue = 'day' //this.delayFrequencyInputTarget.value;
     this.renewalDateInputTarget.value = renewalValue;
     this.additionalInfoInputTarget.value = infoValue;
     this.reminderDelayDaysInputTarget.value = this._get_reminder_in_days(delayValue, delayFrequencyValue);

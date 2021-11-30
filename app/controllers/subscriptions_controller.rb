@@ -66,7 +66,10 @@ class SubscriptionsController < ApplicationController
   end
 
   def update
-    @subscription.update(subscription_params)
+    authorize @subscription
+    subscription = Subscription.find(params[:id])
+    subscription.update(subscription_params)
+    redirect_to subscription_path(subscription)
   end
 
   def destroy
@@ -109,17 +112,18 @@ class SubscriptionsController < ApplicationController
 
   def subscription_overview
     authorize :subscription
-
+    @service = params[:serviceId] == "-1" ? nil : Service.find(params[:serviceId])
     @offer = Offer.new(
       service_id: params[:serviceId],
       name: params[:name],
       category_id: params[:categoryId],
       price_cents: (params[:price].to_f * 100).to_i,
-      frequency: params[:frequency]
+      frequency: params[:frequency],
+      service_name: params[:serviceId] == "-1" ? params[:name] : Service.find(params[:serviceId]).name
     )
     @offer.user = current_user if current_user
 
-    render partial: 'subscriptions/new_subscription', locals: { offer: @offer }
+    render partial: 'subscriptions/new_subscription', locals: { offer: @offer, service: @service }
   end
 
   private
