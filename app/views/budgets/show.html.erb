@@ -12,7 +12,7 @@
     <ul>
       <% @budget.subscriptions.each do |subscription| %>
         <li>
-          <%= render 'subscriptions/subscription_card', subscription: subscription %>
+          <%= render "subscriptions/subscription_card", subscription: subscription %>
         </li>
       <% end %>
     </ul>
