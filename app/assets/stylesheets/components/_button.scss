@@ -68,15 +68,23 @@
   }
 }
 
-.edit-btn i {
-  position: absolute;
-  top: -8px;
-  right: 5px;
-  border-radius: 50%;
-  background-color: rgba(115, 115, 115, 0.6);
-  padding: 0.5rem;
-  font-size: 1rem;
-  opacity: 0.7;
+.edit-btn {
+  & i {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(115, 115, 115, 0.6);
+    padding: 0.5rem;
+    font-size: 1rem;
+    opacity: 0.7;
+  }
+  &.budget i {
+    bottom: -0.8rem;
+    right: 0.3rem;
+  }
+  &.sub i {
+    top: -8px;
+    right: 5px;
+  }
 }
 
 
