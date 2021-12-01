@@ -1,48 +1,46 @@
 <div class="show-wrapper mb-5">
   <% if service %>
     <div class="show-banner x" style="background-image: url('<%= service.image_url %>');">
-      <div class="image-fader">
-        <h3><%= service.name %></h3>
-        <h5><%= offer.category.name %></h5>
-      </div>
   <% else %>
     <div class="show-banner" style="background-image: url(<%= image_path('generic_business_logo.png') %>);">
+  <% end %>
       <div class="image-fader">
         <h3><%= offer.service_name %></h3>
         <h5><%= offer.category.name %></h5>
       </div>
-  <% end %>
   </div>
-  <div>
-    <div class="show-info">
-      <div class="info-description">
-        <i class="far fa-credit-card"></i>
-        <p><%= offer.name %> at <strong><%= offer.price %>€</strong> <%= offer.frequency %></p>
-      </div>
-      <div class="info-description">
-        <i class="fas fa-bullhorn"></i>
-        <div class="mx-4">
-          <label for="renewal_date">Renewal Date</label>
-          <input type="date" id ="renewal_date" value="<%= Date.today %>" data-newForm2-target="renewalInput">
+  <div class="container">
+    <div>
+      <div class="show-info">
+        <div class="info-description">
+          <i class="far fa-credit-card"></i>
+          <p><%= offer.name %> at <strong><%= offer.price %>€</strong> <%= offer.frequency %></p>
         </div>
-      </div>
-      <div class="info-description">
-        <i class="fas fa-info-circle"></i>
-        <div class="mx-4">
-          <label for="additional_info">Additional Information</label>
-          <textarea id="additional_info" data-newForm2-target="infoInput" placeholder="Additional Comments"></textarea>
+        <div class="info-description">
+          <i class="fas fa-bullhorn"></i>
+          <div class="mx-4">
+            <label for="renewal_date">Renewal Date</label>
+            <input type="date" id ="renewal_date" value="<%= Date.today %>" data-newForm2-target="renewalInput">
+          </div>
+        </div>
+        <div class="info-description">
+          <i class="fas fa-info-circle"></i>
+          <div class="mx-4">
+            <label for="additional_info">Additional Information</label>
+            <textarea id="additional_info" data-newForm2-target="infoInput" placeholder="Additional Comments"></textarea>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="reminder-section">
-    <h5 id="days-delay-edit">Remind me <input type="tel" value="3" data-newForm2-target="delayInput"> <%= "day".pluralize(2) %></strong> before by</h5>
-    <div class="reminder-options-wrapper">
-      <div class="custom-checkbox"><div class="checked hidden"><i class="fas fa-check"></i></div></div>
-      <p>Phone</p>
-      <div class="custom-checkbox checked"><div class="checked"><i class="fas fa-check"></i></div></div>
-      <p>Email</p>
+    <div class="reminder-section">
+      <h5 id="days-delay-edit">Remind me <input type="tel" value="3" data-newForm2-target="delayInput"> <%= "day".pluralize(2) %></strong> before by</h5>
+      <div class="reminder-options-wrapper">
+        <div class="custom-checkbox"><div class="checked hidden"><i class="fas fa-check"></i></div></div>
+        <p>Phone</p>
+        <div class="custom-checkbox checked"><div class="checked"><i class="fas fa-check"></i></div></div>
+        <p>Email</p>
+      </div>
+    </div>
+    <div class="btn btn-primary" data-action='click->newForm2#createSubscription'>Submit</div>
     </div>
   </div>
-  <div class="btn btn-primary" data-action='click->newForm2#createSubscription'>Submit</div>
-</div>
