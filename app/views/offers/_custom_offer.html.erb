@@ -1,7 +1,10 @@
 <div class="custom-offer-wrapper">
   <input class="form-input full-width" type="text" placeholder="Enter company name..." name="name" data-newForm2-target="offerServiceNameInput customOfferInput">
   <p class="error-message hidden" id="name-error">Please input the name of the company</p>
-  <input class="d-inline-block form-input" type="number" placeholder="Cost of subscription" step="any" name="price" data-newForm2-target="offerPriceInput customOfferInput">
+  <div class="form-price-wrapper">
+    <input class="d-inline-block form-input" type="number" placeholder="Price" step="any" name="price" data-newForm2-target="offerPriceInput customOfferInput">
+    <span>€</span>
+  </div>
   <select class="d-inline-block dropdown" placeholder="service name" name="frequency"  data-newForm2-target="offerFrequencyInput customOfferInput">
     <% Offer::PERIODS.each do |offer| %>
       <option value="<%= offer %>"><%= offer %></option>

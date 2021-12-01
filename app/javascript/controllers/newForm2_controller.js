@@ -20,7 +20,12 @@ export default class extends Controller {
       .then(res => res.text())
       .then(data => {
         this.selectServiceTarget.innerHTML = data;
-        target.scrollIntoView();
+        this.displayNewOfferTarget.innerHTML = "";
+        this.selectOfferTarget.innerHTML = "";
+
+        // target.scrollIntoView();
+        this._scroll_to(this.selectServiceTarget);
+
     })
   };
 
@@ -39,7 +44,7 @@ export default class extends Controller {
         this.selectOfferTarget.innerHTML = data;
         // scroll window up
         const target = this.selectServiceTarget;
-        this._scroll_to(target);
+        this._scroll_to(this.selectServiceTarget);
       })
   };
 
@@ -135,7 +140,7 @@ export default class extends Controller {
         this.formPartOneTarget.classList.add('hidden-one');
         this.formPartTwoTarget.innerHTML = data;
         this.formPartTwoTarget.classList.remove('hidden-two');
-        this._scroll_to(this.formPartTwoTarget)
+        //this._scroll_to(this.formPartTwoTarget)
      })
   }
 
@@ -178,7 +183,7 @@ export default class extends Controller {
   };
 
   _scroll_to(target) {
-    const top = target.offsetTop + 200
+    const top = target.offsetTop + 500
     window.scrollTo({
       top: top,
       left: 0,
