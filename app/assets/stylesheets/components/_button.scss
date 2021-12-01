@@ -12,18 +12,51 @@
   }
 }
 
-.delete-btn {
+.back-btn {
+  text-decoration: none;
   position: fixed;
   top: 20px;
   right: 20px;
-  color: $hardred;
   font-size: 1.5rem;
   font-weight: 700;
+  opacity: 0.6;
+  & i {
+    text-decoration: none;
+    color: $clr-text-primary;
+    background-color: rgba(115, 115, 115, 0.5);
+    border-radius: 50%;
+    padding: 0.3em;
+  }
+}
+
+.delete-btn {
+  width: 100%;
+  text-align: center;
+  color: $hardred;
+  font-size: 1rem;
+  font-weight: 500;
   opacity: 0.6;
   transition: opacity 220ms ease-in-out;
   &:hover {
     color: $hardred;
     opacity: 1;
+  }
+  & p {
+    margin-top: 1.5rem;
+  }
+}
+
+.edit-btns {
+  position: absolute;
+  top: -8px;
+  right: 5px;
+  display: flex;
+  font-size: 2rem;
+
+  & i {
+    border-radius: 50%;
+    opacity: 0.7;
+    margin: 0 0.7rem;
   }
 }
 

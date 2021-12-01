@@ -1,44 +1,46 @@
-<div class="sub-wrapper <%= offer.category.name.gsub(/\W/, '') %>">
-  <% if offer.service %>
-    <img class="sub-logo" src="<%=offer.service.image_url%>" alt="<%=offer.service.name%>">
+<div class="show-wrapper mb-5">
+  <% if service %>
+    <div class="show-banner x" style="background-image: url('<%= service.image_url %>');">
   <% else %>
-    <img class="sub-logo" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shareicon.net%2Fdata%2F2017%2F07%2F13%2F888376_office_512x512.png&f=1&nofb=1" alt="custom offer">
+    <div class="show-banner" style="background-image: url(<%= image_path('generic_business_logo.png') %>);">
   <% end %>
-  <h3 class="sub-title"><%= offer.service_name %></h3>
-  <div class="sub-price-wrapper">
-    <h5><%= humanized_money_with_symbol offer.price %> <%= offer.frequency %></h5>
+      <div class="image-fader">
+        <h3><%= offer.service_name %></h3>
+        <h5><%= offer.category.name %></h5>
+      </div>
   </div>
-  <div class="user-submition-wrapper">
-    <h5>Renewal Date</h5>
-    <div class="input-wrapper">
-      <i class="far fa-calendar-alt"></i>
-      <input type="date" id="renewal-date-input" data-newForm2-target="renewalInput">
-    </div>
-  </div>
-  <div class="user-submition-wrapper">
-    <h5>When would you like to be reminded?</h5>
-    <div class="input-wrapper">
-      <i class="far fa-bell"></i>
-      <input type="tel" name="reminder-delay" id="reminder-delay" data-newForm2-target="delayInput">
-      <select name="frequency-select" id="frequency-select" data-newForm2-target="delayFrequencyInput">
-        <option value="month">Month(s)</option>
-        <option value="week">Week(s)</option>
-        <option value="day">Day(s)</option>
-      </select>
-      <p>before</p>
-    </div>
-  </div>
-  <div class="user-submition-wrapper">
-    <textarea row='2' placeholder="Additional Info" name="" id="submit-sub" data-newForm2-target="infoInput"></textarea>
-  </div>
-  <div class="card-buttons-wrapper">
-    <div class="card-buttons">
-      <%= link_to dashboard_path, class: "btn btn-red-delete" do %>
-        <i class="fas fa-times"></i>
-      <% end %>
-      <div class="btn btn-green-done" data-action='click->newForm2#createSubscription'>
-        <i class="fas fa-check"></i>
+  <div class="container">
+    <div>
+      <div class="show-info">
+        <div class="info-description">
+          <i class="far fa-credit-card"></i>
+          <p><%= offer.name %> at <strong><%= offer.price %>€</strong> <%= offer.frequency %></p>
+        </div>
+        <div class="info-description">
+          <i class="fas fa-bullhorn"></i>
+          <div class="mx-4">
+            <label for="renewal_date">Renewal Date</label>
+            <input type="date" id ="renewal_date" value="<%= Date.today %>" data-newForm2-target="renewalInput">
+          </div>
+        </div>
+        <div class="info-description">
+          <i class="fas fa-info-circle"></i>
+          <div class="mx-4">
+            <label for="additional_info">Additional Information</label>
+            <textarea id="additional_info" data-newForm2-target="infoInput" placeholder="Additional Comments"></textarea>
+          </div>
+        </div>
       </div>
     </div>
+    <div class="reminder-section">
+      <h5 id="days-delay-edit">Remind me <input type="tel" value="3" data-newForm2-target="delayInput"> <%= "day".pluralize(2) %></strong> before by</h5>
+      <div class="reminder-options-wrapper">
+        <div class="custom-checkbox"><div class="checked hidden"><i class="fas fa-check"></i></div></div>
+        <p>Phone</p>
+        <div class="custom-checkbox checked"><div class="checked"><i class="fas fa-check"></i></div></div>
+        <p>Email</p>
+      </div>
+    </div>
+    <div class="btn btn-primary" data-action='click->newForm2#createSubscription'>Submit</div>
+    </div>
   </div>
-</div>

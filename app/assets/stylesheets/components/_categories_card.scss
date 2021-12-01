@@ -2,7 +2,6 @@
   list-style: none;
   display: grid;
   grid-template-rows: 1fr 1fr;
-  grid-gap: 8% 5%;
   grid-auto-flow: column;
   grid-auto-columns: 44%;
   scrollbar-width: none;
@@ -30,6 +29,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   filter: saturate(60%);
+  margin: 0.3rem;
 
   &.active {
   box-shadow: 0 2px 8px 2px rgba($color: white, $alpha: 0.2);

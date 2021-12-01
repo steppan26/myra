@@ -1,4 +1,4 @@
-<h3><%= current_user.email%> Subscriptions.</h3>
+<h3><%= current_user.email%> Subscriptions</h3>
 <h5>Budget: <%= humanized_money_with_symbol current_user.global_budget %> / month (current: <%= humanized_money_with_symbol @user_monthly_spend %>)</h5>
 <ul class="d-flex">
   <% @subscriptions.each do |subscription| %>

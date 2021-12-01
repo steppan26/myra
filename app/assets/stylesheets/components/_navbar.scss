@@ -1,24 +1,25 @@
-.rectangle {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.065) 100%);
-  backdrop-filter: blur(24.4645px);
-  height: 2.5em;
-  opacity: 0,1;
-  color: black;
-}
-
-.icon {
-  display: flex;
-  justify-content: space-around;
-}
-
-.active {
-  font-size: 25px;
-  color: white;
-  opacity: 1;
-}
-
-.inactive {
-  font-size: 25px;
-  color: white;
-  opacity: 0.3;
+nav {
+  & .rectangle {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.065) 100%);
+    backdrop-filter: blur(24.4645px);
+    height: 2.5em;
+    opacity: 0,1;
+    color: black;
+  }
+  & .icon {
+    display: flex;
+    justify-content: space-around;
+  }
+  & .active {
+    font-size: 25px;
+    color: white;
+    opacity: 1;
+    //transform: translateY(-30px);
+    z-index: 999;
+  }
+  & .inactive {
+    font-size: 25px;
+    color: white;
+    opacity: 0.3;
+  }
 }

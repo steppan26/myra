@@ -1,29 +1,64 @@
-<div class="show-wrapper">
-  <div class="show-banner" style="background-image: url('<%= @subscription.offer.service.image_url %>');">
+<div class="show-wrapper" data-controller="subscriptionShow" data-sub-id="<%=@subscription.id%>" >
+  <div class="show-banner" style="background-image: url('<%= @subscription.image_url %>');">
     <div class="image-fader">
       <h3><%= @subscription.offer.service_name %></h3>
       <h5><%= @subscription.offer.category.name %></h5>
     </div>
   </div>
-  <div class="show-info">
-    <div class="edit-btn">
-      <i class="fas fa-edit"></i>
+  <div>
+    <div class="show-info hidden" id="sub-edit" data-subscriptionShow-target="edit">
+      <div class="hidden" id="form-wrapper">
+        <%= simple_form_for(@subscription) do |f| %>
+          <%= f.input :renewal_date, as: :string, input_html: { data: {subscriptionShow_target: "formRenewalDate"}} %>
+          <%= f.input :additional_info, input_html: { data: {subscriptionShow_target: "formAddInfo"}} %>
+          <%= f.input :reminder_delay_days, input_html: { data: {subscriptionShow_target: "formDaysDelay"}} %>
+          <%= f.submit%>
+        <% end %>
+      </div>
+      <div class="edit-btns">
+        <i class="far fa-check-circle green-icon" data-action='click->subscriptionShow#save_changes'></i>
+        <i class="far fa-times-circle red-icon" data-action='click->subscriptionShow#discard_changes'></i>
+      </div>
+      <div class="info-description">
+        <i class="far fa-credit-card"></i>
+        <p><%= @subscription.offer.name %> at <strong><%= @subscription.offer.price %>€</strong> <%= @subscription.offer.frequency %></p>
+      </div>
+      <div class="info-description">
+        <i class="fas fa-bullhorn"></i>
+        <div class="mx-4">
+          <label for="renewal_date">Renewal Date</label>
+          <input type="date" id ="renewal_date" value="<%= @subscription.renewal_date %>" data-subscriptionShow-target="renewalInput">
+        </div>
+      </div>
+      <div class="info-description">
+        <i class="fas fa-info-circle"></i>
+        <div class="mx-4">
+          <label for="additional_info">Additional Information</label>
+          <textarea id="additional_info" data-subscriptionShow-target="addInfoInput"><%= @subscription.additional_info %></textarea>
+        </div>
+      </div>
     </div>
-    <div class="info-description">
-      <i class="far fa-credit-card"></i>
-      <p><%= @subscription.offer.name %> at <strong><%= @subscription.offer.price %>€</strong> <%= @subscription.offer.frequency %></p>
-    </div>
-    <div class="info-description">
-      <i class="fas fa-bullhorn"></i>
-      <p>Next Renewal: <span><%= @subscription.renewal_date.strftime("%d %B, %Y") %></span></p>
-    </div>
-    <div class="info-description">
-      <i class="fas fa-info-circle"></i>
-      <p><%= @subscription.additional_info %></p>
+    <div class="show-info" id="sub-show" data-subscriptionShow-target="show">
+      <div class="edit-btn">
+        <i class="fas fa-edit" data-action='click->subscriptionShow#display_edit'></i>
+      </div>
+      <div class="info-description">
+        <i class="far fa-credit-card"></i>
+        <p><%= @subscription.offer.name %> at <strong><%= @subscription.offer.price %>€</strong> <%= @subscription.offer.frequency %></p>
+      </div>
+      <div class="info-description">
+        <i class="fas fa-bullhorn"></i>
+        <p>Next Renewal: <span data-subscriptionShow-target="renewalElement"><%= @subscription.renewal_date.strftime("%d %B, %Y") %></span></p>
+      </div>
+      <div class="info-description">
+        <i class="fas fa-info-circle"></i>
+        <p data-subscriptionShow-target="addInfoElement"><%= @subscription.additional_info %></p>
+      </div>
     </div>
   </div>
   <div class="reminder-section">
-    <h5>Remind me by</h5>
+    <h5 id="days-delay-show" data-subscriptionShow-target="show">Remind me <strong><span data-subscriptionShow-target="delayElement"><%= @subscription.reminder_delay_days %></span> <%= "day".pluralize(2) %></strong> before by</h5>
+    <h5 class="hidden" id="days-delay-edit" data-subscriptionShow-target="edit">Remind me <input type="tel" value="<%= @subscription.reminder_delay_days %>" data-subscriptionShow-target="delayInput"> <%= "day".pluralize(2) %></strong> before by</h5>
     <div class="reminder-options-wrapper">
       <div class="custom-checkbox"><div class="checked hidden"><i class="fas fa-check"></i></div></div>
       <p>Phone</p>
@@ -31,7 +66,11 @@
       <p>Email</p>
     </div>
   </div>
-  <%= link_to dashboard_path, class: "delete-btn" do %>
-    <i class="fas fa-trash-alt"></i>
+  <%= link_to request.referer.present? ? request.referer : dashboard_path, class: "back-btn" do %>
+    <i class="fas fa-undo"></i>
+  <% end %>
+  <%= link_to subscription_path(@subscription), method: :delete, data: { confirm: "Are you sure you wish to delete this subscription?" }, class: "delete-btn" do %>
+    <%# <i class="fas fa-trash-alt"></i> %>
+    <p>Delete</p>
   <% end %>
 </div>
