@@ -1,0 +1,36 @@
+<div class="container py-5">
+ <h2> INFORMATIONS </h2>
+  <div class="infos-cards">
+    <div data-controller="graph-circle" data-graph-circle-budget-value='<%= current_user.global_budget %>' data-graph-circle-amount-value="<%= user_monthly_spend %>">
+        <div class="infos-card">
+          <div class="infos-big-card">
+            <div data-graph-circle-target="circle" style="width: 50%"></div>
+            <div>
+              <p><span id="expanses"></span>expenses</p>
+              <p id="pbudget"><span id="budget"></span>budget</p>
+            </div>
+          </div>
+          <div>
+              <h6><strong>Details</strong></h6>
+              <ul>
+                <% category_sums.each do |category| %>
+                  <% if category[1] > 0 %>
+                    <li><p><%= category[0] %>: <%= humanized_money_with_symbol category[1] %>/month</p></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </div>
+        </div>
+      </div>
+    <% unless user_budgets.length == 0 %>
+      <h6><strong>Budgets</strong></h6>
+      <div class="infos-card">
+        <% user_budgets.each do |budget| %>
+          <ul>
+            <li><p><%= budget.name %>:  <%= humanized_money_with_symbol Money.new((budget.subscriptions.sum(:price_per_day_cents).to_f * 30)) %>/month</p></li>
+          </ul>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

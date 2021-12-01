@@ -6,15 +6,23 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.global_budget_cents = params[:user]["global_budget"] * 100
     @user.update(user_params)
-    redirect_to "/settings"
+    respond_to do |format|
+      format.html { redirect_to settings_path }
+      format.text {
+        if params[:user][:email]
+          render partial: 'pages/settings_infos', locals: { user: current_user }, formats: [:html]
+        else
+          render partial: 'pages/settings_budget', locals: { user: current_user }, formats: [:html]
+        end
+      }
+    end
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:global_budget)
+    params.require(:user).permit(:global_budget, :email)
   end
 
   def set_user

@@ -1,0 +1,12 @@
+<div data-edit-infos-target="mailcard" >
+  <div data-edit-infos-target="mail" >
+    <h6>
+      <i class="fas fa-envelope"></i>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Email</strong>: <%= current_user.email %>
+      <i class="far fa-edit" data-action="click->edit-infos#displayForm"></i>
+    </h6>
+    </div>
+    <%= simple_form_for current_user, html: { class: 'd-none', data: { edit_infos_target: 'mailform', action: 'submit->edit-infos#update' } } do |f| %>
+      <%= f.input :email %>
+      <%= f.submit "Done", class:"btn btn-primary" %>
+    <% end %>
+</div>
