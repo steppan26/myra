@@ -6,12 +6,12 @@
       <h6><%= humanized_money_with_symbol subscription.offer.price %> <%= subscription.offer.frequency %></h6>
       <div class="sub-card-days-remaining">
         <% renewal_date = (subscription.renewal_date - Date.today).to_i %>
-        <% if renewal_date < 2  %>
-          <h6 class=" notification urgent"><i class="fas fa-exclamation-triangle"></i> <%= renewal_date %> <%= "day".pluralize(2) %></h6>
+        <% if renewal_date <= subscription.reminder_delay_days  %>
+          <h6 class=" notification urgent"><i class="fas fa-exclamation-triangle"></i> Renewal in <%= renewal_date %> <%= "day".pluralize(renewal_date) %></h6>
         <% elsif renewal_date > 30 %>
-          <h6 class="notification unimportant"><i class="far fa-check-square"></i> <%= time_ago_in_words(subscription.renewal_date) %></h6>
+          <h6 class="notification unimportant"><i class="fas fa-calendar-day"></i> Renewal in <%= time_ago_in_words(subscription.renewal_date) %></h6>
         <% else %>
-          <h6 class="notification unimportant"><i class="far fa-check-square"></i> <%= renewal_date %> <%= "day".pluralize(2) %></h6>
+          <h6 class="notification unimportant"><i class="fas fa-calendar-day"></i> Renewal in <%= renewal_date %> <%= "day".pluralize(renewal_date) %></h6>
         <% end %>
       </div>
     </div>
