@@ -8,7 +8,7 @@
     padding: 0.5em;
   }
   .submit-btn {
-    background-color: $clr-btn-submit;
+    background-color: $clr-btn-submit !important;
   }
 }
 
@@ -20,8 +20,6 @@
 }
 
 .budgets-header {
-  margin: 1rem 0;
-  padding: 0 1em;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -58,6 +56,9 @@
     max-height: 58vh;
     overflow: scroll;
     scrollbar-width: none;
+    & .sub-card {
+      border: 2px solid transparent;
+    }
     & .sub-card.selected {
       border: 2px solid white;
     }
@@ -71,6 +72,12 @@
   & h6 {
     font-size: 0.8rem;
   }
+}
+
+.new-budget-wrapper {
+  border-radius: 0.3rem;
+  background-color: $clr-bg-primary;
+  padding: 1rem;
 }
 
 .budget-info {
