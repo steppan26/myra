@@ -12,13 +12,11 @@
   }
 }
 
-.budget-card .progress-bar {
-  border-radius: 0.3rem;
-  padding: 0.2rem;
-  background-image: linear-gradient(to right, $clr-btn-submit 50%, $clr-bg-secondary 50%) ;
-  & p {
-    margin: 0;
-  }
+.budget-title {
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  word-spacing: 0.5rem;
 }
 
 .budgets-header {
@@ -97,7 +95,15 @@
   border-radius: 0.4rem;
   background-color: $clr-bg-primary;
   padding: 1em;
-  margin: 1rem 0;
+  margin: 1.2rem 0;
+  & .progress-bar {
+  border-radius: 0.3rem;
+  padding: 0.2rem;
+  background-image: linear-gradient(to right, $clr-btn-submit 50%, $clr-bg-secondary 50%) ;
+  & p {
+    margin: 0;
+  }
+}
 }
 
 .shrink {

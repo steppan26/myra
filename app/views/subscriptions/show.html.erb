@@ -67,7 +67,7 @@
     </div>
   </div>
   <%= link_to request.referer.present? ? request.referer : dashboard_path, class: "back-btn" do %>
-    <i class="fas fa-undo"></i>
+    <i class="fas fa-chevron-circle-left"></i>
   <% end %>
   <%= link_to subscription_path(@subscription), method: :delete, data: { confirm: "Are you sure you wish to delete this subscription?" }, class: "delete-btn" do %>
     <p>Delete subscription</p>
