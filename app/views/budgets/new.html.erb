@@ -6,14 +6,17 @@
   <div class="new-budget-wrapper">
     <%= simple_form_for(@budget) do |f| %>
       <%= f.input_field :name, label: "Budget name", placeholder: "Budget name", class: "mb-3" %>
-      <%= f.input_field :price_per_month, placeholder: "Budget per month", class: "my-3 budget-amount" %>
+      <div class="form-price-wrapper">
+        <%= f.input_field :price_per_month, placeholder: "Budget/month", class: "my-3 budget-amount" %>
+        <span>€</span>
+      </div>
       <%= f.association :subscriptions,
                         input_html: {data: {subscriptionsList_target: "subscriptions"}},
                         wrapper_html: {class: "d-none"},
                         as: :check_boxes,
                         collection: @subscriptions
       %>
-      <%= f.submit "Create budget", class: "my-3 ms-3 submit-btn" %>
+      <%= f.submit "Create budget", class: "my-3 submit-btn" %>
     <% end %>
     <h6 class="mb-0 mt-2">Select subscriptions to add to budget <i class="fas fa-level-down-alt"></i></h6>
   </div>
