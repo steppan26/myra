@@ -1,5 +1,5 @@
 .infos-card {
-  background: #6644B8;
+  background: #220F37;
   border-radius: 10px;
   padding: 6px;
   margin: 13px;
@@ -13,6 +13,34 @@
 }
 
 .infos-cards {
-  text-align: center;
   margin-top: 20px;
+}
+
+.infos-big-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-bottom: 24px;
+}
+
+#expanses {
+  height: 6px;
+  width: 15px;
+  border-radius: 10px;
+  background: #6743B8;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+#budget {
+  height: 6px;
+  width: 15px;
+  border-radius: 10px;
+  background: #322246;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+#pbudget {
+  margin-right: 15px;
 }

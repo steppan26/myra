@@ -1,26 +1,29 @@
 <div class="container py-5">
  <h2> INFORMATIONS </h2>
   <div class="infos-cards">
-    <h5> GLOBAL BUDGET </h5>
-    <div class="infos-card">
-      <h5><%= humanized_money_with_symbol current_user.global_budget %>/month</h5>
-    </div>
-     <h5> TOTAL EXPANSES </h5>
-    <div class="infos-card">
-      <h5><%= humanized_money_with_symbol user_monthly_spend %>/month</h5>
-    </div>
-    <h5> CATEGORIES </h5>
-    <div class="infos-card">
-      <ul>
-        <% category_sums.each do |category| %>
-          <% if category[1] > 0 %>
-            <li><p><%= category[0] %>: <%= humanized_money_with_symbol category[1] %>/month</p></li>
-          <% end %>
-        <% end %>
-      </ul>
-    </div>
+    <div data-controller="graph-circle" data-graph-circle-budget-value='<%= current_user.global_budget %>' data-graph-circle-amount-value="<%= user_monthly_spend %>">
+        <div class="infos-card">
+          <div class="infos-big-card">
+            <div data-graph-circle-target="circle" style="width: 50%"></div>
+            <div>
+              <p><span id="expanses"></span>expenses</p>
+              <p id="pbudget"><span id="budget"></span>budget</p>
+            </div>
+          </div>
+          <div>
+              <h6><strong>Details</strong></h6>
+              <ul>
+                <% category_sums.each do |category| %>
+                  <% if category[1] > 0 %>
+                    <li><p><%= category[0] %>: <%= humanized_money_with_symbol category[1] %>/month</p></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </div>
+        </div>
+      </div>
     <% unless user_budgets.length == 0 %>
-      <h5> BUDGETS </h5>
+      <h6><strong>Budgets</strong></h6>
       <div class="infos-card">
         <% user_budgets.each do |budget| %>
           <ul>
