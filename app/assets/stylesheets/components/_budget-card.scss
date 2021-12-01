@@ -12,6 +12,10 @@
   }
 }
 
+.new-budget-container {
+  max-height: 88vh;
+}
+
 .budget-title {
   margin-bottom: 1rem;
   text-transform: uppercase;
@@ -50,7 +54,7 @@
 .budgets-wrapper {
   list-style: none;
   padding: 0;
-  padding-bottom: 1rem;
+  padding-bottom: 11vh;
   margin: 0;
   &.new{
     max-height: 58vh;
