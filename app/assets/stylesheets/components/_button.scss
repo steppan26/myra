@@ -107,6 +107,11 @@
 
 
 // home-button & animations
+.button-wrap {
+display: flex;
+justify-content: center;
+margin-top: 7rem;
+}
 
 .home-button {
   min-width: 100px;
@@ -125,10 +130,9 @@
   transition: all 0.3s ease-in-out 0s;
   cursor: pointer;
   outline: none;
-  position: absolute;
   padding: 10px;
-  bottom: 3rem;
-  left: 140px;
+  position: absolute;
+  text-align: center;
   }
 
 .home-button::before {
