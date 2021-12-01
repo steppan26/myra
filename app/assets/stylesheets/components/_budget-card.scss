@@ -12,6 +12,15 @@
   }
 }
 
+.budget-card .progress-bar {
+  border-radius: 0.3rem;
+  padding: 0.2rem;
+  background-image: linear-gradient(to right, $clr-btn-submit 50%, $clr-bg-secondary 50%) ;
+  & p {
+    margin: 0;
+  }
+}
+
 .budgets-header {
   margin: 1rem 0;
   padding: 0 1em;
@@ -19,7 +28,7 @@
   justify-content: space-between;
   align-items: center;
   & a {
-    color: $clr-text-primary;
+    color: $clr-text-primary !important;
     text-decoration: none;
     font-weight: 700;
     font-size: 2rem;
@@ -27,7 +36,7 @@
     transition: opacity 160ms ease-out;
   }
   & a:hover {
-    color: $clr-text-primary;
+    color: $clr-text-primary !important;
     opacity: 1;
   }
 }
@@ -46,9 +55,19 @@
   }
   & a,
   & a:hover{
+    color: $clr-text-primary !important;
     text-decoration: none;
     -moz-appearance: none;
   }
+  & h6 {
+    font-size: 0.8rem;
+  }
+}
+
+.budget-info {
+  opacity: 0.6;
+  display: flex;
+  justify-content: space-between;
 }
 
 .budget-amount {
@@ -67,7 +86,7 @@
   border-radius: 0.4rem;
   background-color: $clr-bg-primary;
   padding: 1em;
-  margin: 1rem 0.5rem;
+  margin: 1rem 0;
 }
 
 .shrink {
@@ -81,5 +100,3 @@
   overflow: hidden;
   transition: width 250ms ease-in-out;
 }
-
-

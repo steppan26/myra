@@ -46,6 +46,16 @@
   }
 }
 
+.btn-submit {
+  cursor: pointer;
+  padding: 1rem 0.5rem;
+  background-color: $clr-btn-submit;
+  border-radius: 0.3em;
+  margin: 1em 0;
+  text-align: center;
+  color: $clr-text-primary;
+}
+
 .edit-btns {
   position: absolute;
   top: -8px;

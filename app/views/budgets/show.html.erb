@@ -1,6 +1,8 @@
 <section class="show-budget-wrapper">
-  <h2><%= @budget.name.upcase %></h2>
-  <h5 class="mt-3 mb-5"><%= humanized_money_with_symbol @budget.price_per_month %> per month</h5>
+  <div class="budget-show-header">
+    <h2><%= @budget.name.upcase %></h2>
+    <h5>Budget: <%= humanized_money_with_symbol @budget.price_per_month %></h5>
+  </div>
   <% if @budget.subscriptions.empty? %>
     <h6>There are no subscriptions in this budget</h6>
   <% else %>

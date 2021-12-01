@@ -1,15 +1,25 @@
 <div class="budget-card">
   <div>
-    <h4><%= budget.name %></h4>
-    <div class="budget-amounts">
-      <h6>Budget: <%= humanized_money_with_symbol budget.price_per_month %></h6>
-      <% total_price = 0 %>
-      <% budget.subscriptions.each do |sub| %>
-        <% total_price += sub.price_per_day * 30 %>
-      <% end %>
-      <h6>Current: <%= humanized_money_with_symbol total_price %></h6>
+    <h3 class="mb-3"><%= budget.name %></h3>
+    <div class="budget-info">
+      <p><%=budget.subscriptions.count%> <%= "subscription".pluralize(budget.subscriptions.count) %></p>
+      <div class="budget-amounts">
+        <p>Budget: <span class="ms-3"><%= humanized_money_with_symbol budget.price_per_month %></span></p>
+        <% total_price = 0 %>
+        <% budget.subscriptions.each do |sub| %>
+          <% total_price += sub.price_per_day * 30 %>
+        <% end %>
+        <% progress_percent = ((total_price / budget.price_per_month) * 100).round %>
+      </div>
     </div>
+      <% if progress_percent > 100 %>
+      <div class="progress-bar" style="background: #9b0e0e;">
+        <p><%= humanized_money_with_symbol total_price %></p>
+      </div>
+      <% else %>
+      <div class="progress-bar" style="background-image: linear-gradient(to right, #6644B8 <%=progress_percent%>%, #17082A <%=progress_percent%>%);">
+        <p><%= humanized_money_with_symbol total_price %></p>
+      </div>
+      <% end %>
   </div>
-  <h6><%=budget.subscriptions.count%> <%= "subscriptions".pluralize(2) %></h6>
 </div>
-

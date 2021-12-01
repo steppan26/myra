@@ -17,3 +17,20 @@
     opacity: 1;
   }
 }
+
+.budget-show-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5rem 0 2.5rem 0;
+  & h2,
+  & h5 {
+    margin: 0;
+  }
+  & h2 {
+    font-size: 2rem;
+  }
+  & h5 {
+    font-size: 1rem;
+  }
+}
