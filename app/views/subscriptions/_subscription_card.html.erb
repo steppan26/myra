@@ -1,7 +1,7 @@
 <%= link_to subscription_path(subscription) do %>
   <div class="sub-card" data-sub-value="<%= subscription.id %>">
     <%= image_tag subscription.image_url, alt:"#{subscription.offer.service_name}" %>
-    <div class="mt-3 mx-3 w-100">
+    <div class="mt-3 mx-3">
       <h3 class="budget-title"><%= subscription.offer.service_name %></h3>
       <div class="sub-card-info">
         <h6><%= humanized_money_with_symbol subscription.offer.price %> <span><%= subscription.offer.frequency %></span></h6>
