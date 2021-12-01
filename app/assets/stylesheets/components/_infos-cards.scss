@@ -1,14 +1,16 @@
 .infos-card {
   background: #220F37;
   border-radius: 10px;
-  padding: 6px;
+  padding: 8px;
   margin: 13px;
   & p {
-    margin: 0px;
-    text-decoration: none;
+    margin: 5px 0px;
+    font-size: 12px;
+
   }
   & ul {
     display: inline-block;
+    list-style-type: circle;
   }
 }
 
@@ -21,6 +23,7 @@
   align-items: center;
   justify-content: space-around;
   margin-bottom: 24px;
+  padding: 1rem;
 }
 
 #expanses {
@@ -43,4 +46,21 @@
 
 #pbudget {
   margin-right: 15px;
+}
+
+.graph {
+  & b{
+    font-size: 16px;
+  }
+}
+
+.name-infos {
+  display: inline-block;
+  width: 7em;
+}
+
+.expenses-infos {
+  background-color: #322247;
+  padding: 2px 10px;
+  border-radius: 5px;
 }

@@ -1,6 +1,6 @@
-<div class="dashboard-cards">
+<div class="dashboard-cards py-4">
   <h1 class="my-3">My Subscriptions</h1>
-  <% current_user.subscriptions.each do |subscription| %>
+  <% @user_subscriptions.each do |subscription| %>
     <%= render "subscriptions/subscription_card", subscription: subscription %>
   <% end %>
 </div>

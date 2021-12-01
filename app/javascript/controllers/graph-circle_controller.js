@@ -12,6 +12,7 @@ export default class extends Controller {
     const progressCircle = this.circleTarget;
     const budget = this.budgetValue;
     const amount = this.amountValue;
+    const amountEuro = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(amount)
     const percent = (amount / budget) * 100 ;
 
     const bar = new ProgressBar.Circle(progressCircle, {
@@ -35,13 +36,13 @@ export default class extends Controller {
           margin: 0,
           transform: {
             prefix: true,
-            value: 'translate(-50%, 50%)'
+            value: 'translate(-40%, -50%)'
           }
         },
       },
       step: (state, bar) => {
         const text = `
-          <p><b>${amount}</b>€/month</p>
+          <p><b>${amountEuro}</b><br><i>/month</i></p>
         `;
         bar.setText(text);
         bar.text.style.color = "white";

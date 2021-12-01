@@ -15,7 +15,7 @@ body{
   & select,
   & textarea {
     background-color: rgba($color: $clr-bg-input, $alpha: 1) !important;
-    color: $clr-text-primary;
+    color: $clr-text-primary !important;
     border: none;
     border-radius: 0.3rem;
   }
