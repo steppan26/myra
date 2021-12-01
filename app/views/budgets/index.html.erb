@@ -1,13 +1,17 @@
-<div class="budgets-header">
-  <h1>My Budgets</h1>
+<div class="budgets-index-wrapper">
+  <div>
+    <div class="budgets-header">
+      <h1>My Budgets</h1>
+    </div>
+    <ul class="budgets-wrapper">
+      <% @budgets.each do |budget| %>
+      <li>
+        <%= link_to budget_path(budget) do %>
+          <%= render 'budgets/budget_card', budget: budget %>
+        <% end %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+  <%= link_to "Create new budget", new_budget_path, class: "btn-submit d-block" %>
 </div>
-<ul class="budgets-wrapper">
-  <% @budgets.each do |budget| %>
-  <li>
-    <%= link_to budget_path(budget) do %>
-      <%= render 'budgets/budget_card', budget: budget %>
-    <% end %>
-  </li>
-  <% end %>
-</ul>
-<%= link_to "Create new budget", new_budget_path, class: "btn-submit d-block" %>
