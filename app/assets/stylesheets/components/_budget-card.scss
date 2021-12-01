@@ -41,10 +41,21 @@
   }
 }
 
+.budgets-index-wrapper {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  min-height: 89vh;
+  & .btn-submit {
+    margin-top: auto;
+  }
+}
+
 .budgets-wrapper {
   list-style: none;
   padding: 0;
   padding-bottom: 1rem;
+  margin: 0;
   &.new{
     max-height: 58vh;
     overflow: scroll;

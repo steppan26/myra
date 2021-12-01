@@ -12,20 +12,23 @@
   justify-content: stretch;
   border-radius: 0.4rem;
   background-color: $clr-bg-primary;
-  padding: 1em;
   margin: 1rem 0;
   & img {
-    height: 50px;
-    width: 70px;
+    width: 52%;
     border-radius: 0.4rem;
-    margin-right: 1.2rem;
+    object-fit: cover;
   }
   & h4 {
     font-weight: 600;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
   }
-  & h6 {
-    font-size: 0.8rem;
+  & .sub-card-info {
+    justify-content: space-between;
+    align-items: flex-end;
+    & > h6 { opacity: 0.6; }
+    & * { font-size: 1.2rem; }
+    & span { font-size: 0.9rem; }
+    & .sub-card-days-remaining h6 { font-size: 1rem; }
   }
 }
 
@@ -37,12 +40,10 @@
 }
 
 .notification {
-  margin-top: 1rem;
   padding: 0.4em;
   border-radius: 3px;
   font-family: inherit;
-  font-size: 0.7rem !important;
-
+  margin-bottom: 1rem;
   &.unimportant{
   color: rgb(13, 102, 7);
   background-color: rgb(221, 250, 212);
