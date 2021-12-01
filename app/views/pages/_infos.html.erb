@@ -1,5 +1,5 @@
-<div class="container py-5">
- <h2> INFORMATIONS </h2>
+<div class="container py-4">
+ <h2> Informations </h2>
   <div class="infos-cards">
     <div class = "graph" data-controller="graph-circle" data-graph-circle-budget-value='<%= current_user.global_budget %>' data-graph-circle-amount-value="<%= user_monthly_spend %>">
         <div class="infos-card">
@@ -10,7 +10,7 @@
               <p id="pbudget"><span id="budget"></span>budget</p>
             </div>
           </div>
-          <div>
+          <div class="details">
               <h6><strong>Details</strong></h6>
               <ul>
                 <% category_sums.each do |category| %>

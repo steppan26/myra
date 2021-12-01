@@ -2,3 +2,22 @@
   color: white;
   font-size: 40px;
 }
+
+.infos {
+  text-align: center;
+  & .icon {
+    font-size: 4em;
+    margin: 0.5em;
+  }
+  & .settings-header {
+    margin-bottom: 0.8em;
+  }
+  & .edit-button {
+    font-size: 25px;
+    position: absolute;
+    right: 2em;
+  }
+  & .user_settings {
+    font-size: 0.8em;
+  }
+}
