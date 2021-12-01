@@ -11,6 +11,14 @@ body{
   & a:hover {
     text-decoration: none;
   }
+  & input,
+  & select,
+  & textarea {
+    background-color: rgba($color: $clr-bg-input, $alpha: 1) !important;
+    color: $clr-text-primary;
+    border: none;
+    border-radius: 0.3rem;
+  }
 }
 
 input::-webkit-outer-spin-button,
