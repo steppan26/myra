@@ -13,5 +13,8 @@
 
 :schedule:
   daily_mail_job:
-    every: day at nine
+    every: 24 hours
     class: DailyMailJob
+  update_renewal_job:
+    every: 24 hours
+    class: UpdateRenewalJob
