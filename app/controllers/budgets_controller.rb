@@ -41,6 +41,15 @@ class BudgetsController < ApplicationController
     redirect_to budget_path(@budget)
   end
 
+  def updateInfo
+    authorize :budget
+    @budget = Budget.find(params[:id])
+    @budget.name = params[:name]
+    @budget.price_per_month = params[:price]
+    @budget.save
+    redirect_to budget_path(@budget)
+  end
+
   def destroy
     @budget = Budget.find(params[:id])
     @budget.destroy

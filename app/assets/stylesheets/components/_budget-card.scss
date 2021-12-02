@@ -101,10 +101,21 @@
   }
 }
 
+.budget-amounts.edit {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  width: 50%;
+}
+
 .budget-amount {
   appearance: none;
   width: 44%;
   text-align: right;
+  &.edit {
+    width: 65%;
+    padding: 0.2rem;
+  }
 }
 
 .title-wrapper {

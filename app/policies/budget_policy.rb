@@ -17,6 +17,10 @@ class BudgetPolicy < ApplicationPolicy
     true
   end
 
+  def updateInfo?
+    true
+  end
+
   def destroy?
     true
   end
