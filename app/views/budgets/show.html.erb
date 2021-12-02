@@ -6,7 +6,7 @@
 <section class="show-budget-wrapper" data-controller="budgetShow" data-budget_id="<%=@budget.id%>">
   <div>
     <div class="budget-show-header">
-      <div class="budgets-show">
+      <div class="budgets-show" data-budgetShow-target="showPage">
         <%= render 'budgets/display_budget', budget: @budget %>
       </div>
       <div class="budgets-edit hidden" data-budgetShow-target="editForm">
@@ -26,7 +26,8 @@
       <li class="new-sub-btn" data-action='click->budgetShow#display_new_subs_to_add'>+</li>
       <% unless @budget.subscriptions.empty? %>
         <% @budget.subscriptions.each do |subscription| %>
-          <li>
+          <li class="subscription-list-wrapper">
+            <i class="fas fa-ban remove-sub-btn hidden" data-budgetShow-target="removeSubBtn"></i>
             <%= link_to subscription_path(subscription) do %>
               <%= render "subscriptions/subscription_card", subscription: subscription %>
             <% end %>
@@ -49,7 +50,13 @@
       <% end %>
     </ul>
   </div>
-  <%= link_to budget_path(@budget), method: :delete, data: { confirm: "Are you sure you wish to delete this budget?" }, class: "delete-btn" do %>
+  <%= link_to budget_path(@budget),
+                                  method: :delete,
+                                  data: {
+                                    confirm: "Are you sure you wish to delete this budget?",
+                                    budgetShow_target: "deleteBtn"
+                                  },
+                                  class: "delete-btn hidden" do %>
     <p>Delete budget</p>
   <% end %>
 </section>

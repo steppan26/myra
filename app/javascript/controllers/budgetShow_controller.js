@@ -1,11 +1,16 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["subscriptions", "budgetSubs", "userSubs"]
+  static targets = ["subscriptions", "budgetSubs", "userSubs", "removeSubBtn", "editForm", "showPage", "deleteBtn"]
   static values = { budgetId: Number }
 
-  display_edit(event) {
-    console.log('click')
+  display_edit() {
+    this.showPageTarget.classList.toggle('hidden');
+    this.editFormTarget.classList.toggle('hidden');
+    this.removeSubBtnTargets.forEach(button => {
+      button.classList.toggle('hidden');
+    })
+    this.deleteBtnTarget.classList.toggle('hidden');
   }
 
   toggle_sub(event){

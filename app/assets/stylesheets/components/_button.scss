@@ -88,6 +88,14 @@
   }
 }
 
+.remove-sub-btn {
+  position: absolute;
+  color: $hardred;
+  font-size: 1.5rem;
+  top: 5px;
+  right: 5px;
+}
+
 .edit-btn {
   & i {
     position: absolute;
@@ -101,6 +109,7 @@
     top: 1rem;
     right: 1rem;
     opacity: 0.5;
+    z-index: 10;
   }
   &.sub i {
     top: -8px;
