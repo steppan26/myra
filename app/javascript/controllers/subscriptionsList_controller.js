@@ -19,7 +19,6 @@ export default class extends Controller {
   create_budget() {
     if (this.nameInputTarget.value === "" || this.priceInputTarget.value === "") {
       this.errorMessageTarget.classList.remove('hidden')
-      console.log('removing class')
     } else {
       const form = this.formWrapperTarget.querySelector('form')
       this.errorMessageTarget.classList.add('hidden')
