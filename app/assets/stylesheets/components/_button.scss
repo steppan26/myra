@@ -52,6 +52,9 @@
   margin: 1em 0;
   text-align: center;
   color: $clr-text-primary;
+  &.edit {
+    margin-top: 0;
+  }
 }
 
 .edit-btns {
@@ -78,6 +81,11 @@
   font-size: 2rem;
   background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='5' ry='5' stroke='%23F1F1F1AB' stroke-width='2' stroke-dasharray='10' stroke-dashoffset='29' stroke-linecap='square'/%3e%3c/svg%3e");
   border-radius: 5px;
+  &.edit {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    background-image: none;
+  }
 }
 
 .edit-btn {
@@ -90,8 +98,9 @@
     opacity: 0.7;
   }
   &.budget i {
-    bottom: -0.8rem;
-    right: 0.3rem;
+    top: 1rem;
+    right: 1rem;
+    opacity: 0.5;
   }
   &.sub i {
     top: -8px;

@@ -7,8 +7,9 @@ class BudgetsController < ApplicationController
 
   def show
     @budget = Budget.find(params[:id])
-    @subscriptions = Subscription.where(budget_id: @budget.id)
-    @user_subscriptions = Subscription.where(user_id: current_user)
+    @subscriptions = @budget.subscriptions
+    user_subscriptions = Subscription.where(user_id: current_user)
+    @filtered_subscriptions = user_subscriptions.reject { |sub| @subscriptions.include?(sub) }
   end
 
   def new

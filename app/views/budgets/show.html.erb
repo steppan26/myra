@@ -22,8 +22,8 @@
         </div>
       <% end %>
     </div>
-    <ul class="">
-      <li class="new-sub-btn" data-action='click->budgetShow#add_subs'>+</li>
+    <ul class="budgets-wrapper show" data-budgetShow-target='budgetSubs'>
+      <li class="new-sub-btn" data-action='click->budgetShow#display_new_subs_to_add'>+</li>
       <% unless @budget.subscriptions.empty? %>
         <% @budget.subscriptions.each do |subscription| %>
           <li>
@@ -34,9 +34,10 @@
         <% end %>
       <% end %>
     </ul>
-    <ul class="budgets-wrapper edit hidden">
-      <% @user_subscriptions.each do |subscription| %>
-        <li data-action="click->budgetShow#display_edit"><%= render 'subscriptions/subscription_card', subscription: subscription %></li>
+    <ul class="budgets-wrapper edit hidden" data-budgetShow-target='userSubs'>
+      <li class="btn-submit edit" data-action='click->budgetShow#add_subs'>Add subscriptions</li>
+      <% @filtered_subscriptions.each do |subscription| %>
+        <li data-action="click->budgetShow#toggle_sub"><%= render 'subscriptions/subscription_card', subscription: subscription %></li>
       <% end %>
     </ul>
   </div>
