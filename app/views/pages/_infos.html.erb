@@ -6,9 +6,17 @@
           <div data-graph-circle-target="circle" style="width: 50%"></div>
           <div>
             <p><span id="expanses"></span>expenses</p>
-            <p id="pbudget"><span id="budget"></span>budget</p>
+            <p id="pbudget"><span id="budget"></span>budget(<%= humanized_money_with_symbol current_user.global_budget %>)</p>
           </div>
         </div>
+        <% if user_monthly_spend > current_user.global_budget %>
+          <div>
+            <p class="budget_alert alert alert-danger" role="alert">
+              You have surpassed your allocated budget by <br>
+              <strong id="surpassed_expanses"><%= humanized_money_with_symbol (current_user.global_budget - user_monthly_spend) %></strong>
+            </p>
+          </div>
+        <% end %>
         <div class="details">
             <h6><strong>Details</strong></h6>
             <ul>
