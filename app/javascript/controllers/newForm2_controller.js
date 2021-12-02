@@ -5,7 +5,7 @@ export default class extends Controller {
                     "category", "service", "offerServiceNameInput", "offerPriceInput", "offerFrequencyInput",
                     "customOfferInput", "customService", "customOffer", "formPartOne", "formPartTwo", "renewalInput",
                     "delayInput", "infoInput", "delayFrequencyInput", "serviceIdInput", "offerIdInput", "offerNameInput", "formSubmitButton",
-                    "reminderDelayDaysInput", "additionalInfoInput", "reminderDelayDaysInput", "renewalDateInput", "serviceNameInput"]
+    "reminderDelayDaysInput", "additionalInfoInput", "reminderDelayDaysInput", "renewalDateInput", "serviceNameInput", "offerNameUserInput"]
 
   connect() {
   };
