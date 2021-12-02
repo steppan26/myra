@@ -28,8 +28,8 @@ class SubscriptionsController < ApplicationController
   def create
     @subscription = Subscription.new
     authorize :subscription
-    price_cents = (params[:subscription][:offers][:price_cents]).to_i * 100
-    custom_offer = params[:subscription][:offer_id].to_i == -1
+    price = Money.new(params[:subscription][:offers][:price_cents].to_f * 100)
+    custom_offer = params[:subscription][:offer_id].to_f == -1
 
     if custom_offer
       offer = Offer.create(
@@ -50,7 +50,7 @@ class SubscriptionsController < ApplicationController
       offer: offer,
       user_id: current_user.id,
       additional_info: params[:subscription][:additional_info],
-      price_per_day_cents: get_price_per_day_cents(price_cents, params[:subscription][:offers][:frequency]),
+      price_per_day: get_price_per_day(price, params[:subscription][:offers][:frequency]),
       renewal_date: renewal_date,
       reminder_delay_days: params[:subscription][:reminder_delay_days],
       url: custom_offer ? "www.google.com" : offer.service.url,
@@ -130,14 +130,14 @@ class SubscriptionsController < ApplicationController
 
   private
 
-  def get_price_per_day_cents(value, frequency)
+  def get_price_per_day(value, frequency)
     case frequency
     when 'annualy'
-      return (value / 365).round.to_i
+      return (value / 365)
     when 'monthly'
-      return (value / 30).round.to_i
+      return (value / 30)
     else
-      return (value / 7).round.to_i
+      return (value / 7)
     end
   end
 
