@@ -1,15 +1,17 @@
 <div class="budgets-index-wrapper py-4">
   <div>
     <h1 class="page-title">MY BUDGETS</h1>
-    <ul class="budgets-wrapper">
-      <% @budgets.each do |budget| %>
-      <li>
-        <%= link_to budget_path(budget) do %>
-          <%= render 'budgets/budget_card', budget: budget %>
+      <ul class="budgets-wrapper">
+    <% unless @budgets.empty? %>
+        <% @budgets.each do |budget| %>
+        <li>
+          <%= link_to budget_path(budget) do %>
+            <%= render 'budgets/budget_card', budget: budget %>
+          <% end %>
+        </li>
         <% end %>
-      </li>
-      <% end %>
-    </ul>
+    <% end %>
+      </ul>
   </div>
   <%= link_to "Create new budget", new_budget_path, class: "btn-submit d-block" %>
 </div>

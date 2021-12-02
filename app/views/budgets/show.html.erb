@@ -1,23 +1,62 @@
-<section class="show-budget-wrapper">
-  <div class="edit-btn">
-    <i class="fas fa-edit" data-action='click->subscriptionShow#display_edit'></i>
-  </div>
-  <div class="budget-show-header">
-    <h2><%= @budget.name.upcase %></h2>
-    <h5>Budget: <%= humanized_money_with_symbol @budget.price_per_month %></h5>
-  </div>
-  <% if @budget.subscriptions.empty? %>
-    <h6>There are no subscriptions in this budget</h6>
-  <% else %>
-    <ul>
-      <% @budget.subscriptions.each do |subscription| %>
-        <li>
-          <%= render "subscriptions/subscription_card", subscription: subscription %>
-        </li>
+<% total_price = Money.new(0) %>
+<% @budget.subscriptions.each do |sub| %>
+  <% total_price += sub.price_per_day * 30 %>
+<% end %>
+<% progress_percent = ((total_price / @budget.price_per_month) * 100).round.to_i %>
+<section class="show-budget-wrapper" data-controller="budgetShow" data-budget_id="<%=@budget.id%>">
+  <div>
+    <div class="budget-show-header">
+      <div class="budgets-show" data-budgetShow-target="showPage">
+        <%= render 'budgets/display_budget', budget: @budget %>
+      </div>
+      <div class="budgets-edit hidden" data-budgetShow-target="editForm">
+        <%= render 'budgets/edit_budget', budget: @budget %>
+      </div>
+      <% if progress_percent > 100 %>
+        <div class="progress-bar" style="background: #9b0e0e;">
+          <p><%= humanized_money_with_symbol total_price %></p>
+        </div>
+      <% else %>
+        <div class="progress-bar" style="background-image: linear-gradient(to right, #6644B8 <%=progress_percent%>%, #17082A <%=progress_percent%>%);">
+          <p><%= humanized_money_with_symbol total_price %></p>
+        </div>
+      <% end %>
+    </div>
+    <ul class="budgets-wrapper show" data-budgetShow-target='budgetSubs'>
+      <li class="new-sub-btn" data-action='click->budgetShow#display_new_subs_to_add'>+</li>
+      <% unless @budget.subscriptions.empty? %>
+        <% @budget.subscriptions.each do |subscription| %>
+          <li class="subscription-list-wrapper">
+            <i class="fas fa-ban remove-sub-btn hidden" data-budgetShow-target="removeSubBtn"></i>
+            <%= link_to subscription_path(subscription) do %>
+              <%= render "subscriptions/subscription_card", subscription: subscription %>
+            <% end %>
+          </li>
+        <% end %>
       <% end %>
     </ul>
-  <% end %>
-  <%= link_to budget_path(@budget), method: :delete, data: { confirm: "Are you sure you wish to delete this budget?" }, class: "delete-btn" do %>
+    <ul class="budgets-wrapper edit hidden" data-budgetShow-target='userSubs'>
+    <%= simple_form_for(@budget) do |f| %>
+      <%= f.association :subscriptions,
+                        input_html: {data: {budgetShow_target: "subscriptions"}},
+                        wrapper_html: {class: "d-none"},
+                        as: :check_boxes,
+                        collection: @filtered_subscriptions
+      %>
+    <% end %>
+      <li class="btn-submit edit" data-action='click->budgetShow#add_subs'>Add subscriptions</li>
+      <% @filtered_subscriptions.each do |subscription| %>
+        <li data-action="click->budgetShow#toggle_sub"><%= render 'subscriptions/subscription_card', subscription: subscription %></li>
+      <% end %>
+    </ul>
+  </div>
+  <%= link_to budget_path(@budget),
+                                  method: :delete,
+                                  data: {
+                                    confirm: "Are you sure you wish to delete this budget?",
+                                    budgetShow_target: "deleteBtn"
+                                  },
+                                  class: "delete-btn hidden" do %>
     <p>Delete budget</p>
   <% end %>
 </section>
