@@ -9,9 +9,9 @@
       data-offer-id="<%= offer.id %>"
       data-offer-frequency="<%= offer.frequency %>"
     >
-      <div>
-        <h4 class="categories-title"><%= offer.name %></h4>
-        <h4 class="categories-title"><%= humanized_money_with_symbol offer.price %> <%= offer.frequency %></h4>
+      <div class="categories-title">
+        <h4 class=""><%= offer.name %></h4>
+        <h4 class=""><%= humanized_money_with_symbol offer.price %> <%= offer.frequency %></h4>
       </div>
     </li>
   <% end %>
