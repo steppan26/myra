@@ -35,7 +35,7 @@ class SubscriptionsController < ApplicationController
       offer = Offer.create(
         name: "custom offer",
         service_name: params[:subscription][:offers][:service_name],
-        price_cents: price_cents,
+        price: price,
         frequency: params[:subscription][:offers][:frequency],
         category_id: params[:subscription][:offers][:category_id],
       )
