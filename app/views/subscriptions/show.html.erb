@@ -1,7 +1,12 @@
 <div class="show-wrapper" data-controller="subscriptionShow" data-sub-id="<%=@subscription.id%>" >
   <div class="show-banner" style="background-image: url('<%= @subscription.image_url %>');">
     <div class="image-fader">
-      <h3><%= @subscription.offer.service_name %></h3>
+      <div class="show_image_title">
+        <h3><%= @subscription.offer.service_name %></h3>
+        <%= link_to @subscription.url do %>
+          <i class="fas fa-link link-button"></i>
+        <% end %>
+      </div>
       <h5><%= @subscription.offer.category.name %></h5>
     </div>
   </div>
