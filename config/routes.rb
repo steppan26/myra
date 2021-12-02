@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get "/searchOffer/:query", to: 'subscriptions#display_offers'
   get "/newOffer", to: 'subscriptions#display_offer_form'
   get "/subOverview", to: 'subscriptions#subscription_overview'
+  get "/updateBudgets/:id", to: 'budgets#update'
 
   require "sidekiq/web"
   authenticate :user, ->(user) { user.admin? } do

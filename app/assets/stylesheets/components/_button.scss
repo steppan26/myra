@@ -52,6 +52,9 @@
   margin: 1em 0;
   text-align: center;
   color: $clr-text-primary;
+  &.edit {
+    margin-top: 0;
+  }
 }
 
 .edit-btns {
@@ -68,15 +71,50 @@
   }
 }
 
-.edit-btn i {
-  position: absolute;
-  top: -8px;
-  right: 5px;
-  border-radius: 50%;
-  background-color: rgba(115, 115, 115, 0.6);
-  padding: 0.5rem;
-  font-size: 1rem;
+.new-sub-btn {
+  width: 100%;
+  background-color: #2c1646;
+  border-radius: 0.3rem;
+  text-align: center;
+  padding: 0;
   opacity: 0.7;
+  font-size: 2rem;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='5' ry='5' stroke='%23F1F1F1AB' stroke-width='2' stroke-dasharray='10' stroke-dashoffset='29' stroke-linecap='square'/%3e%3c/svg%3e");
+  border-radius: 5px;
+  &.edit {
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    background-image: none;
+  }
+}
+
+.remove-sub-btn {
+  position: absolute;
+  color: $hardred;
+  font-size: 1.5rem;
+  top: 5px;
+  right: 5px;
+}
+
+.edit-btn {
+  & i {
+    position: absolute;
+    border-radius: 50%;
+    background-color: rgba(115, 115, 115, 0.6);
+    padding: 0.5rem;
+    font-size: 1rem;
+    opacity: 0.7;
+  }
+  &.budget i {
+    top: 1rem;
+    right: 1rem;
+    opacity: 0.5;
+    z-index: 10;
+  }
+  &.sub i {
+    top: -8px;
+    right: 5px;
+  }
 }
 
 

@@ -1,5 +1,13 @@
 .show-budget-wrapper {
   position: relative;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  min-height: 88vh;
+  & ul {
+    list-style: none;
+    padding: 1rem 0;
+  }
 }
 
 .home-btn {
@@ -19,10 +27,18 @@
 }
 
 .budget-show-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 1.5rem 0 2.5rem 0;
+  position: relative;
+  background-color: $clr-bg-primary;
+  padding: 1.3rem;
+  border-radius: 0 0 1rem 1rem;
+  & .progress-bar {
+    border-radius: 0.3rem;
+    padding: 0.2rem;
+    background-image: linear-gradient(to right, $clr-btn-submit 50%, $clr-bg-secondary 50%) ;
+  }
+  & p {
+    margin: 0;
+  }
   & h2,
   & h5 {
     margin: 0;

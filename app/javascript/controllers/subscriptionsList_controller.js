@@ -1,10 +1,9 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ["subscriptions"]
+  static targets = ["subscriptions", "nameInput", "priceInput", "errorMessage", "formWrapper"]
 
   connect(){
-    console.log('hello from subscriptions list controller');
   }
 
   toggleSub(event){
@@ -15,5 +14,15 @@ export default class extends Controller {
         selected_sub.classList.toggle('selected');
       }
     });
-  }
+  };
+
+  create_budget() {
+    if (this.nameInputTarget.value === "" || this.priceInputTarget.value === "") {
+      this.errorMessageTarget.classList.remove('hidden')
+    } else {
+      const form = this.formWrapperTarget.querySelector('form')
+      this.errorMessageTarget.classList.add('hidden')
+      form.submit()
+    }
+  };
 }
