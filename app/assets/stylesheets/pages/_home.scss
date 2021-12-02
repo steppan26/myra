@@ -28,6 +28,12 @@ body{
     letter-spacing: 2px;
     word-spacing: 1rem;
     opacity: 0.4;
+    &.edit {
+      width: 80%;
+      font-weight: normal;
+      opacity: 1;
+      font-size: 1.3rem;
+    }
   }
 }
 

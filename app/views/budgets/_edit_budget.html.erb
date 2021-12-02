@@ -1,10 +1,14 @@
 <div class="edit-btn budget">
-  <i class="fas fa-edit" data-action='click->budgetShow#display_edit'></i>
+  <i class="fas fa-edit" data-action='click->budgetShow#save_changes'></i>
 </div>
-<h1 class="page-title"><%= budget.name.upcase %></h1>
+<input type="text" class="page-title edit" value="<%= budget.name.upcase %>" data-budgetShow-target="newNameInput">
 <div class="budget-info show">
   <p><%=budget.subscriptions.count%> <%= "subscription".pluralize(budget.subscriptions.count) %></p>
-  <div class="budget-amounts">
-    <p>Budget: <span class="ms-3"><%= humanized_money_with_symbol budget.price_per_month %></span></p>
+  <div class="budget-amounts edit">
+    <p>Budget:</p>
+    <div class="form-price-wrapper edit">
+      <input type="tel" value="<%= budget.price_per_month %>" class="budget-amount edit" data-budgetShow-target="newPriceInput">
+      <span>€</span>
+    </div>
   </div>
 </div>
