@@ -16,4 +16,9 @@
     </h6>
     <%= render 'settings_budget' %>
   </div>
+   <%= link_to destroy_user_session_path, method: :delete do%>
+    <div class="logout">
+      <p id="logoutp">Log Out</p>
+    </div>
+  <% end %>
 </div>
