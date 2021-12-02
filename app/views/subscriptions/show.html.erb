@@ -15,7 +15,7 @@
           <%= f.submit%>
         <% end %>
       </div>
-      <div class="edit-btns">
+      <div class="edit-btns sub">
         <i class="far fa-check-circle green-icon" data-action='click->subscriptionShow#save_changes'></i>
         <i class="far fa-times-circle red-icon" data-action='click->subscriptionShow#discard_changes'></i>
       </div>
@@ -66,6 +66,7 @@
       <p>Email</p>
     </div>
   </div>
+
   <%= link_to request.referer.present? ? request.referer : dashboard_path, class: "back-btn" do %>
     <i class="fas fa-chevron-circle-left"></i>
   <% end %>

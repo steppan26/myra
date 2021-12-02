@@ -7,7 +7,9 @@ class BudgetsController < ApplicationController
 
   def show
     @budget = Budget.find(params[:id])
-    @subscriptions = Subscription.where(budget_id: @budget.id)
+    @subscriptions = @budget.subscriptions
+    user_subscriptions = Subscription.where(user_id: current_user)
+    @filtered_subscriptions = user_subscriptions.reject { |sub| @subscriptions.include?(sub) }
   end
 
   def new
@@ -28,6 +30,15 @@ class BudgetsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def update
+    @budget = Budget.find(params[:id])
+    sub_ids = params[:selectedSubs].split(',')
+    sub_ids.each do |sub_id|
+      BudgetItem.create(budget_id: @budget.id, subscription_id: sub_id.to_i)
+    end
+    redirect_to budget_path(@budget)
   end
 
   def destroy

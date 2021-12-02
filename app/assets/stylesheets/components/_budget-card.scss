@@ -8,8 +8,16 @@
     padding: 0.5em;
   }
   .submit-btn {
+    cursor: pointer;
+    display: inline-block;
     background-color: $clr-btn-submit !important;
+    padding: 0.6rem;
+    border-radius: 0.3rem;
   }
+}
+
+.subscription-list-wrapper {
+  position: relative;
 }
 
 .new-budget-container {
@@ -60,12 +68,12 @@
     max-height: 58vh;
     overflow: scroll;
     scrollbar-width: none;
-    & .sub-card {
-      border: 2px solid transparent;
-    }
-    & .sub-card.selected {
-      border: 2px solid white;
-    }
+  }
+  & .sub-card {
+    border: 2px solid transparent;
+  }
+  & .sub-card.selected {
+    border: 2px solid white;
   }
   & a,
   & a:hover{
@@ -88,6 +96,9 @@
   opacity: 0.6;
   display: flex;
   justify-content: space-between;
+  &.show {
+    padding: 1rem 0;
+  }
 }
 
 .budget-amount {
