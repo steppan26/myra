@@ -1,8 +1,20 @@
 <div class="dashboard-cards py-4">
   <h1 class="page-title">My Subscriptions</h1>
-  <% @user_subscriptions.each do |subscription| %>
-    <%= link_to subscription_path(subscription) do %>
-      <%= render "subscriptions/subscription_card", subscription: subscription %>
+    <% if @user_subscriptions.length == 0 %>
+      <div class="no_subs_message">
+          <div class="home_message">
+            <h3>Get Started!</h3>
+            <h3> Add a subscription</h3>
+            <h3>push the button</h3>
+            <h3>"+"</h3>
+          </div>
+          <i class="fas fa-long-arrow-alt-down home-arrow"></i>
+      </div>
+    <% else %>
+      <% @user_subscriptions.each do |subscription| %>
+        <%= link_to subscription_path(subscription) do %>
+          <%= render "subscriptions/subscription_card", subscription: subscription %>
+        <% end %>
+      <% end %>
     <% end %>
-  <% end %>
 </div>
