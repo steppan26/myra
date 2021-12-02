@@ -1,11 +1,9 @@
 .infos {
   text-align: center;
+  margin-top: -1rem;
   & .icon {
     font-size: 3rem;
     margin: 1rem;
-  }
-  & .settings-header {
-    margin-bottom: 1rem;
   }
   & .edit-button {
     font-size: 2rem;
@@ -16,12 +14,24 @@
   & .user_settings {
     font-size: 1rem;
   }
+  & .logout {
+    background: #d20e11;
+    margin: 0 6rem;
+    padding: 0.3rem;
+    border-radius: 21px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & #logoutp {
+      margin: auto 0;
+    }
+  }
 }
-
 .settings_cards {
   background: #220F37;
   border-radius: 0.4rem;
   padding: 1rem;
-  margin: 1rem 0;
+  margin-bottom: 1rem;
   position: relative;
 }

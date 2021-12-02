@@ -24,7 +24,7 @@ class BudgetsController < ApplicationController
       new_budget_item = BudgetItem.new(budget_id: @budget.id, subscription_id: sub_id)
       new_budget_item.save
       end
-      redirect_to budget_path(@budget)
+      redirect_to budgets_path
     else
       render :new
     end
