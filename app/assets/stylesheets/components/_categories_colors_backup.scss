@@ -4,7 +4,7 @@
     background: $card;
   }
   background: $card;
-  background: linear-gradient(to bottom right, hsla(0, 90%, 60%, 1), hsla(0, 90%, 10%, 1));
+  background: linear-gradient(to bottom right, rgba(255,0,0,1) 0%, rgba(176,6,6,1) 50%, rgba(119,0,0,1) 100%);
 }
 
 .Communication {
@@ -13,7 +13,7 @@
     background: $card;
   }
   background: $card;
-  background: linear-gradient(to bottom right, hsla(25, 90%, 60%, 1), hsla(25, 90%, 10%, 1));
+  background: linear-gradient(to bottom right, rgb(209, 10, 209) 0%, rgb(146, 9, 132) 50%, rgb(87, 5, 79) 100%);
 }
 
 .FoodDrink {
@@ -22,7 +22,7 @@
     background: $card;
   }
   background: $card;
-  background: linear-gradient(to bottom right, hsla(50, 90%, 60%, 1), hsla(50, 90%, 10%, 1));
+  background: linear-gradient(to bottom right, rgba(255,130,0,1) 0%, rgba(176,87,6,1) 50%, rgba(119,64,0,1) 100%);
 }
 
 .Fitness {
@@ -31,7 +31,7 @@
     background: $card;
   }
   background: $card;
-  background: linear-gradient(to bottom right, hsla(75, 90%, 60%, 1), hsla(75, 90%, 10%, 1));
+  background: linear-gradient(to bottom right, rgb(53, 216, 12) 0%, rgb(37, 143, 10) 50%, rgb(18, 88, 5) 100%);
 }
 
 .PersonalCareHealth {
@@ -40,7 +40,7 @@
     background: $card;
   }
   background: $card;
-  background: linear-gradient(to bottom right, hsla(100, 90%, 60%, 1), hsla(100, 90%, 10%, 1));
+  background: linear-gradient(to bottom right, rgba(0,151,255,1) 0%, rgba(6,110,176,1) 50%, rgba(0,75,119,1) 100%);
 }
 
 .Software {
@@ -49,7 +49,7 @@
     background: $card;
   }
   background: $card;
-  background: linear-gradient(to bottom right, hsla(125, 90%, 60%, 1), hsla(125, 90%, 10%, 1));
+  background: linear-gradient(to bottom right, rgba(168,184,217,1) 0%, rgba(104,116,136,1) 50%, rgba(73,85,102,1) 100%);
 }
 
 .Transportation {
@@ -58,7 +58,7 @@
     background: $card;
   }
   background: $card;
-  background: linear-gradient(to bottom right, hsla(150, 90%, 60%, 1), hsla(150, 90%, 10%, 1));
+  background: linear-gradient(to bottom right, rgb(203, 209, 14) 0%, rgb(164, 172, 11) 50%, rgb(84, 88, 6) 100%);
 }
 
 .PetCare {
@@ -67,7 +67,7 @@
     background: $card;
   }
   background: $card;
-  background: linear-gradient(to bottom right, hsla(175, 90%, 60%, 1), hsla(175, 90%, 10%, 1));
+  background: linear-gradient(to bottom right, rgb(12, 209, 101) 0%, rgb(11, 150, 73) 50%, rgb(4, 66, 32) 100%);
 }
 
 .Gaming {
@@ -76,7 +76,7 @@
     background: $card;
   }
   background: $card;
-  background: linear-gradient(to bottom right, hsla(200, 90%, 60%, 1), hsla(200, 90%, 10%, 1));
+  background: linear-gradient(to bottom right, rgba(230,78,0,1) 0%, rgba(187,54,0,1) 50%, rgba(127,45,0,1) 100%);
 }
 
 .eCommerce {
@@ -85,7 +85,7 @@
     background: $card;
   }
   background: $card;
-  background: linear-gradient(to bottom right, hsla(225, 90%, 60%, 1), hsla(225, 90%, 10%, 1));
+  background: linear-gradient(to bottom right, rgba(0,1,230,1) 0%, rgba(0,16,187,1) 50%, rgba(0,15,127,1) 100%);
 }
 
 .BooksNews {
@@ -94,7 +94,7 @@
     background: $card;
   }
   background: $card;
-  background: linear-gradient(to bottom right, hsla(250, 90%, 60%, 1), hsla(250, 90%, 10%, 1));
+  background: linear-gradient(to bottom right, rgba(230,0,151,1) 0%, rgba(187,0,135,1) 50%, rgba(127,0,92,1) 100%);
 }
 
 .Academy {
@@ -103,7 +103,7 @@
     background: $card;
   }
   background: $card;
-  background: linear-gradient(to bottom right, hsla(275, 90%, 60%, 1), hsla(275, 90%, 10%, 1));
+  background: linear-gradient(to bottom right, rgb(156, 209, 10) 0%, rgb(113, 150, 10) 50%, rgb(61, 82, 5) 100%);
 }
 
 .None {
@@ -112,5 +112,5 @@
     background: $card;
   }
   background: $card;
-  background: linear-gradient(to bottom right, hsla(300, 90%, 60%, 1), hsla(300, 90%, 10%, 1));
+  background: linear-gradient(to bottom right, rgba(226,232,216,1) 0%, rgba(185,189,175,1) 50%, rgba(148,150,141,1) 100%);
 }
