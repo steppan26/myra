@@ -5,7 +5,7 @@ export default class extends Controller {
                     "category", "service", "offerServiceNameInput", "offerPriceInput", "offerFrequencyInput",
                     "customOfferInput", "customService", "customOffer", "formPartOne", "formPartTwo", "renewalInput",
                     "delayInput", "infoInput", "delayFrequencyInput", "serviceIdInput", "offerIdInput", "offerNameInput", "formSubmitButton",
-                    "reminderDelayDaysInput", "additionalInfoInput", "reminderDelayDaysInput", "renewalDateInput", "serviceNameInput"]
+    "reminderDelayDaysInput", "additionalInfoInput", "reminderDelayDaysInput", "renewalDateInput", "serviceNameInput", "offerNameUserInput"]
 
   connect() {
   };
@@ -60,28 +60,46 @@ export default class extends Controller {
         this.selectOfferTarget.innerHTML = "";
         this.displayNewOfferTarget.innerHTML = data;
         const nameInput = this.offerServiceNameInputTarget;
+        const offerNameInput = this.offerNameUserInputTarget;
         nameInput.value = "";
-        this.offerNameInputTarget.value = 'custom offer'
+        // this.offerNameInputTarget.value = 'custom offer';
         nameInput.removeAttribute("disabled");
+        nameInput.classList.remove('disabled')
+        offerNameInput.removeAttribute("disabled");
+        offerNameInput.classList.remove('disabled')
+        document.querySelector('.form-price-wrapper').classList.remove('disabled-price')
       } else if (target === this.customOfferTarget) {
         this.displayNewOfferTarget.innerHTML = data;
+        const offerNameInput = this.offerNameUserInputTarget;
         const nameInput = this.offerServiceNameInputTarget;
         nameInput.value = this.serviceIdInputTarget.dataset.serviceName;
         nameInput.disabled = true;
-        this.offerNameInputTarget.value = 'custom offer'
+        nameInput.classList.add('disabled')
+        offerNameInput.removeAttribute("disabled");
+        offerNameInput.classList.remove('disabled')
+        document.querySelector('.form-price-wrapper').classList.remove('disabled-price')
+        // this.offerNameInputTarget.value = 'custom offer';
       } else {
         this.displayNewOfferTarget.innerHTML = data;
         const priceInput = this.offerPriceInputTarget;
         const frequencyInput = this.offerFrequencyInputTarget;
-        // set the values of the form with the offer details
         const nameInput = this.offerServiceNameInputTarget;
+        const offerNameInput = this.offerNameUserInputTarget;
+        // set the values of the form with the offer details
         nameInput.value = this.serviceIdInputTarget.dataset.serviceName;
         priceInput.value = target.dataset.offerPrice;
         frequencyInput.value = target.dataset.offerFrequency;
+        offerNameInput.value = target.dataset.offerName;
         // disable the inputs as values are pre-defined
         nameInput.disabled = true;
+        nameInput.classList.add('disabled')
         priceInput.disabled = true;
+        priceInput.classList.add('disabled')
         frequencyInput.disabled = true;
+        frequencyInput.classList.add('disabled')
+        offerNameInput.disabled = true;
+        offerNameInput.classList.add('disabled')
+        document.querySelector('.form-price-wrapper').classList.add('disabled-price')
         // insert the values into the hidden form
         this.offerIdInputTarget.value = target.dataset.offerId
         this.priceInputTarget.value = target.dataset.offerPrice
@@ -104,19 +122,25 @@ export default class extends Controller {
     const nameInput = this.offerServiceNameInputTarget;
     const priceInput = this.offerPriceInputTarget;
     const frequencyInput = this.offerFrequencyInputTarget;
-    const nameError = document.getElementById('name-error');
-    const priceError = document.getElementById('price-error');
+    const offerNameUserInput = this.offerNameUserInputTarget;
+    const serviceNameError = document.getElementById('name-error');
+    const priceNameError = document.getElementById('price-error');
+    const offerNameError = document.getElementById('offer-error');
 
-    nameError.classList.add('hidden');
-    priceError.classList.add('hidden');
+    serviceNameError.classList.add('hidden');
+    priceNameError.classList.add('hidden');
+    offerNameError.classList.add('hidden');
 
-    if (nameInput.value === "" && priceInput.value === "") {
-      nameError.classList.remove('hidden');
-      priceError.classList.remove('hidden');
-    } else if (nameInput.value === "") {
-      nameError.classList.remove('hidden');
-    } else if (priceInput.value === "") {
-      priceError.classList.remove('hidden');
+    if (nameInput.value === "" || priceInput.value === "" || offerNameUserInput.value === "") {
+      if (nameInput.value === "") {
+      serviceNameError.classList.remove('hidden');
+      }
+      if (priceInput.value === "") {
+        priceNameError.classList.remove('hidden');
+      }
+      if (offerNameUserInput.value === "") {
+        offerNameError.classList.remove('hidden');
+      }
     } else {
       this.serviceNameInputTarget.value = nameInput.value;
       this.priceInputTarget.value = priceInput.value;

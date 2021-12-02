@@ -1,16 +1,25 @@
 <div class="custom-offer-wrapper">
-  <label for="serviceName">Service Name</label>
-  <input class="form-input full-width" id="serviceName" type="text" placeholder="Enter company name..." name="name" data-newForm2-target="offerServiceNameInput customOfferInput">
+  <label class="mb-2" for="serviceName">Service Name</label>
+  <input class="form-input full-width" id="serviceName" type="text" placeholder="Enter company name..." name="service" data-newForm2-target="offerServiceNameInput customOfferInput">
   <p class="error-message hidden" id="name-error">Please input the name of the company</p>
-  <div class="form-price-wrapper">
-    <input class="d-inline-block form-input" type="number" placeholder="Price" step="any" name="price" data-newForm2-target="offerPriceInput customOfferInput">
-    <span>€</span>
+  <label class="mt-4 mb-2" for="offerName">Offer Name</label>
+  <input class="form-input full-width" id="offerName" type="text" placeholder="Enter offer name..." name="offer" data-newForm2-target="offerNameUserInput customOfferInput">
+  <p class="error-message hidden" id="offer-error">Please input the name of the offer</p>
+  <div class="labels-wrapper d-flex justify-content-between px-3 pt-3 pb-2">
+    <label for="offerPrice">Cost</label>
+    <label for="offerRecurrence">Recurrence</label>
   </div>
-  <select class="d-inline-block dropdown" placeholder="service name" name="frequency"  data-newForm2-target="offerFrequencyInput customOfferInput">
-    <% Offer::PERIODS.each do |offer| %>
-      <option value="<%= offer %>"><%= offer %></option>
-    <% end %>
-  </select>
+  <div class="d-flex justify-content-between">
+    <div class="form-price-wrapper">
+      <input class="d-inline-block form-input" id="offerPrice" type="number" placeholder="Price" step="any" name="price" data-newForm2-target="offerPriceInput customOfferInput">
+      <span>€</span>
+    </div>
+    <select class="d-inline-block dropdown" id="offerRecurrence" placeholder="service name" name="frequency"  data-newForm2-target="offerFrequencyInput customOfferInput">
+      <% Offer::PERIODS.each do |offer| %>
+        <option value="<%= offer %>"><%= offer %></option>
+      <% end %>
+    </select>
+  </div>
   <p class="error-message hidden" id="price-error">Please input a valid amount</p>
-  <div class="btn-submit" data-action='click->newForm2#saveOffer'>Select this offer</div>
+  <div class="btn-submit mt-5" data-action='click->newForm2#saveOffer'>Select this offer</div>
 </div>
