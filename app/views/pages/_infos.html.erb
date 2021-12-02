@@ -34,11 +34,11 @@
   <% unless user_budgets.length == 0 %>
     <div class="infos-card">
       <h6><strong>Budgets</strong></h6>
-      <% user_budgets.each do |budget| %>
-        <ul>
+      <ul>
+        <% user_budgets.each do |budget| %>
           <li><p><span class="name-infos"><%= budget.name %></span>  <span class="expenses-infos"> <%= humanized_money_with_symbol Money.new((budget.subscriptions.sum(:price_per_day_cents).to_f * 30)) %>/month</span></p></li>
-        </ul>
-      <% end %>
+        <% end %>
+      </ul>
     </div>
   <% end %>
 </div>
