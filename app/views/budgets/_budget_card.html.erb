@@ -5,7 +5,7 @@
       <p><%=budget.subscriptions.count%> <%= "subscription".pluralize(budget.subscriptions.count) %></p>
       <div class="budget-amounts">
         <p>Budget: <span class="ms-3"><%= humanized_money_with_symbol budget.price_per_month %></span></p>
-        <% total_price = 0 %>
+        <% total_price = Money.new(0) %>
         <% budget.subscriptions.each do |sub| %>
           <% total_price += sub.price_per_day * 30 %>
         <% end %>
