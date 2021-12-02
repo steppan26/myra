@@ -1,0 +1,14 @@
+<ul class="budgets-wrapper edit">
+    <%= simple_form_for(budget) do |f| %>
+      <%= f.association :subscriptions,
+                        input_html: {data: {budgetShow_target: "subscriptions"}},
+                        wrapper_html: {class: "d-none"},
+                        as: :check_boxes,
+                        collection: filtered_subscriptions
+      %>
+    <% end %>
+      <li class="btn-submit edit" data-action='click->budgetShow#add_subs'>Add subscriptions</li>
+      <% filtered_subscriptions.each do |subscription| %>
+        <li data-action="click->budgetShow#toggle_sub"><%= render 'subscriptions/subscription_card', subscription: subscription %></li>
+      <% end %>
+    </ul>

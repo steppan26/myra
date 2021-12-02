@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["subscriptions", "budgetSubs", "userSubs", "removeSubBtn", "editForm", "showPage", "deleteBtn", "newNameInput", "newPriceInput"]
+  static targets = ["subscriptions", "budgetSubs", "userSubs", "removeSubBtn", "editForm", "showPage", "deleteBtn", "newNameInput", "newPriceInput", "headerWrapper"]
   static values = { budgetId: Number }
 
   display_edit() {
@@ -48,13 +48,28 @@ export default class extends Controller {
   }
 
   display_new_subs_to_add() {
-    this.budgetSubsTarget.classList.add('hidden')
-    this.userSubsTarget.classList.remove('hidden')
+    this.budgetSubsTarget.classList.toggle('hidden')
+    this.userSubsTarget.classList.toggle('hidden')
   };
 
   add_subs() {
     const selectedIds = this.subscriptionsTargets.filter(sub => sub.checked).map(sub => sub.value).join()
     const url = `/updateBudgets/${this.element.dataset.budget_id}?selectedSubs=${selectedIds}`
     fetch(url)
+      .then(res => res.text())
+      .then(data => {
+        this.display_new_subs_to_add()
+        this.budgetSubsTarget.innerHTML = data
+        this._update_header()
+      })
   };
+
+  _update_header() {
+    const url = `/updateBudgetsHeader/${this.element.dataset.budget_id}`
+    fetch(url)
+      .then(res => res.text())
+      .then(data => {
+        this.headerWrapperTarget.innerHTML = data
+      })
+  }
 }

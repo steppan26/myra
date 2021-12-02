@@ -38,7 +38,15 @@ class BudgetsController < ApplicationController
     sub_ids.each do |sub_id|
       BudgetItem.create(budget_id: @budget.id, subscription_id: sub_id.to_i)
     end
-    redirect_to budget_path(@budget)
+    authorize :budget
+    render partial: 'budgets/current_subscriptions_list', locals: { budget: @budget }
+    #redirect_to budget_path(@budget)
+  end
+
+  def update_show_header
+    @budget = Budget.find(params[:id])
+    authorize :budget
+    render partial: 'budgets/show_header', locals: { budget: @budget }
   end
 
   def updateInfo
