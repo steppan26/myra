@@ -11,12 +11,13 @@ export default class extends Controller {
   connect() {
     const progressCircle = this.circleTarget;
     const budget = this.budgetValue;
-    const amount = this.amountValue;
-    const amountEuro = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(amount)
+    let amount = this.amountValue;
+    const color = (amount > budget) ? '#FD1215' : '#6743B8';
+    const amountEuro = new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'EUR' }).format(amount);
+    amount = (amount > budget) ? budget : amount;
     const percent = (amount / budget) * 100 ;
-
     const bar = new ProgressBar.Circle(progressCircle, {
-      color: '#6743B8',
+      color: color,
       strokeWidth: 6,
       trailColor: '#322247',
       trailWidth: 6,

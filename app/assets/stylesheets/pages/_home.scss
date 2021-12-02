@@ -19,6 +19,7 @@ body{
     color: $clr-text-primary !important;
     border: none;
     border-radius: 0.3rem;
+     -webkit-appearance: none;
   }
   & .page-title {
     text-transform: uppercase;

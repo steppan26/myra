@@ -6,21 +6,31 @@
           <div data-graph-circle-target="circle" style="width: 50%"></div>
           <div>
             <p><span id="expanses"></span>expenses</p>
-            <p id="pbudget"><span id="budget"></span>budget</p>
+            <p id="pbudget"><span id="budget"></span>budget(<%= humanized_money_with_symbol current_user.global_budget %>)</p>
           </div>
         </div>
-        <div class="details">
-            <h6><strong>Details</strong></h6>
-            <ul>
-              <% category_sums.each do |category| %>
-                <% if category[1] > 0 %>
-                  <li><p><span class="name-infos"><%= category[0]%></span>  <span class="expenses-infos"><%= humanized_money_with_symbol category[1] %>/month</span></p></li>
-                <% end %>
-              <% end %>
-            </ul>
+        <% if user_monthly_spend > current_user.global_budget %>
+          <div>
+            <p class="budget_alert alert alert-danger" role="alert">
+              You have surpassed your allocated budget by <br>
+              <strong id="surpassed_expanses"><%= humanized_money_with_symbol (current_user.global_budget - user_monthly_spend) %></strong>
+            </p>
           </div>
+        <% end %>
+        <% unless current_user.subscriptions.length == 0%>
+          <div class="details">
+              <h6><strong>Details</strong></h6>
+              <ul>
+                <% category_sums.each do |category| %>
+                  <% if category[1] > 0 %>
+                    <li><p><span class="name-infos"><%= category[0]%></span>  <span class="expenses-infos"><%= humanized_money_with_symbol category[1] %>/month</span></p></li>
+                  <% end %>
+                <% end %>
+              </ul>
+          </div>
+        <% end %>
       </div>
-    </div>
+      </div>
   <% unless user_budgets.length == 0 %>
     <div class="infos-card">
       <h6><strong>Budgets</strong></h6>
