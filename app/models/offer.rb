@@ -1,5 +1,5 @@
 class Offer < ApplicationRecord
-  PERIODS = ["weekly", "monthly", "annualy"]
+  PERIODS = ["weekly", "monthly", "trimestral", "annualy"]
 
   belongs_to :service, optional: true
   belongs_to :category, optional: true
