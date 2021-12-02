@@ -1,31 +1,26 @@
+<% total_price = Money.new(0) %>
+<% @budget.subscriptions.each do |sub| %>
+  <% total_price += sub.price_per_day * 30 %>
+<% end %>
+<% progress_percent = ((total_price / @budget.price_per_month) * 100).round.to_i %>
 <section class="show-budget-wrapper" data-controller="budgetShow">
   <div>
     <div class="budget-show-header">
-      <div class="edit-btn budget">
-        <i class="fas fa-edit" data-action='click->budgetShow#display_edit'></i>
+      <div class="budgets-show">
+        <%= render 'budgets/display_budget', budget: @budget %>
       </div>
-      <h1 class="page-title"><%= @budget.name.upcase %></h1>
-      <div class="budget-info show">
-      <p><%=@budget.subscriptions.count%> <%= "subscription".pluralize(@budget.subscriptions.count) %></p>
-      <div class="budget-amounts">
-        <p>Budget: <span class="ms-3"><%= humanized_money_with_symbol @budget.price_per_month %></span></p>
-        <% total_price = Money.new(0) %>
-        <% @budget.subscriptions.each do |sub| %>
-          <% total_price += sub.price_per_day * 30 %>
-        <% end %>
-        <% progress_percent = ((total_price / @budget.price_per_month) * 100).round.to_i %>
+      <div class="budgets-edit hidden" data-budgetShow-target="editForm">
+        <%= render 'budgets/edit_budget', budget: @budget %>
       </div>
-    </div>
-    <% if progress_percent > 100 %>
-    <div class="progress-bar" style="background: #9b0e0e;">
-      <p><%= humanized_money_with_symbol total_price %></p>
-    </div>
-    <% else %>
-    <div class="progress-bar" style="background-image: linear-gradient(to right, #6644B8 <%=progress_percent%>%, #17082A <%=progress_percent%>%);">
-      <p><%= humanized_money_with_symbol total_price %></p>
-    </div>
-    <% end %>
-
+      <% if progress_percent > 100 %>
+        <div class="progress-bar" style="background: #9b0e0e;">
+          <p><%= humanized_money_with_symbol total_price %></p>
+        </div>
+      <% else %>
+        <div class="progress-bar" style="background-image: linear-gradient(to right, #6644B8 <%=progress_percent%>%, #17082A <%=progress_percent%>%);">
+          <p><%= humanized_money_with_symbol total_price %></p>
+        </div>
+      <% end %>
     </div>
     <ul class="">
       <li class="new-sub-btn" data-action='click->budgetShow#add_subs'>+</li>
