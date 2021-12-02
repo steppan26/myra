@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get "/updateBudgets/:id", to: 'budgets#update'
   get "/updateBudgetsInfo/:id", to: 'budgets#updateInfo'
   get "/updateBudgetsHeader/:id", to: 'budgets#update_show_header'
+  delete "/removeSubscriptionFromBudget/:subscription_id/:budget_id", to: 'budgets#destroy_budget_item', as: :destroy_budget_item
 
   require "sidekiq/web"
   authenticate :user, ->(user) { user.admin? } do

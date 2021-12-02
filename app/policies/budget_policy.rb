@@ -28,4 +28,8 @@ class BudgetPolicy < ApplicationPolicy
   def destroy?
     true
   end
+
+  def destroy_budget_item?
+    true
+  end
 end

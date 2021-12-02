@@ -64,6 +64,16 @@ class BudgetsController < ApplicationController
     redirect_to budgets_path
   end
 
+  def destroy_budget_item
+    @subscription = Subscription.find(params[:subscription_id])
+    @budget = Budget.find(params[:budget_id])
+    @budget_item = BudgetItem.where(budget: @budget, subscription: @subscription).first
+    authorize @budget_item
+
+    @budget_item.destroy if @budget.user == current_user
+    redirect_to budget_path(@budget)
+  end
+
   private
 
   def budget_params
