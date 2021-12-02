@@ -66,6 +66,7 @@
       <p>Email</p>
     </div>
   </div>
+
   <%= link_to request.referer.present? ? request.referer : dashboard_path, class: "back-btn" do %>
     <i class="fas fa-chevron-circle-left"></i>
   <% end %>
