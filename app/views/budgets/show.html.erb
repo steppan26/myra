@@ -7,7 +7,7 @@
       <%= render 'budgets/current_subscriptions_list', budget: @budget %>
     </div>
     <div class="hidden" data-budgetShow-target='userSubs'>
-        <%= render 'budgets/new_subscriptions_list', budget: @budget, filtered_subscriptions: @filtered_subscriptions %>
+        <%= render 'budgets/new_subscriptions_list', budget: @budget, subscriptions: @subscriptions, filtered_subscriptions: @filtered_subscriptions %>
     </div>
   </div>
   <%= link_to budget_path(@budget),
