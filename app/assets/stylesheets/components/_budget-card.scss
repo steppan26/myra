@@ -88,6 +88,9 @@
   opacity: 0.6;
   display: flex;
   justify-content: space-between;
+  &.show {
+    padding: 1rem 0;
+  }
 }
 
 .budget-amount {

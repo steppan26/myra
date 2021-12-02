@@ -8,6 +8,7 @@ class BudgetsController < ApplicationController
   def show
     @budget = Budget.find(params[:id])
     @subscriptions = Subscription.where(budget_id: @budget.id)
+    @user_subscriptions = Subscription.where(user_id: current_user)
   end
 
   def new

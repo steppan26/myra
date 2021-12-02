@@ -3,10 +3,10 @@
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
-  min-height: 92vh;
+  min-height: 88vh;
   & ul {
     list-style: none;
-    padding: 0;
+    padding: 1rem 0;
   }
 }
 
