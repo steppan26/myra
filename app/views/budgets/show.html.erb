@@ -27,7 +27,7 @@
     <% end %>
 
     </div>
-    <ul class="hidden">
+    <ul class="">
       <li class="new-sub-btn" data-action='click->budgetShow#add_subs'>+</li>
       <% unless @budget.subscriptions.empty? %>
         <% @budget.subscriptions.each do |subscription| %>
@@ -39,7 +39,7 @@
         <% end %>
       <% end %>
     </ul>
-    <ul class="budgets-wrapper edit">
+    <ul class="budgets-wrapper edit hidden">
       <% @user_subscriptions.each do |subscription| %>
         <li data-action="click->budgetShow#display_edit"><%= render 'subscriptions/subscription_card', subscription: subscription %></li>
       <% end %>

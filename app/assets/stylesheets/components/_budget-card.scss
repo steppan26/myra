@@ -8,7 +8,11 @@
     padding: 0.5em;
   }
   .submit-btn {
+    cursor: pointer;
+    display: inline-block;
     background-color: $clr-btn-submit !important;
+    padding: 0.6rem;
+    border-radius: 0.3rem;
   }
 }
 
