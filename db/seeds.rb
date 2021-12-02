@@ -31,6 +31,7 @@ def calculatePrice(frequency ,offer_value, multiplied)
 end
 
 Service.destroy_all
+BudgetItem.destroy_all
 Offer.destroy_all
 Category.destroy_all
 
