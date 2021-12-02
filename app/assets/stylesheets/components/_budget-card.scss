@@ -64,12 +64,12 @@
     max-height: 58vh;
     overflow: scroll;
     scrollbar-width: none;
-    & .sub-card {
-      border: 2px solid transparent;
-    }
-    & .sub-card.selected {
-      border: 2px solid white;
-    }
+  }
+  & .sub-card {
+    border: 2px solid transparent;
+  }
+  & .sub-card.selected {
+    border: 2px solid white;
   }
   & a,
   & a:hover{

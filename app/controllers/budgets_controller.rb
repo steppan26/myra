@@ -33,8 +33,12 @@ class BudgetsController < ApplicationController
   end
 
   def update
-    raise
-    redirect_to_ budget_path(@budget)
+    @budget = Budget.find(params[:id])
+    sub_ids = params[:selectedSubs].split(',')
+    sub_ids.each do |sub_id|
+      BudgetItem.create(budget_id: @budget.id, subscription_id: sub_id.to_i)
+    end
+    redirect_to budget_path(@budget)
   end
 
   def destroy

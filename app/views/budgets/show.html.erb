@@ -3,7 +3,7 @@
   <% total_price += sub.price_per_day * 30 %>
 <% end %>
 <% progress_percent = ((total_price / @budget.price_per_month) * 100).round.to_i %>
-<section class="show-budget-wrapper" data-controller="budgetShow">
+<section class="show-budget-wrapper" data-controller="budgetShow" data-budget_id="<%=@budget.id%>">
   <div>
     <div class="budget-show-header">
       <div class="budgets-show">
@@ -35,6 +35,14 @@
       <% end %>
     </ul>
     <ul class="budgets-wrapper edit hidden" data-budgetShow-target='userSubs'>
+    <%= simple_form_for(@budget) do |f| %>
+      <%= f.association :subscriptions,
+                        input_html: {data: {budgetShow_target: "subscriptions"}},
+                        wrapper_html: {class: "d-none"},
+                        as: :check_boxes,
+                        collection: @filtered_subscriptions
+      %>
+    <% end %>
       <li class="btn-submit edit" data-action='click->budgetShow#add_subs'>Add subscriptions</li>
       <% @filtered_subscriptions.each do |subscription| %>
         <li data-action="click->budgetShow#toggle_sub"><%= render 'subscriptions/subscription_card', subscription: subscription %></li>
