@@ -3,7 +3,7 @@
   <% total_price += sub.price_per_day * 30 %>
 <% end %>
 <% progress_percent = ((total_price / @budget.price_per_month) * 100).round.to_i %>
-<section class="show-budget-wrapper" data-controller="budgetShow" data-budget_id="<%=@budget.id%>">
+<section class="show-budget-wrapper" data-controller="budgetShow" data-budget_id="<%=@budget.id%>" data-budget_name="<%=@budget.name%>" data-budget_price="<%=@budget.price_per_month%>">
   <div>
     <div class="budget-show-header">
       <div class="budgets-show" data-budgetShow-target="showPage">
