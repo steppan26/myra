@@ -21,6 +21,10 @@ class BudgetPolicy < ApplicationPolicy
     true
   end
 
+  def update_show_header?
+    true
+  end
+
   def destroy?
     true
   end

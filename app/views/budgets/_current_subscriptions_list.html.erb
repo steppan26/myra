@@ -1,0 +1,13 @@
+    <ul class="budgets-wrapper show">
+      <li class="new-sub-btn" data-action='click->budgetShow#display_new_subs_to_add'>+</li>
+      <% unless budget.subscriptions.empty? %>
+        <% budget.subscriptions.each do |subscription| %>
+          <li class="subscription-list-wrapper">
+            <i class="fas fa-ban remove-sub-btn hidden" data-budgetShow-target="removeSubBtn"></i>
+            <%= link_to subscription_path(subscription) do %>
+              <%= render "subscriptions/subscription_card", subscription: subscription %>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
