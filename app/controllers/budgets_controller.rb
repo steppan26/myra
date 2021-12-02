@@ -7,7 +7,7 @@ class BudgetsController < ApplicationController
 
   def show
     @budget = Budget.find(params[:id])
-    @subscriptions = @budget.subscriptions
+    @subscriptions = @budget.subscriptions.uniq
     user_subscriptions = Subscription.where(user_id: current_user)
     @filtered_subscriptions = user_subscriptions.reject { |sub| @subscriptions.include?(sub) }
   end
@@ -67,10 +67,14 @@ class BudgetsController < ApplicationController
   def destroy_budget_item
     @subscription = Subscription.find(params[:subscription_id])
     @budget = Budget.find(params[:budget_id])
-    @budget_item = BudgetItem.where(budget: @budget, subscription: @subscription).first
-    authorize @budget_item
+    @budget_items = BudgetItem.where(budget: @budget, subscription: @subscription)
+    authorize @budget_items
 
-    @budget_item.destroy if @budget.user == current_user
+    if @budget.user == current_user
+      @budget_items.each do |budget_item|
+        budget_item.destroy
+      end
+    end
     redirect_to budget_path(@budget)
   end
 

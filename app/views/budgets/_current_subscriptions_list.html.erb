@@ -1,7 +1,7 @@
     <ul class="budgets-wrapper show">
       <li class="new-sub-btn" data-action='click->budgetShow#display_new_subs_to_add'>+</li>
       <% unless budget.subscriptions.empty? %>
-        <% budget.subscriptions.each do |subscription| %>
+        <% budget.subscriptions.uniq.each do |subscription| %>
           <li class="subscription-list-wrapper">
             <%= link_to destroy_budget_item_path(subscription, budget), method: :delete do %>
               <i class="fas fa-ban remove-sub-btn hidden" data-budgetShow-target="removeSubBtn"></i>
