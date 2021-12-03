@@ -45,6 +45,7 @@ class SubscriptionsController < ApplicationController
       offer = Offer.find(offer_id)
     end
     renewal_date = Date.parse(params[:subscription][:renewal_date])
+    service_id = params[:subscription][:offers][:service_id]
     custom_img_url = "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.shareicon.net%2Fdata%2F2017%2F07%2F13%2F888376_office_512x512.png&f=1&nofb=1"
     new_subscription = Subscription.new(
       offer: offer,
@@ -53,8 +54,8 @@ class SubscriptionsController < ApplicationController
       price_per_day: get_price_per_day(price, params[:subscription][:offers][:frequency]),
       renewal_date: renewal_date,
       reminder_delay_days: params[:subscription][:reminder_delay_days],
-      url: custom_offer ? "www.google.com" : offer.service.url,
-      image_url: custom_offer ? custom_img_url : offer.service.image_url
+      url: service_id == -1 ? "www.google.com" : Service.find(service_id).url,
+      image_url: service_id == -1 ? custom_img_url : Service.find(service_id).image_url
     )
     if new_subscription.save
       redirect_to dashboard_path
@@ -118,7 +119,7 @@ class SubscriptionsController < ApplicationController
         frequency: params[:frequency],
         service_name: params[:serviceName]
       )
-      @service = nil
+      @service = params[:serviceId].to_i == -1 ? nil : Service.find(params[:serviceId])
     else
       @offer = Offer.find(params[:offerId])
       @service = @offer.service

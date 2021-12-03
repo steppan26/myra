@@ -5,7 +5,7 @@ export default class extends Controller {
                     "category", "service", "offerServiceNameInput", "offerPriceInput", "offerFrequencyInput",
                     "customOfferInput", "customService", "customOffer", "formPartOne", "formPartTwo", "renewalInput",
                     "delayInput", "infoInput", "delayFrequencyInput", "serviceIdInput", "offerIdInput", "offerNameInput", "formSubmitButton",
-    "reminderDelayDaysInput", "additionalInfoInput", "reminderDelayDaysInput", "renewalDateInput", "serviceNameInput", "offerNameUserInput"]
+    "reminderDelayDaysInput", "additionalInfoInput", "reminderDelayDaysInput", "renewalDateInput", "serviceNameInput", "offerNameUserInput", "offerIdInput"]
 
   connect() {
   };
@@ -62,6 +62,7 @@ export default class extends Controller {
         const nameInput = this.offerServiceNameInputTarget;
         const offerNameInput = this.offerNameUserInputTarget;
         nameInput.value = "";
+        this.serviceIdInputTarget.value = -1;
         // this.offerNameInputTarget.value = 'custom offer';
         nameInput.removeAttribute("disabled");
         nameInput.classList.remove('disabled')
@@ -157,8 +158,9 @@ export default class extends Controller {
     const category = encodeURIComponent(this.categoryInputTarget.value);
     const service = encodeURIComponent(this.serviceNameInputTarget.value);
     const offerId = encodeURIComponent(this.offerIdInputTarget.value)
+    const serviceId = encodeURIComponent(this.serviceIdInputTarget.value)
 
-    fetch(`/subOverview/?serviceName=${service}&name=${name}&categoryId=${category}&price=${price}&frequency=${frequency}&offerId=${offerId}`
+    fetch(`/subOverview/?serviceId=${serviceId}&serviceName=${service}&name=${name}&categoryId=${category}&price=${price}&frequency=${frequency}&offerId=${offerId}`
     ).then(res => res.text())
      .then(data => {
         this.formPartOneTarget.classList.add('hidden-one');
