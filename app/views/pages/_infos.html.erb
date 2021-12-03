@@ -13,7 +13,7 @@
           <div>
             <p class="budget_alert alert alert-danger" role="alert">
               You have surpassed your allocated budget by <br>
-              <strong id="surpassed_expanses"><%= humanized_money_with_symbol (current_user.global_budget - user_monthly_spend) %></strong>
+              <strong id="surpassed_expanses"><%= current_user.global_budget - user_monthly_spend %>€</strong>
             </p>
           </div>
         <% end %>
@@ -36,7 +36,7 @@
       <h6><strong>Budgets</strong></h6>
       <ul>
         <% user_budgets.each do |budget| %>
-          <li><p><span class="name-infos"><%= budget.name %></span>  <span class="expenses-infos"> <%= humanized_money_with_symbol Money.new((budget.subscriptions.sum(:price_per_day_cents).to_f * 30)) %>/month</span></p></li>
+          <li><p><span class="name-infos"><%= budget.name %></span>  <span class="expenses-infos"> <%= humanized_money_with_symbol Money.new((budget.subscriptions.sum(:price_per_day_cents).to_f / 12)) %>/month</span></p></li>
         <% end %>
       </ul>
     </div>

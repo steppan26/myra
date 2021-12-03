@@ -12,24 +12,25 @@
                         class: "mb-3"
       %>
       <p class="error-message my-0 hidden" data-subscriptionsList-target="errorMessage">Please enter a budget name and price</p>
-      <div class="form-price-wrapper">
-        <%= f.input_field :price_per_month,
-                          placeholder: "Budget/month",
-                          data: {subscriptionsList_target: "priceInput"},
-                          class: "my-3 budget-amount"
+      <div class="input-with-btn">
+        <div class="form-price-wrapper">
+          <%= f.input_field :price_per_month,
+                            placeholder: "Budget/month",
+                            data: {subscriptionsList_target: "priceInput"},
+                            class: "budget-amount"
+          %>
+          <span>€</span>
+        </div>
+        <%= f.association :subscriptions,
+                          input_html: {data: {subscriptionsList_target: "subscriptions"}},
+                          wrapper_html: {class: "d-none"},
+                          as: :check_boxes,
+                          collection: @subscriptions
         %>
-        <span>€</span>
+        <div class="submit-btn" data-action='click->subscriptionsList#create_budget'>Create Budget</div>
       </div>
-      <%= f.association :subscriptions,
-                        input_html: {data: {subscriptionsList_target: "subscriptions"}},
-                        wrapper_html: {class: "d-none"},
-                        as: :check_boxes,
-                        collection: @subscriptions
-      %>
-      <div class="submit-btn" data-action='click->subscriptionsList#create_budget'>Create Budget</div>
-      <%#= f.submit "Create budget", class: "my-3 submit-btn" %>
     <% end %>
-    <h6 class="mb-0 mt-2">Select subscriptions to add to budget <i class="fas fa-level-down-alt"></i></h6>
+    <h6 class="mb-0 mt-3">Select subscriptions to add to budget <i class="fas fa-level-down-alt"></i></h6>
   </div>
   <ul class="budgets-wrapper new">
     <% @subscriptions.each do |subscription| %>
