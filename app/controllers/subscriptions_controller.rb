@@ -5,7 +5,7 @@ class SubscriptionsController < ApplicationController
   def index
     @subscriptions = Subscription.all
     user_subscriptions = Subscription.where(user_id: current_user)
-    @user_monthly_spend = Money.new(user_subscriptions.sum(:price_per_day_cents) * 30)
+    @user_monthly_spend = Money.new(user_subscriptions.sum(:price_per_day_cents) / 12)
   end
 
   def show
@@ -133,11 +133,13 @@ class SubscriptionsController < ApplicationController
   def get_price_per_day(value, frequency)
     case frequency
     when 'annualy'
-      return (value / 365)
+      return value
     when 'monthly'
-      return (value / 30)
+      return (value * 12)
+    when 'weekly'
+      return (value * 52)
     else
-      return (value / 7)
+      return (value * 4)
     end
   end
 
