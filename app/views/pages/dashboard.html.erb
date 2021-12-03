@@ -5,10 +5,14 @@
           <div class="home_message">
             <h3>Get Started!</h3>
             <h3> Add a subscription</h3>
-            <h3>push the button</h3>
-            <h3>"+"</h3>
           </div>
-          <i class="fas fa-long-arrow-alt-down home-arrow"></i>
+         <%= link_to new_subscription_path do %>
+              <svg width="75" height="75" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" data-action="click->hidden-buttons#hidden">
+                <circle cx="30" cy="30" r="30" fill="#6644B8"/>
+                <line x1="30.9109" y1="20.5479" x2="30.9109" y2="40.274" stroke="white"/>
+                <line x1="20.5479" y1="29.911" x2="40.2739" y2="29.911" stroke="white"/>
+              </svg>
+            <% end %>
       </div>
     <% else %>
       <% @user_subscriptions.each do |subscription| %>
