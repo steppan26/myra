@@ -19,11 +19,12 @@
     width: 100%;
     z-index:9999;
     border-radius:0px;
-    height: 10%;
+    height: fit-content;
     margin-top: 1rem;
+    padding: 0.5rem 1rem;
   }
   & #surpassed_expanses{
-    font-size:1.3rem;
+    font-size: 1.1rem;
   }
 }
 

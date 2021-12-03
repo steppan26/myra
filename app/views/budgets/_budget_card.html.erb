@@ -2,12 +2,12 @@
   <div>
     <h3 class="budget-title"><%= budget.name %></h3>
     <div class="budget-info">
-      <p><%=budget.subscriptions.count%> <%= "subscription".pluralize(budget.subscriptions.count) %></p>
+      <p><%=budget.subscriptions.uniq.count%> <%= "subscription".pluralize(budget.subscriptions.uniq.count) %></p>
       <div class="budget-amounts">
         <p>Budget: <span class="ms-3"><%= humanized_money_with_symbol budget.price_per_month %></span></p>
         <% total_price = Money.new(0) %>
-        <% budget.subscriptions.each do |sub| %>
-          <% total_price += sub.price_per_day * 30 %>
+        <% budget.subscriptions.uniq.each do |sub| %>
+          <% total_price += sub.price_per_day / 12 %>
         <% end %>
         <% progress_percent = ((total_price / budget.price_per_month) * 100).round.to_i %>
       </div>

@@ -1,9 +1,9 @@
 <% total_price = Money.new(0) %>
 <% @budget.subscriptions.uniq.each do |sub| %>
-  <% total_price += sub.price_per_day * 30 %>
+  <% total_price += sub.price_per_day / 12 %>
 <% end %>
 <% progress_percent = ((total_price / @budget.price_per_month) * 100).round.to_i %>
-
+<%# raise %>
 <div class="budget-show-header">
   <div class="budgets-show" data-budgetShow-target="showPage">
     <%= render 'budgets/display_budget', budget: budget %>
