@@ -13,7 +13,7 @@
     <div class="show-info">
       <div class="info-description">
         <i class="far fa-credit-card"></i>
-        <p><%= offer.name %> at <strong><%= offer.price %>€</strong> <%= offer.frequency %></p>
+        <p><%= offer.name %> at <strong style="font-size: 1.2rem;"><%= offer.price %>€</strong> <%= offer.frequency %></p>
       </div>
       <div class="info-description">
         <i class="fas fa-bullhorn"></i>
@@ -31,13 +31,13 @@
     </div>
   </div>
   <div class="reminder-section">
-    <h5 id="days-delay-edit">Remind me <input type="tel" value="3" data-newForm2-target="delayInput"> <%= "day".pluralize(2) %></strong> before by</h5>
-    <div class="reminder-options-wrapper">
+    <h5 id="days-delay-edit">Notify me <input type="tel" value="3" data-newForm2-target="delayInput"> <%= "day".pluralize(2) %></strong> before.</h5>
+    <%# <div class="reminder-options-wrapper">
       <div class="custom-checkbox"><div class="checked hidden"><i class="fas fa-check"></i></div></div>
       <p>Phone</p>
       <div class="custom-checkbox checked"><div class="checked"><i class="fas fa-check"></i></div></div>
       <p>Email</p>
-    </div>
+    </div> %>
   </div>
   <div class="btn-submit" data-action='click->newForm2#createSubscription'>Create subscription</div>
 </div>

@@ -1,14 +1,19 @@
 .sub-card {
   display: flex;
-  align-items: stretch;
-  justify-content: stretch;
-  border-radius: 0.4rem;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 0.4rem 4.4rem 0.4rem 4.4rem;
   background-color: $clr-bg-primary;
   margin: 1.25rem 0;
+  padding: 0 0 0 1rem;
+  border: 0.3rem solid $clr-bg-primary;
+  box-shadow: 0 0 0 2px $clr-bg-secondary inset;
   & img {
-    width: 30%;
+    width: 26%;
     border-radius: 0.4rem;
-    object-fit: cover;
+    object-fit: contain;
+    border-radius: 50%;
+    height: auto;
   }
   & h4 {
     font-weight: 600;
@@ -17,9 +22,9 @@
   & .sub-card-info {
     justify-content: space-between;
     align-items: flex-end;
-    & > h6 { opacity: 0.6; }
+    & > h6 { opacity: 0.6; font-size: 1rem;}
     & * { font-size: 1.2rem; }
-    & span { font-size: 0.9rem; }
+    & span { font-size: 1.3rem; color: $clr-text-primary;}
     & .sub-card-days-remaining h6 { font-size: 1rem; }
   }
 }
