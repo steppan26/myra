@@ -1,9 +1,16 @@
 // Specific CSS for your home-page
+html {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(233, 233, 233);
+}
+
 body{
   background-color: $clr-bg-secondary;
   color: $clr-text-primary;
-  //height: 100vh;
   width: 100vw;
+  max-width: 452px;
   min-height: 88vh;
   & main {
     margin-bottom: 13vh;
