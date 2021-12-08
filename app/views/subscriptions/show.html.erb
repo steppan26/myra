@@ -62,14 +62,14 @@
     </div>
   </div>
   <div class="reminder-section">
-    <h5 id="days-delay-show" data-subscriptionShow-target="show">Remind me <strong><span data-subscriptionShow-target="delayElement"><%= @subscription.reminder_delay_days %></span> <%= "day".pluralize(2) %></strong> before by</h5>
+    <h5 id="days-delay-show" data-subscriptionShow-target="show">Notify me <strong><span data-subscriptionShow-target="delayElement"><%= @subscription.reminder_delay_days %></span> <%= "day".pluralize(2) %></strong> before</h5>
     <h5 class="hidden" id="days-delay-edit" data-subscriptionShow-target="edit">Remind me <input type="tel" value="<%= @subscription.reminder_delay_days %>" data-subscriptionShow-target="delayInput"> <%= "day".pluralize(2) %></strong> before by</h5>
-    <div class="reminder-options-wrapper">
+    <%# <div class="reminder-options-wrapper">
       <div class="custom-checkbox"><div class="checked hidden"><i class="fas fa-check"></i></div></div>
       <p>Phone</p>
       <div class="custom-checkbox checked"><div class="checked"><i class="fas fa-check"></i></div></div>
       <p>Email</p>
-    </div>
+    </div> %>
   </div>
 
   <%= link_to request.referer.present? ? request.referer : dashboard_path, class: "back-btn" do %>
