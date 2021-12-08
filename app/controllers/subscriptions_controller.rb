@@ -54,8 +54,8 @@ class SubscriptionsController < ApplicationController
       price_per_day: get_price_per_day(price, params[:subscription][:offers][:frequency]),
       renewal_date: renewal_date,
       reminder_delay_days: params[:subscription][:reminder_delay_days],
-      url: service_id == -1 ? "www.google.com" : Service.find(service_id).url,
-      image_url: service_id == -1 ? custom_img_url : Service.find(service_id).image_url
+      url: service_id == "-1" ? "http://www.google.com" : Service.find(service_id).url,
+      image_url: service_id == "-1" ? custom_img_url : Service.find(service_id).image_url
     )
     if new_subscription.save
       redirect_to dashboard_path
