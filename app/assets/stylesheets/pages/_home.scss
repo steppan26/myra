@@ -3,7 +3,8 @@ html {
   width: 100vw;
   display: flex;
   justify-content: center;
-  background-color: rgb(233, 233, 233);
+  //background-color: rgb(233, 233, 233);
+  background-color: $clr-bg-secondary;
 }
 
 body{
